@@ -1,0 +1,85 @@
+﻿@startuml
+'' plantumlfile1
+
+
+class User {
+    email: String[1] 
+    password: String[1]
+    name: String[1]
+    city: Coordinates[0..1]
+    avgSpeed: double[0..1]
+
+    logIn()
+    signUpForEvent()
+    organizeEvent()
+    createUserGroup()
+    joinGroup()
+    leaveGroup()
+    createLocation()
+    
+}
+
+class UserGroup {
+    admin: User[1]
+    members: User[1..*]
+
+    signUpForEvent()
+    inviteToGroup()
+}
+
+class Participant {
+    user: User[1]
+    event: Event[1]
+    location: Location[1]
+    checkedIn: bool[1]
+    results: Results[0..1]
+
+    checkInatEvent()
+}
+
+abstract class Event {
+    date: Date[1]
+    time: Time[1] 
+    avgSpeed: double[1]
+}
+
+class VirtualEvent {
+    date: Date[1]
+    time: Time[1] 
+    avgSpeed: double[1]
+    length: double[1]
+    elevationDiff: double[0..1]
+}
+
+class InPersonEvent {
+    date: Date[1]
+    time: Time[1] 
+    avgSpeed: double[1]
+    location: Location[1]
+}
+
+class Location {
+    name: String[1]
+    startingPoint: Coordinates[1]
+    length: double[1]
+    elevationDiff: double[0..1]
+}
+
+class Results {
+    totalSpeed: double[1]
+    avgSpeed: double[1]
+    avgHeartRate: int[1]
+}
+
+User "1..*"--"*" UserGroup : is member
+User "1"--"*" UserGroup : is administrator
+User "1"-- "*" Participant
+Participant "*" -- "1" Location
+Location "1"-- "*" InPersonEvent
+Event <|-- VirtualEvent
+Event <|-- InPersonEvent
+Participant "*"-- "1" Event
+Participant "1" -- "0..1" Results
+
+
+@enduml
