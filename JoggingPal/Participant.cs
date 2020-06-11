@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +12,9 @@ namespace JoggingPal
         User eventParticipant;
         Event joggingEvent;
         Location joggingLocation;
+        public ParticipationContext ctx;
         bool isSignedUp;
-        //Results results;
+        EventResults eventResults;
 
         public Participant(User user, Event selectedEvent)
         {
@@ -21,18 +23,40 @@ namespace JoggingPal
 
             joggingEvent.participants.Add(this);
 
-            if (typeof(InPersonEvent).IsInstanceOfType(joggingEvent)) 
-                joggingLocation = ((InPersonEvent)joggingEvent).runningLocation;
+            ctx = new ParticipationContext(this);
 
+            if (typeof(InPersonEvent).IsInstanceOfType(joggingEvent))
+            {
+                joggingLocation = ((InPersonEvent)joggingEvent).runningLocation;
+                ctx.SetLocation();
+            }
         }
 
         public void SetRunningLocation(Location location)
         {
             joggingLocation = location;
+            ctx.SetLocation();
         }
 
-        public static void CheckInAtEvent()
-        { }
+        public void CheckInAtEvent()
+        {
+            ctx.CheckInAtEvent();        
+        }
+
+        public EventResults UploadEventResults()
+        {
+            var director = new EventResultsDirector();
+            var builder = new EventResultsConcreteBuilder();
+            director.Builder = builder;
+
+            director.BuildSimpleResults(20.0);
+
+            eventResults = builder.GetResults();
+
+            ctx.UploadEventResults();
+
+            return eventResults;
+        }
 
         public override String ToString()
         {

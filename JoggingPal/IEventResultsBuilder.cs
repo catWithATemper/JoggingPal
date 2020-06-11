@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class Results
+    interface IEventResultsBuilder
     {
-        double totalSpeed;
-        double avgSpeed;
-        int avgHeartRate;
+        void BuildTotalTime(double totalTime);
     }
 }

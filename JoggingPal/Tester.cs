@@ -10,6 +10,8 @@ namespace JoggingPal
 {
     class Tester
     {
+        public static User testUser = new User("Tom");
+
         public static void TestCreateLocation()
         {
             //GeoCoordinate Coordinates = new GeoCoordinate(48.112242, 11.630701);
@@ -116,6 +118,33 @@ namespace JoggingPal
             user2.LeaveGroup(group);
             foreach (IUser user in group.members)
                 Console.WriteLine(user.ToString());
+        }
+
+        public static void TestEventResultsBuilder()
+        {
+            var director = new EventResultsDirector();
+            var builder = new EventResultsConcreteBuilder();
+            director.Builder = builder;
+
+            director.BuildSimpleResults(20.0);
+            Console.WriteLine(builder.GetResults().ListParts());
+        }
+
+        public static void TestParticipationState()
+        {
+            User user2 = new User("Tom");
+            User user1 = new User("Billy");
+            Location route = user1.CreateLocation("Ostpark", 48.112242, 11.630701, 5);
+            InPersonEvent event1 = user1.CreateInPersonEvent("10/7/2020 11:00:00 AM", 7.0, route);
+
+            Participant participant1 = new Participant(user2, event1); 
+            Console.WriteLine(participant1.ctx.CurrentState);
+
+            participant1.CheckInAtEvent();
+            Console.WriteLine(participant1.ctx.CurrentState);
+
+            EventResults results = participant1.UploadEventResults();
+            Console.WriteLine(participant1.ctx.CurrentState);
         }
 
     }

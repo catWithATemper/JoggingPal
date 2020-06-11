@@ -10,7 +10,7 @@ namespace JoggingPal
     class User : IUser
     {
         string email;
-        string password;
+        public string password;
         public string userName;
         //city
         double avgSpeed;
@@ -92,8 +92,5 @@ namespace JoggingPal
         {
             return new Location(name, lat, lon, length);
         }
-
-        public void CheckInAtEvent()
-        { }
     }
 }

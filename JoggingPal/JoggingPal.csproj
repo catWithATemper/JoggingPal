@@ -37,20 +37,45 @@
     <None Include="Class diagram.puml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckedIn.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="EventResultsUploaded.cs" />
+    <Compile Include="IEventResultsBuilder.cs" />
+    <Compile Include="EventResultsConcreteBuilder.cs" />
+    <Compile Include="EventResultsDirector.cs" />
     <Compile Include="InPersonEvent.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="LocationSet.cs" />
+    <Compile Include="LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Participant.cs" />
+    <Compile Include="ParticipantState.cs" />
+    <Compile Include="ParticipationContext.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Results.cs" />
+    <Compile Include="EventResults.cs" />
+    <Compile Include="SignedUp.cs" />
     <Compile Include="Tester.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserGroup.cs" />
     <Compile Include="VirtualEvent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Device" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
