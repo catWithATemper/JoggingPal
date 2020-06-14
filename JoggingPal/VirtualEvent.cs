@@ -20,7 +20,7 @@ namespace JoggingPal
 
         public override String ToString()
         {
-            return (base.ToString() + " Routelength: " + routeLength);
+            return (base.ToString() + " Routelength: " + routeLength + " km");
         }
     }
 }

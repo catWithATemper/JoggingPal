@@ -9,7 +9,7 @@ namespace JoggingPal
 {
     class Location
     {
-        string routeName;
+        public string routeName;
         GeoCoordinate startingPoint;
         double routeLength;
         double elevationDifference;

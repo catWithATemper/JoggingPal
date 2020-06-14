@@ -25,7 +25,7 @@ namespace JoggingPal
 
         public override String ToString()
         {
-            return " at " + dateTime.ToString() + "\naverage speed: " + averageSpeed + " km/h";
+            return " at " + dateTime.ToString() + " average speed: " + averageSpeed + " km/h";
         }
     }
 }

@@ -19,7 +19,7 @@ namespace JoggingPal
 
         public override String ToString()
         {
-            return (base.ToString() + " Location: " + runningLocation);
+            return (base.ToString() + " Location: " + runningLocation.routeName);
         }
     }
 }

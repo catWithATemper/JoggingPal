@@ -24,7 +24,7 @@ namespace JoggingPal
             //Tester.TestParticipationState();
 
 
-            Application.Run(new LogInForm());
+            Application.Run(new MainForm());
 
         }
     }
