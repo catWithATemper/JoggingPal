@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{39C205EF-2392-4247-8108-6472C66A44CB}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>JoggingPal</RootNamespace>
     <AssemblyName>JoggingPal</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -55,10 +55,34 @@
     <None Include="Class diagram.puml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowseLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseLocations.Designer.cs">
+      <DependentUpon>BrowseLocations.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckedIn.cs" />
+    <Compile Include="CreateNewGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewGroupForm.Designer.cs">
+      <DependentUpon>CreateNewGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewLocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewLocationForm.Designer.cs">
+      <DependentUpon>CreateNewLocationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventResultsUploaded.cs" />
+    <Compile Include="CreateNewEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewEventForm.Designer.cs">
+      <DependentUpon>CreateNewEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IEventResultsBuilder.cs" />
     <Compile Include="EventResultsConcreteBuilder.cs" />
     <Compile Include="EventResultsDirector.cs" />
@@ -84,6 +108,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="EventResults.cs" />
     <Compile Include="SignedUp.cs" />
+    <Compile Include="SignUpGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpGroup.Designer.cs">
+      <DependentUpon>SignUpGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tester.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserGroup.cs" />
@@ -98,11 +128,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BrowseLocations.resx">
+      <DependentUpon>BrowseLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewEventForm.resx">
+      <DependentUpon>CreateNewEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewGroupForm.resx">
+      <DependentUpon>CreateNewGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewLocationForm.resx">
+      <DependentUpon>CreateNewLocationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUpGroup.resx">
+      <DependentUpon>SignUpGroup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

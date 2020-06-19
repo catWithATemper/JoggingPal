@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 namespace JoggingPal
 {
     // extend Event
-    class VirtualEvent : Event
+    public class VirtualEvent : Event
     { 
         double routeLength;
         double elevationDiff;
 
         public VirtualEvent(string dateTimeString, double avgSpeed, double length)
-            : base(dateTimeString, avgSpeed)
+        : base(dateTimeString, avgSpeed)
+        {
+            routeLength = length;
+        }
+
+        public VirtualEvent(DateTime dateTime, double avgSpeed, double length)
+        : base(dateTime, avgSpeed)
         {
             routeLength = length;
         }

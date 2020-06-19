@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class EventResults
+    public class EventResults
     {
         /*
         double totalSpeed;

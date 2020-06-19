@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class Participant
+    public class Participant
     {
-        User eventParticipant;
+        public User eventParticipant;
         Event joggingEvent;
         Location joggingLocation;
         public ParticipationContext ctx;

@@ -7,7 +7,7 @@ using System.Device.Location;
 
 namespace JoggingPal
 {
-    class Location
+    public class Location
     {
         public string routeName;
         GeoCoordinate startingPoint;

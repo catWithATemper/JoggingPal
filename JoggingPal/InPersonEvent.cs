@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class InPersonEvent : Event
+    public class InPersonEvent : Event
     
     {
         public Location runningLocation;
 
-        public InPersonEvent(string dateTimeString, double avgSpeed, Location location) 
-            : base(dateTimeString, avgSpeed)
+        public InPersonEvent(string dateTimeString, double avgSpeed, Location location)
+        : base(dateTimeString, avgSpeed)
+        {
+            runningLocation = location;
+        }
+
+        public InPersonEvent(DateTime dateTime, double avgSpeed, Location location)
+        : base(dateTime, avgSpeed)
         {
             runningLocation = location;
         }

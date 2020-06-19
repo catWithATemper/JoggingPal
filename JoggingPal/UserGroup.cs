@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class UserGroup : IUser
+    public class UserGroup : IUser
     {
-        User admin;
+        public User admin;
         string groupName;
         public IList<IUser> members;
 
@@ -61,5 +61,11 @@ namespace JoggingPal
 
         public void InviteToGroup()
         { }
+
+        public override String ToString()
+        {
+            return "Group name: " + groupName + " Admin: " + admin.userName + " members: "
+                + members.Count;
+        }
     }
 }

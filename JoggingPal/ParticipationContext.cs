@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class ParticipationContext
+    public class ParticipationContext
     {
         public ParticipationContext(Participant participant)
         {

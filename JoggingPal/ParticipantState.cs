@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    interface ParticipantState
+    public interface ParticipantState
     {
         void SetLocation(ParticipationContext ctx);
 

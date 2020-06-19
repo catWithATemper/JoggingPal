@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace JoggingPal
 {
-    class User : IUser
+    public class User : IUser
     {
         string email;
         public string password;
         public string userName;
-        //city
         double avgSpeed;
         IList<IUser> members;
 
@@ -36,14 +35,6 @@ namespace JoggingPal
             email = "";
             password = "password";
             members = new List<IUser>();
-        }
-
-        public bool LogIn(string nameString, string passwordString)
-        {
-            bool success = false;
-            if (userName == nameString && password == passwordString)
-                success = true;
-            return success;
         }
 
         //Return type was changed from "participant"
