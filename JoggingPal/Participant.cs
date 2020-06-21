@@ -13,8 +13,7 @@ namespace JoggingPal
         Event joggingEvent;
         Location joggingLocation;
         public ParticipationContext ctx;
-        bool isSignedUp;
-        EventResults eventResults;
+        public EventResults eventResults;
 
         public Participant(User user, Event selectedEvent)
         {
@@ -65,6 +64,12 @@ namespace JoggingPal
             ctx.UploadEventResults();
 
             return eventResults;
+        }
+
+
+        public EventResults GetEventResults()
+        {
+            return this.eventResults;
         }
 
         public override String ToString()

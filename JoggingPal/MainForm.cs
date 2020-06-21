@@ -197,8 +197,17 @@ namespace JoggingPal
 
             UploadEventResultsForm uploadEventResults = new UploadEventResultsForm();
             foreach (int i in listPastEvents.SelectedIndices)
-                uploadEventResults.SelectedEvent = db.events[i];
+                uploadEventResults.SelectedEvent = db.pastEvents[i];
             uploadEventResults.ShowDialog();
+        }
+
+        private void btnEventResults_Click(object sender, EventArgs e)
+        {
+            SeeEventResultsForm seeEventResults = new SeeEventResultsForm();
+            foreach (int i in listPastEvents.SelectedIndices)
+                seeEventResults.SelectedEvent = db.pastEvents[i];
+            seeEventResults.ShowDialog();
+
         }
     }
 }

@@ -107,6 +107,12 @@
     <Compile Include="ParticipationContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="EventResults.cs" />
+    <Compile Include="SeeEventResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeeEventResultsForm.Designer.cs">
+      <DependentUpon>SeeEventResultsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignedUp.cs" />
     <Compile Include="SignUpGroup.cs">
       <SubType>Form</SubType>
@@ -152,6 +158,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SeeEventResultsForm.resx">
+      <DependentUpon>SeeEventResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignUpGroup.resx">
       <DependentUpon>SignUpGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +179,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,6 +18,8 @@ namespace JoggingPal
         public IList<InPersonEvent> inPersonEvents = new List<InPersonEvent>();
         public IList<Location> joggingLocations = new List<Location>();
         public IList<UserGroup> userGroups = new List<UserGroup>();
+        public IList<Event> pastEvents = new List<Event>();
+        public IList<Event> upcomingEvents = new List<Event>();
 
         public User currentUser;
 
@@ -63,6 +65,14 @@ namespace JoggingPal
                     virtualEvents.Add((VirtualEvent)e);
             }
 
+            foreach (Event e in events)
+            {
+                if (e.dateTime.CompareTo(DateTime.Now) > 0)
+                    upcomingEvents.Add(e);
+                else
+                    pastEvents.Add(e);
+            }
+
             Participant part1 = new Participant(user1, jogging1);
             Participant part2 = new Participant(user1, jogging3);
             Participant part3 = new Participant(user1, jogging4);
@@ -80,6 +90,15 @@ namespace JoggingPal
             group2.AddMember(user4);
             group2.AddMember(user5);
             group3.AddMember(user1);
+
+            Participant part4 = new Participant(user2, jogging4);
+            Participant part5 = new Participant(user3, jogging4);
+            Participant part6 = new Participant(user4, jogging4);
+
+            EventResults results1 = part3.UploadEventResults(31.0, 7.4, 166);
+            EventResults results2 = part4.UploadEventResults(31.0, null, 170);
+            EventResults results3 = part5.UploadEventResults(34.0, 6.5, null);
+            EventResults results4 = part6.UploadEventResults(35.0, null, null);
         }
 
         public static Database Instance()

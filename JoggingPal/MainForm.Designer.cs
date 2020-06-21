@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabUserArea = new System.Windows.Forms.TabPage();
+            this.btnEventResults = new System.Windows.Forms.Button();
             this.btnUploadEventResults = new System.Windows.Forms.Button();
             this.btnCheckInAtEvent = new System.Windows.Forms.Button();
             this.lblPastEvents = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.btnJoinGroup = new System.Windows.Forms.Button();
             this.lblGroups = new System.Windows.Forms.Label();
             this.listGroups = new System.Windows.Forms.ListView();
-            this.btnEventResults = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabUserArea.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -93,6 +93,16 @@
             this.tabUserArea.TabIndex = 1;
             this.tabUserArea.Text = "User area";
             this.tabUserArea.UseVisualStyleBackColor = true;
+            // 
+            // btnEventResults
+            // 
+            this.btnEventResults.Location = new System.Drawing.Point(648, 256);
+            this.btnEventResults.Name = "btnEventResults";
+            this.btnEventResults.Size = new System.Drawing.Size(135, 23);
+            this.btnEventResults.TabIndex = 14;
+            this.btnEventResults.Text = "See event results";
+            this.btnEventResults.UseVisualStyleBackColor = true;
+            this.btnEventResults.Click += new System.EventHandler(this.btnEventResults_Click);
             // 
             // btnUploadEventResults
             // 
@@ -186,6 +196,7 @@
             // 
             this.listUpcomingEvents.HideSelection = false;
             this.listUpcomingEvents.Location = new System.Drawing.Point(33, 63);
+            this.listUpcomingEvents.MultiSelect = false;
             this.listUpcomingEvents.Name = "listUpcomingEvents";
             this.listUpcomingEvents.Size = new System.Drawing.Size(590, 150);
             this.listUpcomingEvents.TabIndex = 4;
@@ -345,15 +356,6 @@
             this.listGroups.TabIndex = 0;
             this.listGroups.UseCompatibleStateImageBehavior = false;
             this.listGroups.View = System.Windows.Forms.View.List;
-            // 
-            // btnEventResults
-            // 
-            this.btnEventResults.Location = new System.Drawing.Point(648, 256);
-            this.btnEventResults.Name = "btnEventResults";
-            this.btnEventResults.Size = new System.Drawing.Size(135, 23);
-            this.btnEventResults.TabIndex = 14;
-            this.btnEventResults.Text = "See event results";
-            this.btnEventResults.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
