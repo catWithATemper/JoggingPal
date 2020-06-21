@@ -53,6 +53,7 @@ namespace JoggingPal
             events.Add(jogging1);
             events.Add(jogging2);
             events.Add(jogging3);
+            events.Add(jogging4);
 
             foreach (Event e in events)
             {
@@ -64,6 +65,7 @@ namespace JoggingPal
 
             Participant part1 = new Participant(user1, jogging1);
             Participant part2 = new Participant(user1, jogging3);
+            Participant part3 = new Participant(user1, jogging4);
 
             UserGroup group1 = new UserGroup(user1, "Munich Joggers");
             UserGroup group2 = new UserGroup(user2, "Milan Joggers");

@@ -19,6 +19,27 @@ namespace JoggingPal
         {
             builder.BuildTotalTime(totalTime);
         }
+
+        public void BuildResultsWithMaxSpeed(double totalTime, double maxSpeed)
+        {
+            builder.BuildTotalTime(totalTime);
+            builder.BuildMaxSpeed(maxSpeed);
+        }
+
+        public void BuildResultsWithHeartRate(double totalTime, int avgHeartRate)
+        {
+            builder.BuildTotalTime(totalTime);
+            builder.BuildAvgHeartRate(avgHeartRate);
+        }
+
+        public void BuildDetailedResults(double totalTime, double maxSpeed, int avgHeartRate)
+        {
+            builder.BuildTotalTime(totalTime);
+            builder.BuildMaxSpeed(maxSpeed);
+            builder.BuildAvgHeartRate(avgHeartRate);
+        }
+
+       
     
     }
 }

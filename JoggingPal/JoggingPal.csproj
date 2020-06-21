@@ -115,6 +115,12 @@
       <DependentUpon>SignUpGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="Tester.cs" />
+    <Compile Include="UploadEventResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadEventResultsForm.Designer.cs">
+      <DependentUpon>UploadEventResultsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="UserGroup.cs" />
     <Compile Include="VirtualEvent.cs" />
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUpGroup.resx">
       <DependentUpon>SignUpGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadEventResultsForm.resx">
+      <DependentUpon>UploadEventResultsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

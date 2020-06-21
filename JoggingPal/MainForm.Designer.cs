@@ -30,6 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabUserArea = new System.Windows.Forms.TabPage();
+            this.btnUploadEventResults = new System.Windows.Forms.Button();
+            this.btnCheckInAtEvent = new System.Windows.Forms.Button();
+            this.lblPastEvents = new System.Windows.Forms.Label();
+            this.listPastEvents = new System.Windows.Forms.ListView();
             this.btnCreateNewEvent = new System.Windows.Forms.Button();
             this.btnFindEvents = new System.Windows.Forms.Button();
             this.btnUserAreaLogOut = new System.Windows.Forms.Button();
@@ -50,8 +54,7 @@
             this.btnJoinGroup = new System.Windows.Forms.Button();
             this.lblGroups = new System.Windows.Forms.Label();
             this.listGroups = new System.Windows.Forms.ListView();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.lblPastEvents = new System.Windows.Forms.Label();
+            this.btnEventResults = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabUserArea.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -67,13 +70,16 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(827, 502);
+            this.tabControl1.Size = new System.Drawing.Size(842, 502);
             this.tabControl1.TabIndex = 7;
             // 
             // tabUserArea
             // 
+            this.tabUserArea.Controls.Add(this.btnEventResults);
+            this.tabUserArea.Controls.Add(this.btnUploadEventResults);
+            this.tabUserArea.Controls.Add(this.btnCheckInAtEvent);
             this.tabUserArea.Controls.Add(this.lblPastEvents);
-            this.tabUserArea.Controls.Add(this.listView1);
+            this.tabUserArea.Controls.Add(this.listPastEvents);
             this.tabUserArea.Controls.Add(this.btnCreateNewEvent);
             this.tabUserArea.Controls.Add(this.btnFindEvents);
             this.tabUserArea.Controls.Add(this.btnUserAreaLogOut);
@@ -83,16 +89,56 @@
             this.tabUserArea.Location = new System.Drawing.Point(4, 25);
             this.tabUserArea.Name = "tabUserArea";
             this.tabUserArea.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUserArea.Size = new System.Drawing.Size(819, 473);
+            this.tabUserArea.Size = new System.Drawing.Size(834, 473);
             this.tabUserArea.TabIndex = 1;
             this.tabUserArea.Text = "User area";
             this.tabUserArea.UseVisualStyleBackColor = true;
+            // 
+            // btnUploadEventResults
+            // 
+            this.btnUploadEventResults.Location = new System.Drawing.Point(648, 201);
+            this.btnUploadEventResults.Name = "btnUploadEventResults";
+            this.btnUploadEventResults.Size = new System.Drawing.Size(154, 24);
+            this.btnUploadEventResults.TabIndex = 13;
+            this.btnUploadEventResults.Text = "Upload your results";
+            this.btnUploadEventResults.UseVisualStyleBackColor = true;
+            this.btnUploadEventResults.Click += new System.EventHandler(this.btnUploadEventResults_Click);
+            // 
+            // btnCheckInAtEvent
+            // 
+            this.btnCheckInAtEvent.Location = new System.Drawing.Point(648, 155);
+            this.btnCheckInAtEvent.Name = "btnCheckInAtEvent";
+            this.btnCheckInAtEvent.Size = new System.Drawing.Size(154, 23);
+            this.btnCheckInAtEvent.TabIndex = 12;
+            this.btnCheckInAtEvent.Text = "Check in at an event";
+            this.btnCheckInAtEvent.UseVisualStyleBackColor = true;
+            this.btnCheckInAtEvent.Click += new System.EventHandler(this.btnCheckInAtEvent_Click);
+            // 
+            // lblPastEvents
+            // 
+            this.lblPastEvents.AutoSize = true;
+            this.lblPastEvents.Location = new System.Drawing.Point(30, 225);
+            this.lblPastEvents.Name = "lblPastEvents";
+            this.lblPastEvents.Size = new System.Drawing.Size(115, 17);
+            this.lblPastEvents.TabIndex = 11;
+            this.lblPastEvents.Text = "Your past events";
+            // 
+            // listPastEvents
+            // 
+            this.listPastEvents.HideSelection = false;
+            this.listPastEvents.Location = new System.Drawing.Point(33, 245);
+            this.listPastEvents.MultiSelect = false;
+            this.listPastEvents.Name = "listPastEvents";
+            this.listPastEvents.Size = new System.Drawing.Size(587, 190);
+            this.listPastEvents.TabIndex = 10;
+            this.listPastEvents.UseCompatibleStateImageBehavior = false;
+            this.listPastEvents.View = System.Windows.Forms.View.List;
             // 
             // btnCreateNewEvent
             // 
             this.btnCreateNewEvent.Location = new System.Drawing.Point(649, 103);
             this.btnCreateNewEvent.Name = "btnCreateNewEvent";
-            this.btnCreateNewEvent.Size = new System.Drawing.Size(153, 23);
+            this.btnCreateNewEvent.Size = new System.Drawing.Size(153, 28);
             this.btnCreateNewEvent.TabIndex = 9;
             this.btnCreateNewEvent.Text = "Create new event";
             this.btnCreateNewEvent.UseVisualStyleBackColor = true;
@@ -102,9 +148,9 @@
             // 
             this.btnFindEvents.Location = new System.Drawing.Point(649, 63);
             this.btnFindEvents.Name = "btnFindEvents";
-            this.btnFindEvents.Size = new System.Drawing.Size(102, 23);
+            this.btnFindEvents.Size = new System.Drawing.Size(134, 23);
             this.btnFindEvents.TabIndex = 8;
-            this.btnFindEvents.Text = "More events";
+            this.btnFindEvents.Text = "Find more events";
             this.btnFindEvents.UseVisualStyleBackColor = true;
             this.btnFindEvents.Click += new System.EventHandler(this.btnFindEvents_Click);
             // 
@@ -158,7 +204,7 @@
             this.tabEvents.Location = new System.Drawing.Point(4, 25);
             this.tabEvents.Name = "tabEvents";
             this.tabEvents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEvents.Size = new System.Drawing.Size(819, 473);
+            this.tabEvents.Size = new System.Drawing.Size(834, 473);
             this.tabEvents.TabIndex = 2;
             this.tabEvents.Text = "Events";
             this.tabEvents.UseVisualStyleBackColor = true;
@@ -245,7 +291,7 @@
             this.tabGroups.Location = new System.Drawing.Point(4, 25);
             this.tabGroups.Name = "tabGroups";
             this.tabGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGroups.Size = new System.Drawing.Size(819, 473);
+            this.tabGroups.Size = new System.Drawing.Size(834, 473);
             this.tabGroups.TabIndex = 3;
             this.tabGroups.Text = "Groups";
             this.tabGroups.UseVisualStyleBackColor = true;
@@ -300,29 +346,20 @@
             this.listGroups.UseCompatibleStateImageBehavior = false;
             this.listGroups.View = System.Windows.Forms.View.List;
             // 
-            // listView1
+            // btnEventResults
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(33, 245);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(587, 190);
-            this.listView1.TabIndex = 10;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // lblPastEvents
-            // 
-            this.lblPastEvents.AutoSize = true;
-            this.lblPastEvents.Location = new System.Drawing.Point(30, 225);
-            this.lblPastEvents.Name = "lblPastEvents";
-            this.lblPastEvents.Size = new System.Drawing.Size(115, 17);
-            this.lblPastEvents.TabIndex = 11;
-            this.lblPastEvents.Text = "Your past events";
+            this.btnEventResults.Location = new System.Drawing.Point(648, 256);
+            this.btnEventResults.Name = "btnEventResults";
+            this.btnEventResults.Size = new System.Drawing.Size(135, 23);
+            this.btnEventResults.TabIndex = 14;
+            this.btnEventResults.Text = "See event results";
+            this.btnEventResults.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 494);
+            this.ClientSize = new System.Drawing.Size(826, 494);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "JoggingPal";
@@ -362,6 +399,9 @@
         private System.Windows.Forms.Button btnLeaveGroup;
         private System.Windows.Forms.Button btnJoinGroup;
         private System.Windows.Forms.Label lblPastEvents;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listPastEvents;
+        private System.Windows.Forms.Button btnUploadEventResults;
+        private System.Windows.Forms.Button btnCheckInAtEvent;
+        private System.Windows.Forms.Button btnEventResults;
     }
 }

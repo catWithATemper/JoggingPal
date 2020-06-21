@@ -9,5 +9,9 @@ namespace JoggingPal
     interface IEventResultsBuilder
     {
         void BuildTotalTime(double totalTime);
+
+        void BuildMaxSpeed(double maxSpeed);
+
+        void BuildAvgHeartRate(int avgHeartRate);
     }
 }

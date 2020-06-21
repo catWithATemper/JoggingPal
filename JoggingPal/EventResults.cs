@@ -8,17 +8,11 @@ namespace JoggingPal
 {
     public class EventResults
     {
-        /*
-        double totalSpeed;
-        double avgSpeed;
-        int avgHeartRate;
-        */
+        private Dictionary<string, double> resultParts = new Dictionary<string, double>();
 
-        private List<Object> resultParts = new List<object>();
-
-        public void Add(String part)
+        public void Add(string resultKey, double resultValue)
         {
-            resultParts.Add(part);
+            resultParts.Add(resultKey, resultValue);
         }
 
         public String ListParts()

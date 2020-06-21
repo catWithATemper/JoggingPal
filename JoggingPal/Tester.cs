@@ -120,6 +120,7 @@ namespace JoggingPal
                 Console.WriteLine(user.ToString());
         }
 
+        /*
         public static void TestEventResultsBuilder()
         {
             var director = new EventResultsDirector();
@@ -129,6 +130,7 @@ namespace JoggingPal
             director.BuildSimpleResults(20.0);
             Console.WriteLine(builder.GetResults().ListParts());
         }
+        */
 
         public static void TestParticipationState()
         {
@@ -143,7 +145,7 @@ namespace JoggingPal
             participant1.CheckInAtEvent();
             Console.WriteLine(participant1.ctx.CurrentState);
 
-            EventResults results = participant1.UploadEventResults();
+            //EventResults results = participant1.UploadEventResults();
             Console.WriteLine(participant1.ctx.CurrentState);
         }
 

@@ -10,7 +10,7 @@ namespace JoggingPal
     public abstract class Event
 
     {
-        DateTime dateTime;
+       public DateTime dateTime;
 
         double averageSpeed;
 
@@ -20,7 +20,7 @@ namespace JoggingPal
         public Event(string dateTimeString, double avgSpeed)
         {
             averageSpeed = avgSpeed;
-            dateTime = DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.InvariantCulture);
+            dateTime = DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture);
             participants = new List<Participant>();
         }
 

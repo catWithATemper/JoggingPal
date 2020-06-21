@@ -43,13 +43,22 @@ namespace JoggingPal
             ctx.CheckInAtEvent();        
         }
 
-        public EventResults UploadEventResults()
+        public EventResults UploadEventResults(double? totalTime, double? maxSpeed, int? avgHeartRate)
         {
             var director = new EventResultsDirector();
             var builder = new EventResultsConcreteBuilder();
             director.Builder = builder;
 
-            director.BuildSimpleResults(20.0);
+            if (totalTime != null && maxSpeed != null && avgHeartRate != null)
+                director.BuildDetailedResults(totalTime.Value, maxSpeed.Value, avgHeartRate.Value);
+            else if (totalTime != null && maxSpeed != null && avgHeartRate == null)
+                director.BuildResultsWithMaxSpeed(totalTime.Value, maxSpeed.Value);
+            else if (totalTime != null && maxSpeed == null && avgHeartRate != null)
+                director.BuildResultsWithHeartRate(totalTime.Value, avgHeartRate.Value);
+            else if ((totalTime != null && maxSpeed == null && avgHeartRate == null))
+                director.BuildSimpleResults(totalTime.Value);
+            else
+                throw new InvalidOperationException();
 
             eventResults = builder.GetResults();
 

@@ -42,12 +42,13 @@ namespace JoggingPal
             foreach (UserGroup group in db.userGroups)
                 listGroups.Items.Add(group.ToString());
 
-            foreach (Event upcomingEvent in db.events)
+            foreach (Event userEvent in db.events)
             {
-                if (upcomingEvent.FindParticipant(db.currentUser) != null)
-                {
-                    listUpcomingEvents.Items.Add(upcomingEvent.ToString());
-                }
+                if (userEvent.FindParticipant(db.currentUser) != null)
+                    if (userEvent.dateTime.CompareTo(DateTime.Now) > 0)
+                        listUpcomingEvents.Items.Add(userEvent.ToString());
+                    else
+                        listPastEvents.Items.Add(userEvent.ToString());                
             }
         }
 
@@ -112,7 +113,6 @@ namespace JoggingPal
                 else
                     listVirtualEvents.Items.Add(item.ToString());
             }
-
         }
 
         private void btnSignUpGroup_Click(object sender, EventArgs e)
@@ -142,7 +142,6 @@ namespace JoggingPal
                     listUpcomingEvents.Items.Add(upcomingEvent.ToString());
                 }
             }
-
         }
 
         private void btnCreateNewGroup_Click(object sender, EventArgs e)
@@ -181,6 +180,25 @@ namespace JoggingPal
                     Console.WriteLine(user.userName);
             }
             UserGroupListRefresh();
+        }
+
+        private void btnCheckInAtEvent_Click(object sender, EventArgs e)
+        {
+            Participant p = null;
+            foreach (int i in listUpcomingEvents.SelectedIndices)
+                p = db.events[i].FindParticipant(db.currentUser);
+            if (p.ctx.CurrentState == LocationSet.Instance)
+                p.ctx.CheckInAtEvent();
+            Console.WriteLine(p.ctx.CurrentState);      
+        }
+
+        private void btnUploadEventResults_Click(object sender, EventArgs e)
+        {
+
+            UploadEventResultsForm uploadEventResults = new UploadEventResultsForm();
+            foreach (int i in listPastEvents.SelectedIndices)
+                uploadEventResults.SelectedEvent = db.events[i];
+            uploadEventResults.ShowDialog();
         }
     }
 }
