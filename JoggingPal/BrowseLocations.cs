@@ -19,12 +19,25 @@ namespace JoggingPal
             InitializeComponent();
         }
 
-            public VirtualEvent SelectedEvent { get; set; }
+        public VirtualEvent SelectedEvent { get; set; }
 
         private void BrowseLocationsForm_Load(object sender, EventArgs e)
         {
-            foreach (Location item in db.joggingLocations)
-                listLocations.Items.Add(item.ToString());
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            ColumnHeader columnHeader2 = new ColumnHeader();
+            columnHeader1.Text = "Route name";
+            columnHeader2.Text = "Length in km";
+            this.listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2});
+
+            string[] elements = new string[4];
+            foreach (Location item in db.joggingLocations.Values)
+            {
+                elements[0] = item.RouteName;
+                elements[1] = item.RouteLength.ToString();
+                ListViewItem row = new ListViewItem(elements);
+                listLocations.Items.Add(row);
+            }
+            listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void btnChooseLocationOK_Click(object sender, EventArgs e)
@@ -37,10 +50,12 @@ namespace JoggingPal
             }
             if (listLocations.SelectedIndices.Count == 0)
                 MessageBox.Show("Select a location from the list");
-            foreach (int i in listLocations.SelectedIndices)
+            foreach (ListViewItem item in listLocations.SelectedItems)
             {
+                string key = item.SubItems[0].Text;
+         
                 Participant p = SelectedEvent.FindParticipant(db.currentUser);
-                p.SetRunningLocation(db.joggingLocations[i]);
+                p.SetRunningLocation(db.joggingLocations[key]);
                 MessageBox.Show("Location selected successfully");
                 Console.WriteLine(p.ToString());
             }    

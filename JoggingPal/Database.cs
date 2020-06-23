@@ -16,7 +16,7 @@ namespace JoggingPal
         public IList<Event> events = new List<Event>();
         public IList<VirtualEvent> virtualEvents = new List<VirtualEvent>();
         public IList<InPersonEvent> inPersonEvents = new List<InPersonEvent>();
-        public IList<Location> joggingLocations = new List<Location>();
+        public Dictionary<string, Location> joggingLocations = new Dictionary<string, Location>();
         public IList<UserGroup> userGroups = new List<UserGroup>();
         public IList<Event> pastEvents = new List<Event>();
         public IList<Event> upcomingEvents = new List<Event>();
@@ -44,8 +44,9 @@ namespace JoggingPal
             Location route2 = new Location("Parco di Villa Borghese, Rome", 41.914614, 12.481987, 5);
             Location route3 = new Location("Parco degli Acquedotti, Rome", 41.853406, 12.557115, 7);
 
-            joggingLocations.Add(route1);
-            joggingLocations.Add(route2);
+            joggingLocations.Add(route1.RouteName, route1);
+            joggingLocations.Add(route2.RouteName, route2);
+            joggingLocations.Add(route3.RouteName, route3);
 
             Event jogging1 = new InPersonEvent("10/7/2020 11:00:00 AM", 7.0, route1);
             Event jogging2 = new InPersonEvent("09/7/2020 05:00:00 PM", 7.0, route1);
@@ -67,7 +68,7 @@ namespace JoggingPal
 
             foreach (Event e in events)
             {
-                if (e.dateTime.CompareTo(DateTime.Now) > 0)
+                if (e.DateTime.CompareTo(DateTime.Now) > 0)
                     upcomingEvents.Add(e);
                 else
                     pastEvents.Add(e);

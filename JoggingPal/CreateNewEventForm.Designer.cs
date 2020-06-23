@@ -33,6 +33,7 @@
             this.listLocations = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabInPersonEvent = new System.Windows.Forms.TabPage();
+            this.btnCreateNewLocation = new System.Windows.Forms.Button();
             this.btnCreateNewInPersonEventOK = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblAvgSpeed = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.lblDateAndTime = new System.Windows.Forms.Label();
             this.txtVirtualEventLength = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.btnCreateNewLocation = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabInPersonEvent.SuspendLayout();
             this.tabVirtualEvent.SuspendLayout();
@@ -106,6 +106,16 @@
             this.tabInPersonEvent.TabIndex = 0;
             this.tabInPersonEvent.Text = "In person event";
             this.tabInPersonEvent.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateNewLocation
+            // 
+            this.btnCreateNewLocation.Location = new System.Drawing.Point(644, 23);
+            this.btnCreateNewLocation.Name = "btnCreateNewLocation";
+            this.btnCreateNewLocation.Size = new System.Drawing.Size(98, 32);
+            this.btnCreateNewLocation.TabIndex = 13;
+            this.btnCreateNewLocation.Text = "Create new location";
+            this.btnCreateNewLocation.UseVisualStyleBackColor = true;
+            this.btnCreateNewLocation.Click += new System.EventHandler(this.btnCreateNewLocation_Click);
             // 
             // btnCreateNewInPersonEventOK
             // 
@@ -221,16 +231,6 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 22);
             this.dateTimePicker2.TabIndex = 10;
             // 
-            // btnCreateNewLocation
-            // 
-            this.btnCreateNewLocation.Location = new System.Drawing.Point(644, 23);
-            this.btnCreateNewLocation.Name = "btnCreateNewLocation";
-            this.btnCreateNewLocation.Size = new System.Drawing.Size(98, 32);
-            this.btnCreateNewLocation.TabIndex = 13;
-            this.btnCreateNewLocation.Text = "Create new location";
-            this.btnCreateNewLocation.UseVisualStyleBackColor = true;
-            this.btnCreateNewLocation.Click += new System.EventHandler(this.btnCreateNewLocation_Click);
-            // 
             // CreateNewEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,7 +238,7 @@
             this.ClientSize = new System.Drawing.Size(803, 385);
             this.Controls.Add(this.tabControl1);
             this.Name = "CreateNewEventForm";
-            this.Text = "FormCreateNewEvent";
+            this.Text = "Create new event";
             this.Load += new System.EventHandler(this.CreateNewEventForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabInPersonEvent.ResumeLayout(false);

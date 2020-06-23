@@ -29,7 +29,7 @@ namespace JoggingPal
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lblGreeting.Text = "Hello " + db.currentUser.userName;
+            lblGreeting.Text = "Hello " + db.currentUser.UserName;
 
             foreach (Event item in db.events)
             {
@@ -45,7 +45,7 @@ namespace JoggingPal
             foreach (Event userEvent in db.events)
             {
                 if (userEvent.FindParticipant(db.currentUser) != null)
-                    if (userEvent.dateTime.CompareTo(DateTime.Now) > 0)
+                    if (userEvent.DateTime.CompareTo(DateTime.Now) > 0)
                         listUpcomingEvents.Items.Add(userEvent.ToString());
                     else
                         listPastEvents.Items.Add(userEvent.ToString());                
@@ -164,7 +164,7 @@ namespace JoggingPal
             {
                 db.userGroups[i].AddMember(db.currentUser);
                 foreach (User user in db.userGroups[i].GetMembers())
-                    Console.WriteLine(user.userName);
+                    Console.WriteLine(user.UserName);
             }
             UserGroupListRefresh();
 
@@ -174,10 +174,10 @@ namespace JoggingPal
         {
             foreach (int i in listGroups.SelectedIndices)
             {
-                if (db.currentUser.userName != db.userGroups[i].admin.userName)
+                if (db.currentUser.UserName != db.userGroups[i].Admin.UserName)
                     db.userGroups[i].RemoveMember(db.currentUser);
                     foreach (User user in db.userGroups[i].GetMembers())
-                    Console.WriteLine(user.userName);
+                    Console.WriteLine(user.UserName);
             }
             UserGroupListRefresh();
         }

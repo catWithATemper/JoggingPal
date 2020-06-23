@@ -36,13 +36,15 @@
             // 
             // listLocations
             // 
+            this.listLocations.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.listLocations.HideSelection = false;
-            this.listLocations.Location = new System.Drawing.Point(31, 41);
+            this.listLocations.Location = new System.Drawing.Point(42, 30);
+            this.listLocations.MultiSelect = false;
             this.listLocations.Name = "listLocations";
             this.listLocations.Size = new System.Drawing.Size(426, 175);
             this.listLocations.TabIndex = 0;
             this.listLocations.UseCompatibleStateImageBehavior = false;
-            this.listLocations.View = System.Windows.Forms.View.List;
+            this.listLocations.View = System.Windows.Forms.View.Details;
             // 
             // btnChooseLocationOK
             // 

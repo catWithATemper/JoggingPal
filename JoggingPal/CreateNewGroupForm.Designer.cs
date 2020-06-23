@@ -79,7 +79,7 @@
             this.Controls.Add(this.lblGroupName);
             this.Controls.Add(this.txtUserGroupNAme);
             this.Name = "CreateNewGroupForm";
-            this.Text = "CreateNewGroupForm";
+            this.Text = "Create new group";
             this.ResumeLayout(false);
             this.PerformLayout();
 

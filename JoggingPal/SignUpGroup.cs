@@ -24,7 +24,7 @@ namespace JoggingPal
         private void SignUpGroupForm_Load(object sender, EventArgs e)
         {
             foreach (UserGroup item in db.userGroups)
-                if (db.currentUser.userName.Equals(item.admin.userName))
+                if (db.currentUser.UserName.Equals(item.Admin.UserName))
                 {
                     listGroups.Items.Add(item.ToString());
                     Console.WriteLine(item.ToString());
@@ -38,7 +38,7 @@ namespace JoggingPal
             foreach (int i in listGroups.SelectedIndices)
             {
                 selectedGroup = db.userGroups[i];
-                foreach (User user in selectedGroup.members)
+                foreach (User user in selectedGroup.Members)
                 {
                     participant = new Participant(user, SelectedEvent);
                     Console.WriteLine(participant.ToString());

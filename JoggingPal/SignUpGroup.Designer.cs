@@ -37,6 +37,7 @@
             // 
             this.listGroups.HideSelection = false;
             this.listGroups.Location = new System.Drawing.Point(33, 31);
+            this.listGroups.MultiSelect = false;
             this.listGroups.Name = "listGroups";
             this.listGroups.Size = new System.Drawing.Size(413, 134);
             this.listGroups.TabIndex = 0;
@@ -71,7 +72,7 @@
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.listGroups);
             this.Name = "SignUpGroupForm";
-            this.Text = "SignUpGroup";
+            this.Text = "Sign up group";
             this.Load += new System.EventHandler(this.SignUpGroupForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

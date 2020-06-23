@@ -34,8 +34,8 @@ namespace JoggingPal
         {
            for (int i = 0; i < db.users.Count; i++)
 
-               if (txtUsername.Text == db.users[i].userName &&
-                       txtPassword.Text == db.users[i].password)
+               if (txtUsername.Text == db.users[i].UserName &&
+                       txtPassword.Text == db.users[i].Password)
                {
                     db.currentUser = db.users[i];
                     MessageBox.Show("You are logged in");

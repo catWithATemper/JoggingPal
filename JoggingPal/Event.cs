@@ -10,33 +10,32 @@ namespace JoggingPal
     public abstract class Event
 
     {
-       public DateTime dateTime;
+        public DateTime DateTime { get; }
 
-        double averageSpeed;
+        double AverageSpeed { get; }
 
-        public IList<Participant> participants;
+        public IList<Participant> Participants { get; }
 
-        //Todo: chiamare l'altro costruttore da quello vecchio
-        public Event(string dateTimeString, double avgSpeed)
+        public Event(string dateTimeString, double avgSpeed) :this (
+            DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture), 
+            avgSpeed)
         {
-            averageSpeed = avgSpeed;
-            dateTime = DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture);
-            participants = new List<Participant>();
+
         }
 
         public Event(DateTime dateTime, double avgSpeed)
         {
-            averageSpeed = avgSpeed;
-            this.dateTime = dateTime;
-            participants = new List<Participant>();
+            AverageSpeed = avgSpeed;
+            this.DateTime = dateTime;
+            Participants = new List<Participant>();
         }
 
         public Participant FindParticipant(User user)
         {
-            for (int i = 0; i < participants.Count; i++)
+            for (int i = 0; i < Participants.Count; i++)
             {
-                if (user.userName == participants[i].eventParticipant.userName)
-                    return participants[i];
+                if (user.UserName == Participants[i].EventParticipant.UserName)
+                    return Participants[i];
             }
             return null;
         }
@@ -44,7 +43,7 @@ namespace JoggingPal
 
         public override String ToString()
         {
-            return " at " + dateTime.ToString() + " average speed: " + averageSpeed + " km/h";
+            return " at " + DateTime.ToString() + " average speed: " + AverageSpeed + " km/h";
         }
     }
 }

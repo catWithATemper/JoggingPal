@@ -93,10 +93,10 @@ namespace JoggingPal
             user1.SignUpForEvent(event2);
             group.SignUpForEvent(event1);
 
-            foreach(Participant p in event2.participants)
+            foreach(Participant p in event2.Participants)
                 Console.WriteLine(p.ToString());
 
-            foreach (Participant p in event1.participants)
+            foreach (Participant p in event1.Participants)
                 Console.WriteLine(p.ToString());
         }
 
@@ -110,13 +110,13 @@ namespace JoggingPal
             UserGroup largerGroup = group.CreateUserGroup("LargerJoggingGroup");
             user3.JoinGroup(largerGroup);
 
-            foreach (User user in group.members)
-                Console.WriteLine(user.userName.ToString());
-            foreach (User user in largerGroup.members)
+            foreach (User user in group.Members)
+                Console.WriteLine(user.UserName.ToString());
+            foreach (User user in largerGroup.Members)
                 Console.WriteLine(user.ToString());
 
             user2.LeaveGroup(group);
-            foreach (IUser user in group.members)
+            foreach (IUser user in group.Members)
                 Console.WriteLine(user.ToString());
         }
 

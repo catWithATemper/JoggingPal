@@ -9,31 +9,32 @@ namespace JoggingPal
 {
     public class Participant
     {
-        public User eventParticipant;
-        Event joggingEvent;
-        Location joggingLocation;
+        public User EventParticipant { get; }
+        public Event JoggingEvent { get; }
+        public Location JoggingLocation { get; set; }
+
         public ParticipationContext ctx;
-        public EventResults eventResults;
+        public EventResults EventResults { get; set; }
 
         public Participant(User user, Event selectedEvent)
         {
-            eventParticipant = user;
-            joggingEvent = selectedEvent;
+            EventParticipant = user;
+            JoggingEvent = selectedEvent;
 
-            joggingEvent.participants.Add(this);
+            JoggingEvent.Participants.Add(this);
 
             ctx = new ParticipationContext(this);
 
-            if (typeof(InPersonEvent).IsInstanceOfType(joggingEvent))
+            if (typeof(InPersonEvent).IsInstanceOfType(JoggingEvent))
             {
-                joggingLocation = ((InPersonEvent)joggingEvent).runningLocation;
+                JoggingLocation = ((InPersonEvent)JoggingEvent).RunningLocation;
                 ctx.SetLocation();
             }
         }
 
         public void SetRunningLocation(Location location)
         {
-            joggingLocation = location;
+            JoggingLocation = location;
             ctx.SetLocation();
         }
 
@@ -59,23 +60,23 @@ namespace JoggingPal
             else
                 throw new InvalidOperationException();
 
-            eventResults = builder.GetResults();
+            EventResults = builder.GetResults();
 
             ctx.UploadEventResults();
 
-            return eventResults;
+            return EventResults;
         }
 
 
         public EventResults GetEventResults()
         {
-            return this.eventResults;
+            return this.EventResults;
         }
 
         public override String ToString()
         {
-            return (eventParticipant.userName + " has signed up for " + joggingEvent.ToString()
-                + joggingLocation.ToString());
+            return (EventParticipant.UserName + " has signed up for " + JoggingEvent.ToString()
+                + JoggingLocation.ToString());
         }
     }
 }

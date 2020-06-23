@@ -8,32 +8,32 @@ namespace JoggingPal
 {
     public class UserGroup : IUser
     {
-        public User admin;
-        string groupName;
-        public IList<IUser> members;
+        public User Admin { get; }
+        string GroupName { get; }
+        public IList<IUser> Members { get; }
 
         public UserGroup(User administrator, String name)
         {
-            admin = administrator;
-            groupName = name;
-            members = new List<IUser>();
-            members.Add(admin);
+            Admin = administrator;
+            GroupName = name;
+            Members = new List<IUser>();
+            Members.Add(Admin);
         }
 
         public void AddMember(IUser user)
         {
-            members.Add(user);
+            Members.Add(user);
         }
 
 
         public void RemoveMember(IUser user)
         {
-            members.Remove(user);
+            Members.Remove(user);
         }
 
         public IEnumerable<IUser> GetMembers()
         {
-            return members;
+            return Members;
         }
 
         public void JoinGroup(UserGroup group)
@@ -48,7 +48,7 @@ namespace JoggingPal
 
         public void SignUpForEvent(Event selectedEvent)
         { 
-            foreach (IUser user in members)
+            foreach (IUser user in Members)
             {
                 user.SignUpForEvent(selectedEvent);
             }
@@ -56,7 +56,7 @@ namespace JoggingPal
 
         public UserGroup CreateUserGroup(String name)
         {
-            return new UserGroup(this.admin, name);
+            return new UserGroup(this.Admin, name);
         }
 
         public void InviteToGroup()
@@ -64,8 +64,8 @@ namespace JoggingPal
 
         public override String ToString()
         {
-            return "Group name: " + groupName + " Admin: " + admin.userName + " members: "
-                + members.Count;
+            return "Group name: " + GroupName + " Admin: " + Admin.UserName + " members: "
+                + Members.Count;
         }
     }
 }

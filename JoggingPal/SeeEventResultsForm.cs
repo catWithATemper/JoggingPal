@@ -23,9 +23,9 @@ namespace JoggingPal
 
         private void SeeEventResultsForm_Load(object sender, EventArgs e)
         {
-            foreach (Participant p in SelectedEvent.participants)
+            foreach (Participant p in SelectedEvent.Participants)
             {
-                EventResults results = p.eventResults;
+                EventResults results = p.EventResults;
                 if (results.resultParts.ContainsKey("Total time: "))
                     listAverageSpeed.Items.Add(results.resultParts["Total time: "].ToString());
                 if (results.resultParts.ContainsKey("Maximum speed: "))

@@ -9,24 +9,23 @@ namespace JoggingPal
     // extend Event
     public class VirtualEvent : Event
     { 
-        double routeLength;
-        double elevationDiff;
+        double RouteLength { get; }
 
         public VirtualEvent(string dateTimeString, double avgSpeed, double length)
         : base(dateTimeString, avgSpeed)
         {
-            routeLength = length;
+            RouteLength = length;
         }
 
         public VirtualEvent(DateTime dateTime, double avgSpeed, double length)
         : base(dateTime, avgSpeed)
         {
-            routeLength = length;
+            RouteLength = length;
         }
 
         public override String ToString()
         {
-            return (base.ToString() + " Routelength: " + routeLength + " km");
+            return (base.ToString() + " Routelength: " + RouteLength + " km");
         }
     }
 }

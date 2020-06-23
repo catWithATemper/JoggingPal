@@ -27,8 +27,8 @@ namespace JoggingPal
         {
             Location selectedLocation = null;
             
-            foreach (int i in listLocations.SelectedIndices)
-                selectedLocation = db.joggingLocations[i];
+            foreach (string key in listLocations.SelectedItems)
+                selectedLocation = db.joggingLocations[key];
             
             Event newEvent = new InPersonEvent(
                 dateTimePicker1.Value,
@@ -57,7 +57,7 @@ namespace JoggingPal
 
         private void CreateNewEventForm_Load(object sender, EventArgs e)
         {
-            foreach (Location i in db.joggingLocations)
+            foreach (Location i in db.joggingLocations.Values)
                 listLocations.Items.Add(i.ToString());
         }
 
@@ -71,7 +71,7 @@ namespace JoggingPal
         private void ListLocationsRefresh()
         {
             listLocations.Items.Clear();
-            foreach (Location i in db.joggingLocations)
+            foreach (Location i in db.joggingLocations.Values)
             listLocations.Items.Add(i.ToString());
         }
     }

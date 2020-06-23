@@ -22,7 +22,7 @@ namespace JoggingPal
         {
             Location l = new Location(txtRouteName.Text, double.Parse(txtLatitude.Text),
                 double.Parse(txtLongitude.Text), double.Parse(txtLength.Text));
-            db.joggingLocations.Add(l);
+            db.joggingLocations.Add(l.RouteName, l);
             this.Close();
             Console.WriteLine(l.ToString());
         }

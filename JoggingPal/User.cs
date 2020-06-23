@@ -9,35 +9,25 @@ namespace JoggingPal
 {
     public class User : IUser
     {
-        string email;
-        public string password;
-        public string userName;
-        double avgSpeed;
-        IList<IUser> members;
+        //manage password
+        public string UserName { get; }
+        public string Password;
+        IList<IUser> Members { get; }
 
-        public double AvgSpeed
+        public User(string nameString, string passwordString)
         {
-            get { return avgSpeed; }
-            set { avgSpeed = value; }
-        }
-
-        public User(string nameString, string emailString, string passwordString)
-        {
-            userName = nameString;
-            email = emailString;
-            password = passwordString;
-            members = new List<IUser>();
+            UserName = nameString;
+            Password = passwordString;
+            Members = new List<IUser>();
         }
 
         public User(string nameString)
         {
-            userName = nameString;
-            email = "";
-            password = "password";
-            members = new List<IUser>();
+            UserName = nameString;
+            Password = "password";
+            Members = new List<IUser>();
         }
 
-        //Return type was changed from "participant"
         public void SignUpForEvent(Event selectedEvent)
         {
             new Participant(this, selectedEvent);
@@ -76,7 +66,7 @@ namespace JoggingPal
 
         public IEnumerable<IUser> GetMembers()
         {
-            return members;
+            return Members;
         }
 
         public Location CreateLocation(string name, double lat, double lon, double length)

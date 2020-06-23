@@ -9,21 +9,20 @@ namespace JoggingPal
 {
     public class Location
     {
-        public string routeName;
-        GeoCoordinate startingPoint;
-        double routeLength;
-        double elevationDifference;
+        public string RouteName { get; }
+        public GeoCoordinate StartingPoint { get; }
+        public double RouteLength { get; }
 
         public Location(string name, double lat, double lon, double length)
         {
-            routeName = name;
-            startingPoint = new GeoCoordinate(lat, lon);
-            routeLength = length;
+            RouteName = name;
+            StartingPoint = new GeoCoordinate(lat, lon);
+            RouteLength = length;
         }
 
         public override String ToString()
         {
-            return (routeName + ", " + startingPoint.ToString() + ", " + routeLength + " km");
+            return (RouteName + ", " + StartingPoint.ToString() + ", " + RouteLength + " km");
         }
 
     }
