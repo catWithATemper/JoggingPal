@@ -9,7 +9,7 @@ namespace JoggingPal
     public class UserGroup : IUser
     {
         public User Admin { get; }
-        string GroupName { get; }
+        public string GroupName { get; }
         public IList<IUser> Members { get; }
 
         public UserGroup(User administrator, String name)

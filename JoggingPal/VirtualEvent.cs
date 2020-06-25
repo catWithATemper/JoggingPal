@@ -9,16 +9,16 @@ namespace JoggingPal
     // extend Event
     public class VirtualEvent : Event
     { 
-        double RouteLength { get; }
+        public double RouteLength { get; }
 
-        public VirtualEvent(string dateTimeString, double avgSpeed, double length)
-        : base(dateTimeString, avgSpeed)
+        public VirtualEvent(string dateTimeString, double avgSpeed, string title, double length)
+        : base(dateTimeString, avgSpeed, title)
         {
             RouteLength = length;
         }
 
-        public VirtualEvent(DateTime dateTime, double avgSpeed, double length)
-        : base(dateTime, avgSpeed)
+        public VirtualEvent(DateTime dateTime, double avgSpeed, string title, double length)
+        : base(dateTime, avgSpeed, title)
         {
             RouteLength = length;
         }

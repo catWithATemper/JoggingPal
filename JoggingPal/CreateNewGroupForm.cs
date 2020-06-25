@@ -22,7 +22,7 @@ namespace JoggingPal
         private void btnCreateGroup_Click(object sender, EventArgs e)
         {
             UserGroup newGroup = new UserGroup(db.currentUser, txtUserGroupNAme.Text);
-            db.userGroups.Add(newGroup);
+            db.userGroups.Add(newGroup.GroupName, newGroup);
             Console.WriteLine(newGroup.ToString());
             this.Close();
         }

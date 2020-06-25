@@ -12,21 +12,24 @@ namespace JoggingPal
     {
         public DateTime DateTime { get; }
 
-        double AverageSpeed { get; }
+        public double AverageSpeed { get; }
+
+        public string EventTitle { get; }
 
         public IList<Participant> Participants { get; }
 
-        public Event(string dateTimeString, double avgSpeed) :this (
+        public Event(string dateTimeString, double avgSpeed, string title) :this (
             DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture), 
-            avgSpeed)
+            avgSpeed, title)
         {
 
         }
 
-        public Event(DateTime dateTime, double avgSpeed)
+        public Event(DateTime dateTime, double avgSpeed, string title)
         {
             AverageSpeed = avgSpeed;
             this.DateTime = dateTime;
+            EventTitle = title;
             Participants = new List<Participant>();
         }
 

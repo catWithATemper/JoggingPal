@@ -12,6 +12,7 @@ namespace JoggingPal
     {
         public static User testUser = new User("Tom");
 
+        /*
         public static void TestCreateLocation()
         {
             //GeoCoordinate Coordinates = new GeoCoordinate(48.112242, 11.630701);
@@ -19,20 +20,22 @@ namespace JoggingPal
             Console.WriteLine(runningLocation.ToString() + "\n") ;
         }
 
-        /* // Event is now abstract
+        // Event is now abstract
         public static void TestCreateEvent()
         {
             Event abstractEvent = new Event("10/7/2020 11:00:00 AM", 7.0);
             Console.WriteLine(abstractEvent.ToString() + "\n");
         }
-        */
+        
 
+        /*
         public static void TestCreateInPersonEvent()
         {
             Location joggingLocation = new Location("Ostpark", 48.112242, 11.630701, 10);
             InPersonEvent event1 = new InPersonEvent("10/7/2020 11:00:00 AM", 7.0, joggingLocation);
             Console.WriteLine(event1.GetType().Name + event1.ToString() + "\n");
         }
+        /*
 
         /*
         public static void TestCreateVirtualEvent()
@@ -42,6 +45,7 @@ namespace JoggingPal
         }
         */
 
+        /*
         public static void TestUserCreateLocation()
         {
             User user1 = new User("Tom");
@@ -132,6 +136,7 @@ namespace JoggingPal
         }
         */
 
+        /*
         public static void TestParticipationState()
         {
             User user2 = new User("Tom");
@@ -148,6 +153,8 @@ namespace JoggingPal
             //EventResults results = participant1.UploadEventResults();
             Console.WriteLine(participant1.ctx.CurrentState);
         }
+        */
+    
 
     }
 }

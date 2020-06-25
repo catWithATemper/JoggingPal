@@ -37,11 +37,12 @@
             // listLocations
             // 
             this.listLocations.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.listLocations.FullRowSelect = true;
             this.listLocations.HideSelection = false;
-            this.listLocations.Location = new System.Drawing.Point(42, 30);
+            this.listLocations.Location = new System.Drawing.Point(25, 29);
             this.listLocations.MultiSelect = false;
             this.listLocations.Name = "listLocations";
-            this.listLocations.Size = new System.Drawing.Size(426, 175);
+            this.listLocations.Size = new System.Drawing.Size(492, 175);
             this.listLocations.TabIndex = 0;
             this.listLocations.UseCompatibleStateImageBehavior = false;
             this.listLocations.View = System.Windows.Forms.View.Details;
@@ -68,7 +69,7 @@
             // 
             // btnCreateNewLocation
             // 
-            this.btnCreateNewLocation.Location = new System.Drawing.Point(496, 52);
+            this.btnCreateNewLocation.Location = new System.Drawing.Point(553, 45);
             this.btnCreateNewLocation.Name = "btnCreateNewLocation";
             this.btnCreateNewLocation.Size = new System.Drawing.Size(75, 69);
             this.btnCreateNewLocation.TabIndex = 3;
@@ -80,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 335);
+            this.ClientSize = new System.Drawing.Size(663, 335);
             this.Controls.Add(this.btnCreateNewLocation);
             this.Controls.Add(this.btnChooseLocationCancel);
             this.Controls.Add(this.btnChooseLocationOK);

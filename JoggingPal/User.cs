@@ -33,14 +33,14 @@ namespace JoggingPal
             new Participant(this, selectedEvent);
         }
 
-        public InPersonEvent CreateInPersonEvent(string dateTimeString, double avgSpeed, Location location)
+        public InPersonEvent CreateInPersonEvent(string dateTimeString, double avgSpeed, string eventTitle, Location location)
         {
-            return new InPersonEvent(dateTimeString, avgSpeed, location);
+            return new InPersonEvent(dateTimeString, avgSpeed, eventTitle, location);
         }
 
-        public VirtualEvent CreateVirtualEvent(string dateTimeString, double avgSpeed, double length)
+        public VirtualEvent CreateVirtualEvent(string dateTimeString, double avgSpeed, string eventTitle, double length)
         {
-            return new VirtualEvent(dateTimeString, avgSpeed, length);
+            return new VirtualEvent(dateTimeString, avgSpeed, eventTitle, length);
         }
        
         public UserGroup CreateUserGroup(String name)

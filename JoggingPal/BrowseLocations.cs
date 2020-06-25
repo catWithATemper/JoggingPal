@@ -25,19 +25,25 @@ namespace JoggingPal
         {
             ColumnHeader columnHeader1 = new ColumnHeader();
             ColumnHeader columnHeader2 = new ColumnHeader();
+            ColumnHeader columnHeader3 = new ColumnHeader();
             columnHeader1.Text = "Route name";
             columnHeader2.Text = "Length in km";
-            this.listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2});
+            columnHeader3.Text = "Starting point";
+            listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1, 
+                                                                    columnHeader2,
+                                                                    columnHeader3});
 
-            string[] elements = new string[4];
+            string[] elements = new string[3];
             foreach (Location item in db.joggingLocations.Values)
             {
                 elements[0] = item.RouteName;
                 elements[1] = item.RouteLength.ToString();
+                elements[2] = item.StartingPoint.ToString();
                 ListViewItem row = new ListViewItem(elements);
                 listLocations.Items.Add(row);
             }
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void btnChooseLocationOK_Click(object sender, EventArgs e)

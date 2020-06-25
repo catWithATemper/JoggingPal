@@ -22,19 +22,19 @@ namespace JoggingPal
 
         private void btnUploadResults_Click(object sender, EventArgs e)
         {
-            Nullable<double> totalTime = null;
-            Nullable<double> maxSpeed = null;
-            Nullable<int> avgHeartRate = null; 
+            double? totalTime = null;
+            double? maxSpeed = null;
+            int? avgHeartRate = null; 
 
             Participant p = SelectedEvent.FindParticipant(db.currentUser);
 
-            if (!String.IsNullOrEmpty(txtTotalTime.Text))
+            if (!string.IsNullOrEmpty(txtTotalTime.Text))
                 totalTime = double.Parse(txtTotalTime.Text);
 
-            if (!String.IsNullOrEmpty(txtMaxSpeed.Text))
+            if (!string.IsNullOrEmpty(txtMaxSpeed.Text))
                 maxSpeed = double.Parse(txtMaxSpeed.Text);
 
-            if (!String.IsNullOrEmpty(txtAvgHeartRate.Text))
+            if (!string.IsNullOrEmpty(txtAvgHeartRate.Text))
                 avgHeartRate = int.Parse(txtAvgHeartRate.Text);
 
             EventResults results = p.UploadEventResults(totalTime, maxSpeed, avgHeartRate);

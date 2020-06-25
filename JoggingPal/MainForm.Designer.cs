@@ -135,6 +135,7 @@
             // 
             // listPastEvents
             // 
+            this.listPastEvents.FullRowSelect = true;
             this.listPastEvents.HideSelection = false;
             this.listPastEvents.Location = new System.Drawing.Point(33, 245);
             this.listPastEvents.MultiSelect = false;
@@ -142,7 +143,7 @@
             this.listPastEvents.Size = new System.Drawing.Size(587, 190);
             this.listPastEvents.TabIndex = 10;
             this.listPastEvents.UseCompatibleStateImageBehavior = false;
-            this.listPastEvents.View = System.Windows.Forms.View.List;
+            this.listPastEvents.View = System.Windows.Forms.View.Details;
             // 
             // btnCreateNewEvent
             // 
@@ -194,6 +195,7 @@
             // 
             // listUpcomingEvents
             // 
+            this.listUpcomingEvents.FullRowSelect = true;
             this.listUpcomingEvents.HideSelection = false;
             this.listUpcomingEvents.Location = new System.Drawing.Point(33, 63);
             this.listUpcomingEvents.MultiSelect = false;
@@ -201,7 +203,7 @@
             this.listUpcomingEvents.Size = new System.Drawing.Size(590, 150);
             this.listUpcomingEvents.TabIndex = 4;
             this.listUpcomingEvents.UseCompatibleStateImageBehavior = false;
-            this.listUpcomingEvents.View = System.Windows.Forms.View.List;
+            this.listUpcomingEvents.View = System.Windows.Forms.View.Details;
             // 
             // tabEvents
             // 
@@ -271,6 +273,7 @@
             // listVirtualEvents
             // 
             this.listVirtualEvents.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.listVirtualEvents.FullRowSelect = true;
             this.listVirtualEvents.HideSelection = false;
             this.listVirtualEvents.Location = new System.Drawing.Point(20, 232);
             this.listVirtualEvents.MultiSelect = false;
@@ -278,11 +281,12 @@
             this.listVirtualEvents.Size = new System.Drawing.Size(544, 208);
             this.listVirtualEvents.TabIndex = 1;
             this.listVirtualEvents.UseCompatibleStateImageBehavior = false;
-            this.listVirtualEvents.View = System.Windows.Forms.View.List;
+            this.listVirtualEvents.View = System.Windows.Forms.View.Details;
             // 
             // listInPersonEvents
             // 
             this.listInPersonEvents.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.listInPersonEvents.FullRowSelect = true;
             this.listInPersonEvents.HideSelection = false;
             this.listInPersonEvents.Location = new System.Drawing.Point(24, 40);
             this.listInPersonEvents.MultiSelect = false;
@@ -290,7 +294,7 @@
             this.listInPersonEvents.Size = new System.Drawing.Size(544, 151);
             this.listInPersonEvents.TabIndex = 0;
             this.listInPersonEvents.UseCompatibleStateImageBehavior = false;
-            this.listInPersonEvents.View = System.Windows.Forms.View.List;
+            this.listInPersonEvents.View = System.Windows.Forms.View.Details;
             // 
             // tabGroups
             // 
@@ -348,6 +352,7 @@
             // 
             // listGroups
             // 
+            this.listGroups.FullRowSelect = true;
             this.listGroups.HideSelection = false;
             this.listGroups.Location = new System.Drawing.Point(35, 26);
             this.listGroups.MultiSelect = false;
@@ -355,7 +360,7 @@
             this.listGroups.Size = new System.Drawing.Size(493, 342);
             this.listGroups.TabIndex = 0;
             this.listGroups.UseCompatibleStateImageBehavior = false;
-            this.listGroups.View = System.Windows.Forms.View.List;
+            this.listGroups.View = System.Windows.Forms.View.Details;
             // 
             // MainForm
             // 

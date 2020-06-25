@@ -33,12 +33,16 @@
             this.listLocations = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabInPersonEvent = new System.Windows.Forms.TabPage();
+            this.txtInPersonEventTitle = new System.Windows.Forms.TextBox();
+            this.lblInPersonEventTitle = new System.Windows.Forms.Label();
             this.btnCreateNewLocation = new System.Windows.Forms.Button();
             this.btnCreateNewInPersonEventOK = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblAvgSpeed = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.tabVirtualEvent = new System.Windows.Forms.TabPage();
+            this.txtVirtualEventTitle = new System.Windows.Forms.TextBox();
+            this.lblVirtualEventTitle = new System.Windows.Forms.Label();
             this.btnCreateNewVirtualEventoOk = new System.Windows.Forms.Button();
             this.txtVirtEventAvgSpeed = new System.Windows.Forms.TextBox();
             this.lblVirtEventAvgSpeed = new System.Windows.Forms.Label();
@@ -70,14 +74,15 @@
             // 
             // listLocations
             // 
+            this.listLocations.FullRowSelect = true;
             this.listLocations.HideSelection = false;
-            this.listLocations.Location = new System.Drawing.Point(316, 67);
+            this.listLocations.Location = new System.Drawing.Point(262, 61);
             this.listLocations.MultiSelect = false;
             this.listLocations.Name = "listLocations";
-            this.listLocations.Size = new System.Drawing.Size(426, 175);
+            this.listLocations.Size = new System.Drawing.Size(480, 175);
             this.listLocations.TabIndex = 3;
             this.listLocations.UseCompatibleStateImageBehavior = false;
-            this.listLocations.View = System.Windows.Forms.View.List;
+            this.listLocations.View = System.Windows.Forms.View.Details;
             // 
             // tabControl1
             // 
@@ -86,11 +91,13 @@
             this.tabControl1.Location = new System.Drawing.Point(-1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(810, 449);
+            this.tabControl1.Size = new System.Drawing.Size(810, 479);
             this.tabControl1.TabIndex = 4;
             // 
             // tabInPersonEvent
             // 
+            this.tabInPersonEvent.Controls.Add(this.txtInPersonEventTitle);
+            this.tabInPersonEvent.Controls.Add(this.lblInPersonEventTitle);
             this.tabInPersonEvent.Controls.Add(this.btnCreateNewLocation);
             this.tabInPersonEvent.Controls.Add(this.btnCreateNewInPersonEventOK);
             this.tabInPersonEvent.Controls.Add(this.lblLocation);
@@ -102,16 +109,32 @@
             this.tabInPersonEvent.Location = new System.Drawing.Point(4, 25);
             this.tabInPersonEvent.Name = "tabInPersonEvent";
             this.tabInPersonEvent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInPersonEvent.Size = new System.Drawing.Size(802, 420);
+            this.tabInPersonEvent.Size = new System.Drawing.Size(802, 450);
             this.tabInPersonEvent.TabIndex = 0;
             this.tabInPersonEvent.Text = "In person event";
             this.tabInPersonEvent.UseVisualStyleBackColor = true;
             // 
+            // txtInPersonEventTitle
+            // 
+            this.txtInPersonEventTitle.Location = new System.Drawing.Point(35, 293);
+            this.txtInPersonEventTitle.Name = "txtInPersonEventTitle";
+            this.txtInPersonEventTitle.Size = new System.Drawing.Size(100, 22);
+            this.txtInPersonEventTitle.TabIndex = 15;
+            // 
+            // lblInPersonEventTitle
+            // 
+            this.lblInPersonEventTitle.AutoSize = true;
+            this.lblInPersonEventTitle.Location = new System.Drawing.Point(32, 258);
+            this.lblInPersonEventTitle.Name = "lblInPersonEventTitle";
+            this.lblInPersonEventTitle.Size = new System.Drawing.Size(70, 17);
+            this.lblInPersonEventTitle.TabIndex = 14;
+            this.lblInPersonEventTitle.Text = "Event title";
+            // 
             // btnCreateNewLocation
             // 
-            this.btnCreateNewLocation.Location = new System.Drawing.Point(644, 23);
+            this.btnCreateNewLocation.Location = new System.Drawing.Point(569, 23);
             this.btnCreateNewLocation.Name = "btnCreateNewLocation";
-            this.btnCreateNewLocation.Size = new System.Drawing.Size(98, 32);
+            this.btnCreateNewLocation.Size = new System.Drawing.Size(173, 32);
             this.btnCreateNewLocation.TabIndex = 13;
             this.btnCreateNewLocation.Text = "Create new location";
             this.btnCreateNewLocation.UseVisualStyleBackColor = true;
@@ -119,7 +142,7 @@
             // 
             // btnCreateNewInPersonEventOK
             // 
-            this.btnCreateNewInPersonEventOK.Location = new System.Drawing.Point(142, 303);
+            this.btnCreateNewInPersonEventOK.Location = new System.Drawing.Point(144, 345);
             this.btnCreateNewInPersonEventOK.Name = "btnCreateNewInPersonEventOK";
             this.btnCreateNewInPersonEventOK.Size = new System.Drawing.Size(75, 23);
             this.btnCreateNewInPersonEventOK.TabIndex = 12;
@@ -130,7 +153,7 @@
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
-            this.lblLocation.Location = new System.Drawing.Point(313, 38);
+            this.lblLocation.Location = new System.Drawing.Point(259, 38);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(62, 17);
             this.lblLocation.TabIndex = 9;
@@ -156,6 +179,8 @@
             // 
             // tabVirtualEvent
             // 
+            this.tabVirtualEvent.Controls.Add(this.txtVirtualEventTitle);
+            this.tabVirtualEvent.Controls.Add(this.lblVirtualEventTitle);
             this.tabVirtualEvent.Controls.Add(this.btnCreateNewVirtualEventoOk);
             this.tabVirtualEvent.Controls.Add(this.txtVirtEventAvgSpeed);
             this.tabVirtualEvent.Controls.Add(this.lblVirtEventAvgSpeed);
@@ -166,14 +191,30 @@
             this.tabVirtualEvent.Location = new System.Drawing.Point(4, 25);
             this.tabVirtualEvent.Name = "tabVirtualEvent";
             this.tabVirtualEvent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVirtualEvent.Size = new System.Drawing.Size(802, 420);
+            this.tabVirtualEvent.Size = new System.Drawing.Size(802, 450);
             this.tabVirtualEvent.TabIndex = 1;
             this.tabVirtualEvent.Text = "Virtual event";
             this.tabVirtualEvent.UseVisualStyleBackColor = true;
             // 
+            // txtVirtualEventTitle
+            // 
+            this.txtVirtualEventTitle.Location = new System.Drawing.Point(32, 231);
+            this.txtVirtualEventTitle.Name = "txtVirtualEventTitle";
+            this.txtVirtualEventTitle.Size = new System.Drawing.Size(100, 22);
+            this.txtVirtualEventTitle.TabIndex = 23;
+            // 
+            // lblVirtualEventTitle
+            // 
+            this.lblVirtualEventTitle.AutoSize = true;
+            this.lblVirtualEventTitle.Location = new System.Drawing.Point(29, 211);
+            this.lblVirtualEventTitle.Name = "lblVirtualEventTitle";
+            this.lblVirtualEventTitle.Size = new System.Drawing.Size(70, 17);
+            this.lblVirtualEventTitle.TabIndex = 22;
+            this.lblVirtualEventTitle.Text = "Event title";
+            // 
             // btnCreateNewVirtualEventoOk
             // 
-            this.btnCreateNewVirtualEventoOk.Location = new System.Drawing.Point(204, 302);
+            this.btnCreateNewVirtualEventoOk.Location = new System.Drawing.Point(200, 360);
             this.btnCreateNewVirtualEventoOk.Name = "btnCreateNewVirtualEventoOk";
             this.btnCreateNewVirtualEventoOk.Size = new System.Drawing.Size(75, 23);
             this.btnCreateNewVirtualEventoOk.TabIndex = 21;
@@ -200,7 +241,7 @@
             // lblLength
             // 
             this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(24, 213);
+            this.lblLength.Location = new System.Drawing.Point(20, 285);
             this.lblLength.Name = "lblLength";
             this.lblLength.Size = new System.Drawing.Size(89, 17);
             this.lblLength.TabIndex = 16;
@@ -217,7 +258,7 @@
             // 
             // txtVirtualEventLength
             // 
-            this.txtVirtualEventLength.Location = new System.Drawing.Point(23, 247);
+            this.txtVirtualEventLength.Location = new System.Drawing.Point(23, 305);
             this.txtVirtualEventLength.Name = "txtVirtualEventLength";
             this.txtVirtualEventLength.Size = new System.Drawing.Size(100, 22);
             this.txtVirtualEventLength.TabIndex = 12;
@@ -235,7 +276,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 385);
+            this.ClientSize = new System.Drawing.Size(803, 475);
             this.Controls.Add(this.tabControl1);
             this.Name = "CreateNewEventForm";
             this.Text = "Create new event";
@@ -268,5 +309,9 @@
         private System.Windows.Forms.Button btnCreateNewInPersonEventOK;
         private System.Windows.Forms.Button btnCreateNewVirtualEventoOk;
         private System.Windows.Forms.Button btnCreateNewLocation;
+        private System.Windows.Forms.TextBox txtInPersonEventTitle;
+        private System.Windows.Forms.Label lblInPersonEventTitle;
+        private System.Windows.Forms.Label lblVirtualEventTitle;
+        private System.Windows.Forms.TextBox txtVirtualEventTitle;
     }
 }
