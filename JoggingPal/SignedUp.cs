@@ -22,6 +22,12 @@ namespace JoggingPal
 
         public void UploadEventResults(ParticipationContext ctx) { }
 
+        public override string ToString()
+        {
+            return "Signed up";
+        }
+
+
 
 
     }

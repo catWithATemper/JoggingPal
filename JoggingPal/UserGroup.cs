@@ -59,8 +59,10 @@ namespace JoggingPal
             return new UserGroup(this.Admin, name);
         }
 
+        /*
         public void InviteToGroup()
         { }
+        */
 
         public override String ToString()
         {

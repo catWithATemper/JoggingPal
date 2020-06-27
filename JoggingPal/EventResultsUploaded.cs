@@ -15,11 +15,16 @@ namespace JoggingPal
 
         public void UploadEventResults(ParticipationContext ctx)
         {
-            Console.WriteLine("Event results uploaded. ");
+
         }
 
         public void CheckInAtEvent(ParticipationContext ctx) { }
 
         public void SetLocation(ParticipationContext ctx) { }
+
+        public override string ToString()
+        {
+            return "Results uploaded";
+        }
     }
 }

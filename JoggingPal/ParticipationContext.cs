@@ -10,8 +10,8 @@ namespace JoggingPal
     {
         public ParticipationContext(Participant participant)
         {
-            this.Participant = participant;
-            this.CurrentState = SignedUp.Instance;
+            Participant = participant;
+            CurrentState = SignedUp.Instance;
         }
 
         public Participant Participant { get; set; }

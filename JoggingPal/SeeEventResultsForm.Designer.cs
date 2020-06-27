@@ -75,7 +75,7 @@
             this.listAverageSpeed.Size = new System.Drawing.Size(626, 220);
             this.listAverageSpeed.TabIndex = 1;
             this.listAverageSpeed.UseCompatibleStateImageBehavior = false;
-            this.listAverageSpeed.View = System.Windows.Forms.View.List;
+            this.listAverageSpeed.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -106,7 +106,7 @@
             this.listMaxSpeed.Size = new System.Drawing.Size(597, 210);
             this.listMaxSpeed.TabIndex = 1;
             this.listMaxSpeed.UseCompatibleStateImageBehavior = false;
-            this.listMaxSpeed.View = System.Windows.Forms.View.List;
+            this.listMaxSpeed.View = System.Windows.Forms.View.Details;
             // 
             // label2
             // 
@@ -137,7 +137,7 @@
             this.listAvgHeartRate.Size = new System.Drawing.Size(630, 223);
             this.listAvgHeartRate.TabIndex = 1;
             this.listAvgHeartRate.UseCompatibleStateImageBehavior = false;
-            this.listAvgHeartRate.View = System.Windows.Forms.View.List;
+            this.listAvgHeartRate.View = System.Windows.Forms.View.Details;
             // 
             // label3
             // 

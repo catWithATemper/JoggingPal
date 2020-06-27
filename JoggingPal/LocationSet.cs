@@ -21,5 +21,10 @@ namespace JoggingPal
         public void SetLocation(ParticipationContext ctx) { }
 
         public void UploadEventResults(ParticipationContext ctx) { }
+
+        public override string ToString()
+        {
+            return "Location set";
+        }
     }
 }

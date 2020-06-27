@@ -12,44 +12,33 @@ namespace JoggingPal
 {
     public partial class LogInForm : Form
     {
+        public static User CurrentUser { get; set; }
+
         Database db = Database.Instance();
         public LogInForm()
         {
             InitializeComponent();
         }
-
+            
         private void button2_Click(object sender, EventArgs e)
         {
-           txtUsername.Clear();
-           txtPassword.Clear();
+            txtUsername.Clear();
+            txtPassword.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
-             for (int i = 0; i < db.users.Count; i++)
-
-                if (txtUsername.Text == db.users[i].UserName &&
-                        txtPassword.Text == db.users[i].Password)
-                {
-                     db.currentUser = db.users[i];
-                     MessageBox.Show("You are logged in");
-                     this.DialogResult = DialogResult.OK;
-                     this.Close();
-                }
-             */
+            
+            
             string username = txtUsername.Text;
             if (db.users.ContainsKey(username))
                 if (txtPassword.Text == db.users[username].Password)
                 {
-                    //db.currentUser = db.users[i];
+                    CurrentUser = db.users[username];
                     MessageBox.Show("You are logged in");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-
-
-            
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }   
         }
     }
 }

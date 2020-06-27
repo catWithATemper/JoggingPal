@@ -13,5 +13,7 @@ namespace JoggingPal
         void CheckInAtEvent(ParticipationContext ctx);
 
         void UploadEventResults(ParticipationContext ctx);
+
+        String ToString();
     }
 }

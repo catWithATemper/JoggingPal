@@ -70,7 +70,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(842, 502);
+            this.tabControl1.Size = new System.Drawing.Size(921, 502);
             this.tabControl1.TabIndex = 7;
             // 
             // tabUserArea
@@ -89,14 +89,14 @@
             this.tabUserArea.Location = new System.Drawing.Point(4, 25);
             this.tabUserArea.Name = "tabUserArea";
             this.tabUserArea.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUserArea.Size = new System.Drawing.Size(834, 473);
+            this.tabUserArea.Size = new System.Drawing.Size(913, 473);
             this.tabUserArea.TabIndex = 1;
             this.tabUserArea.Text = "User area";
             this.tabUserArea.UseVisualStyleBackColor = true;
             // 
             // btnEventResults
             // 
-            this.btnEventResults.Location = new System.Drawing.Point(648, 256);
+            this.btnEventResults.Location = new System.Drawing.Point(745, 257);
             this.btnEventResults.Name = "btnEventResults";
             this.btnEventResults.Size = new System.Drawing.Size(135, 23);
             this.btnEventResults.TabIndex = 14;
@@ -106,7 +106,7 @@
             // 
             // btnUploadEventResults
             // 
-            this.btnUploadEventResults.Location = new System.Drawing.Point(648, 201);
+            this.btnUploadEventResults.Location = new System.Drawing.Point(726, 202);
             this.btnUploadEventResults.Name = "btnUploadEventResults";
             this.btnUploadEventResults.Size = new System.Drawing.Size(154, 24);
             this.btnUploadEventResults.TabIndex = 13;
@@ -116,7 +116,7 @@
             // 
             // btnCheckInAtEvent
             // 
-            this.btnCheckInAtEvent.Location = new System.Drawing.Point(648, 155);
+            this.btnCheckInAtEvent.Location = new System.Drawing.Point(726, 156);
             this.btnCheckInAtEvent.Name = "btnCheckInAtEvent";
             this.btnCheckInAtEvent.Size = new System.Drawing.Size(154, 23);
             this.btnCheckInAtEvent.TabIndex = 12;
@@ -140,14 +140,14 @@
             this.listPastEvents.Location = new System.Drawing.Point(33, 245);
             this.listPastEvents.MultiSelect = false;
             this.listPastEvents.Name = "listPastEvents";
-            this.listPastEvents.Size = new System.Drawing.Size(587, 190);
+            this.listPastEvents.Size = new System.Drawing.Size(660, 190);
             this.listPastEvents.TabIndex = 10;
             this.listPastEvents.UseCompatibleStateImageBehavior = false;
             this.listPastEvents.View = System.Windows.Forms.View.Details;
             // 
             // btnCreateNewEvent
             // 
-            this.btnCreateNewEvent.Location = new System.Drawing.Point(649, 103);
+            this.btnCreateNewEvent.Location = new System.Drawing.Point(726, 102);
             this.btnCreateNewEvent.Name = "btnCreateNewEvent";
             this.btnCreateNewEvent.Size = new System.Drawing.Size(153, 28);
             this.btnCreateNewEvent.TabIndex = 9;
@@ -157,7 +157,7 @@
             // 
             // btnFindEvents
             // 
-            this.btnFindEvents.Location = new System.Drawing.Point(649, 63);
+            this.btnFindEvents.Location = new System.Drawing.Point(745, 63);
             this.btnFindEvents.Name = "btnFindEvents";
             this.btnFindEvents.Size = new System.Drawing.Size(134, 23);
             this.btnFindEvents.TabIndex = 8;
@@ -167,7 +167,7 @@
             // 
             // btnUserAreaLogOut
             // 
-            this.btnUserAreaLogOut.Location = new System.Drawing.Point(649, 412);
+            this.btnUserAreaLogOut.Location = new System.Drawing.Point(805, 412);
             this.btnUserAreaLogOut.Name = "btnUserAreaLogOut";
             this.btnUserAreaLogOut.Size = new System.Drawing.Size(75, 23);
             this.btnUserAreaLogOut.TabIndex = 7;
@@ -197,10 +197,11 @@
             // 
             this.listUpcomingEvents.FullRowSelect = true;
             this.listUpcomingEvents.HideSelection = false;
+            this.listUpcomingEvents.LabelWrap = false;
             this.listUpcomingEvents.Location = new System.Drawing.Point(33, 63);
             this.listUpcomingEvents.MultiSelect = false;
             this.listUpcomingEvents.Name = "listUpcomingEvents";
-            this.listUpcomingEvents.Size = new System.Drawing.Size(590, 150);
+            this.listUpcomingEvents.Size = new System.Drawing.Size(660, 150);
             this.listUpcomingEvents.TabIndex = 4;
             this.listUpcomingEvents.UseCompatibleStateImageBehavior = false;
             this.listUpcomingEvents.View = System.Windows.Forms.View.Details;
@@ -217,14 +218,14 @@
             this.tabEvents.Location = new System.Drawing.Point(4, 25);
             this.tabEvents.Name = "tabEvents";
             this.tabEvents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEvents.Size = new System.Drawing.Size(834, 473);
+            this.tabEvents.Size = new System.Drawing.Size(913, 473);
             this.tabEvents.TabIndex = 2;
             this.tabEvents.Text = "Events";
             this.tabEvents.UseVisualStyleBackColor = true;
             // 
             // btnSignUpGroup
             // 
-            this.btnSignUpGroup.Location = new System.Drawing.Point(609, 97);
+            this.btnSignUpGroup.Location = new System.Drawing.Point(724, 91);
             this.btnSignUpGroup.Name = "btnSignUpGroup";
             this.btnSignUpGroup.Size = new System.Drawing.Size(141, 23);
             this.btnSignUpGroup.TabIndex = 6;
@@ -234,9 +235,9 @@
             // 
             // btnChooseLocation
             // 
-            this.btnChooseLocation.Location = new System.Drawing.Point(609, 151);
+            this.btnChooseLocation.Location = new System.Drawing.Point(724, 135);
             this.btnChooseLocation.Name = "btnChooseLocation";
-            this.btnChooseLocation.Size = new System.Drawing.Size(130, 23);
+            this.btnChooseLocation.Size = new System.Drawing.Size(141, 23);
             this.btnChooseLocation.TabIndex = 5;
             this.btnChooseLocation.Text = "Choose location";
             this.btnChooseLocation.UseVisualStyleBackColor = true;
@@ -262,9 +263,9 @@
             // 
             // btnEventsSignUp
             // 
-            this.btnEventsSignUp.Location = new System.Drawing.Point(609, 40);
+            this.btnEventsSignUp.Location = new System.Drawing.Point(724, 40);
             this.btnEventsSignUp.Name = "btnEventsSignUp";
-            this.btnEventsSignUp.Size = new System.Drawing.Size(75, 23);
+            this.btnEventsSignUp.Size = new System.Drawing.Size(141, 23);
             this.btnEventsSignUp.TabIndex = 2;
             this.btnEventsSignUp.Text = "Sign Up";
             this.btnEventsSignUp.UseVisualStyleBackColor = true;
@@ -275,10 +276,10 @@
             this.listVirtualEvents.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listVirtualEvents.FullRowSelect = true;
             this.listVirtualEvents.HideSelection = false;
-            this.listVirtualEvents.Location = new System.Drawing.Point(20, 232);
+            this.listVirtualEvents.Location = new System.Drawing.Point(21, 232);
             this.listVirtualEvents.MultiSelect = false;
             this.listVirtualEvents.Name = "listVirtualEvents";
-            this.listVirtualEvents.Size = new System.Drawing.Size(544, 208);
+            this.listVirtualEvents.Size = new System.Drawing.Size(671, 208);
             this.listVirtualEvents.TabIndex = 1;
             this.listVirtualEvents.UseCompatibleStateImageBehavior = false;
             this.listVirtualEvents.View = System.Windows.Forms.View.Details;
@@ -288,10 +289,10 @@
             this.listInPersonEvents.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listInPersonEvents.FullRowSelect = true;
             this.listInPersonEvents.HideSelection = false;
-            this.listInPersonEvents.Location = new System.Drawing.Point(24, 40);
+            this.listInPersonEvents.Location = new System.Drawing.Point(21, 40);
             this.listInPersonEvents.MultiSelect = false;
             this.listInPersonEvents.Name = "listInPersonEvents";
-            this.listInPersonEvents.Size = new System.Drawing.Size(544, 151);
+            this.listInPersonEvents.Size = new System.Drawing.Size(671, 151);
             this.listInPersonEvents.TabIndex = 0;
             this.listInPersonEvents.UseCompatibleStateImageBehavior = false;
             this.listInPersonEvents.View = System.Windows.Forms.View.Details;
@@ -306,7 +307,7 @@
             this.tabGroups.Location = new System.Drawing.Point(4, 25);
             this.tabGroups.Name = "tabGroups";
             this.tabGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGroups.Size = new System.Drawing.Size(834, 473);
+            this.tabGroups.Size = new System.Drawing.Size(913, 473);
             this.tabGroups.TabIndex = 3;
             this.tabGroups.Text = "Groups";
             this.tabGroups.UseVisualStyleBackColor = true;
@@ -357,7 +358,7 @@
             this.listGroups.Location = new System.Drawing.Point(35, 26);
             this.listGroups.MultiSelect = false;
             this.listGroups.Name = "listGroups";
-            this.listGroups.Size = new System.Drawing.Size(493, 342);
+            this.listGroups.Size = new System.Drawing.Size(493, 351);
             this.listGroups.TabIndex = 0;
             this.listGroups.UseCompatibleStateImageBehavior = false;
             this.listGroups.View = System.Windows.Forms.View.Details;
@@ -366,7 +367,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 494);
+            this.ClientSize = new System.Drawing.Size(908, 494);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "JoggingPal";

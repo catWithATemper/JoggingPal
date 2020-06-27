@@ -21,8 +21,6 @@ namespace JoggingPal
         public Dictionary<string, Event> pastEvents = new Dictionary<string, Event>();
         public Dictionary<string, Event> upcomingEvents = new Dictionary<string, Event>();
 
-        public User currentUser;
-
         protected Database () 
         {
             User user1 = new User("Tom");
@@ -36,9 +34,6 @@ namespace JoggingPal
             users.Add(user3.UserName, user3);
             users.Add(user4.UserName, user4);
             users.Add(user5.UserName, user5);
-
-            //Only for testing
-            currentUser = users["Tom"];
 
             Location route1 = new Location("Ostpark, Munich", 48.112242, 11.630701, 5);
             Location route2 = new Location("Parco di Villa Borghese, Rome", 41.914614, 12.481987, 5);
@@ -81,6 +76,7 @@ namespace JoggingPal
             Participant part1 = new Participant(user1, jogging1);
             Participant part2 = new Participant(user1, jogging3);
             Participant part3 = new Participant(user1, jogging4);
+            part3.CheckInAtEvent();
 
             UserGroup group1 = new UserGroup(user1, "Munich Joggers");
             UserGroup group2 = new UserGroup(user2, "Milan Joggers");
@@ -99,6 +95,9 @@ namespace JoggingPal
             Participant part4 = new Participant(user2, jogging4);
             Participant part5 = new Participant(user3, jogging4);
             Participant part6 = new Participant(user4, jogging4);
+            part4.CheckInAtEvent();
+            part5.CheckInAtEvent();
+            part6.CheckInAtEvent();
 
             EventResults results1 = part3.UploadEventResults(31.0, 7.4, 166);
             EventResults results2 = part4.UploadEventResults(31.0, null, 170);

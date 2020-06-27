@@ -60,7 +60,7 @@ namespace JoggingPal
             {
                 string key = item.SubItems[0].Text;
          
-                Participant p = SelectedEvent.FindParticipant(db.currentUser);
+                Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
                 p.SetRunningLocation(db.joggingLocations[key]);
                 MessageBox.Show("Location selected successfully");
                 Console.WriteLine(p.ToString());

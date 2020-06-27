@@ -22,7 +22,10 @@ namespace JoggingPal
 
         public void SetLocation(ParticipationContext ctx) { }
 
+        public override string ToString()
+        {
+            return "Checked in";
+        }
 
-            
     }
 }

@@ -26,7 +26,7 @@ namespace JoggingPal
             double? maxSpeed = null;
             int? avgHeartRate = null; 
 
-            Participant p = SelectedEvent.FindParticipant(db.currentUser);
+            Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
 
             if (!string.IsNullOrEmpty(txtTotalTime.Text))
                 totalTime = double.Parse(txtTotalTime.Text);
@@ -39,7 +39,8 @@ namespace JoggingPal
 
             EventResults results = p.UploadEventResults(totalTime, maxSpeed, avgHeartRate);
 
-            Console.WriteLine(results.ListParts());
+            p.ctx.CheckInAtEvent();
+            p.ctx.UploadEventResults();
         }
     }
 }

@@ -35,6 +35,7 @@
             // 
             // listGroups
             // 
+            this.listGroups.FullRowSelect = true;
             this.listGroups.HideSelection = false;
             this.listGroups.Location = new System.Drawing.Point(33, 31);
             this.listGroups.MultiSelect = false;
@@ -42,7 +43,7 @@
             this.listGroups.Size = new System.Drawing.Size(413, 134);
             this.listGroups.TabIndex = 0;
             this.listGroups.UseCompatibleStateImageBehavior = false;
-            this.listGroups.View = System.Windows.Forms.View.List;
+            this.listGroups.View = System.Windows.Forms.View.Details;
             // 
             // btnSignUp
             // 
