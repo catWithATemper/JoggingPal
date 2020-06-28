@@ -28,7 +28,7 @@ namespace JoggingPal
         public Event(DateTime dateTime, double avgSpeed, string title)
         {
             AverageSpeed = avgSpeed;
-            this.DateTime = dateTime;
+            DateTime = dateTime;
             EventTitle = title;
             Participants = new List<Participant>();
         }

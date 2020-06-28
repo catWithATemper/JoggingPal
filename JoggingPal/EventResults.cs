@@ -8,9 +8,9 @@ namespace JoggingPal
 {
     public class EventResults
     {
-        public Dictionary<string, double> resultParts = new Dictionary<string, double>();
+        public Dictionary<string, string> resultParts = new Dictionary<string, string>();
         
-        public void Add(string resultKey, double resultValue)
+        public void Add(string resultKey, string resultValue)
         {
             resultParts.Add(resultKey, resultValue);
         }

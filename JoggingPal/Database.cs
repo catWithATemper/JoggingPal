@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace JoggingPal
 {
@@ -99,10 +101,10 @@ namespace JoggingPal
             part5.CheckInAtEvent();
             part6.CheckInAtEvent();
 
-            EventResults results1 = part3.UploadEventResults(31.0, 7.4, 166);
-            EventResults results2 = part4.UploadEventResults(31.0, null, 170);
-            EventResults results3 = part5.UploadEventResults(34.0, 6.5, null);
-            EventResults results4 = part6.UploadEventResults(35.0, null, null);
+            EventResults results1 = part3.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), 7.4, 166);
+            EventResults results2 = part4.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), null, 170);
+            EventResults results3 = part5.UploadEventResults(TimeSpan.Parse("00:34:00", CultureInfo.InvariantCulture), 6.5, null);
+            EventResults results4 = part6.UploadEventResults(TimeSpan.Parse("00:35:00", CultureInfo.InvariantCulture), null, null);
         }
 
         public static Database Instance()

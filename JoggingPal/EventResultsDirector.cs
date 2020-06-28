@@ -15,24 +15,24 @@ namespace JoggingPal
             set { builder = value; }
         }
 
-        public void BuildSimpleResults(double totalTime)
+        public void BuildSimpleResults(TimeSpan totalTime)
         {
             builder.BuildTotalTime(totalTime);
         }
 
-        public void BuildResultsWithMaxSpeed(double totalTime, double maxSpeed)
+        public void BuildResultsWithMaxSpeed(TimeSpan totalTime, double maxSpeed)
         {
             builder.BuildTotalTime(totalTime);
             builder.BuildMaxSpeed(maxSpeed);
         }
 
-        public void BuildResultsWithHeartRate(double totalTime, int avgHeartRate)
+        public void BuildResultsWithHeartRate(TimeSpan totalTime, int avgHeartRate)
         {
             builder.BuildTotalTime(totalTime);
             builder.BuildAvgHeartRate(avgHeartRate);
         }
 
-        public void BuildDetailedResults(double totalTime, double maxSpeed, int avgHeartRate)
+        public void BuildDetailedResults(TimeSpan totalTime, double maxSpeed, int avgHeartRate)
         {
             builder.BuildTotalTime(totalTime);
             builder.BuildMaxSpeed(maxSpeed);

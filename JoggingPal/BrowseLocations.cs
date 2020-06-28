@@ -23,15 +23,58 @@ namespace JoggingPal
 
         private void BrowseLocationsForm_Load(object sender, EventArgs e)
         {
+            listLocationsLoad();
+        }
+
+        private void btnChooseLocationOK_Click(object sender, EventArgs e)
+        {
+            if (SelectedEvent == null)
+            {
+                MessageBox.Show("Select a virtual event from the previous window");
+                Close();
+                return;
+            }
+            if (listLocations.SelectedIndices.Count == 0)
+                MessageBox.Show("Select a location from the list");
+            foreach (ListViewItem item in listLocations.SelectedItems)
+            {
+                string key = item.SubItems[0].Text;
+         
+                Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
+                p.SetRunningLocation(db.joggingLocations[key]);
+                MessageBox.Show("Location selected successfully");
+            }    
+        }
+
+        private void btnChooseLocationCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCreateNewLocation_Click(object sender, EventArgs e)
+        {
+            CreateNewLocationForm createNewLocation = new CreateNewLocationForm();
+            createNewLocation.ShowDialog();
+            listLocationsRefresh();
+        }
+
+        private void listLocationsLoad()
+        {
             ColumnHeader columnHeader1 = new ColumnHeader();
             ColumnHeader columnHeader2 = new ColumnHeader();
             ColumnHeader columnHeader3 = new ColumnHeader();
             columnHeader1.Text = "Route name";
             columnHeader2.Text = "Length in km";
             columnHeader3.Text = "Starting point";
-            listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1, 
+            listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                                     columnHeader2,
                                                                     columnHeader3});
+            listLocationsRefresh();
+        }
+
+        private void listLocationsRefresh()
+        {
+            listLocations.Items.Clear();
 
             string[] elements = new string[3];
             foreach (Location item in db.joggingLocations.Values)
@@ -44,38 +87,6 @@ namespace JoggingPal
             }
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
-        private void btnChooseLocationOK_Click(object sender, EventArgs e)
-        {
-            if (SelectedEvent == null)
-            {
-                MessageBox.Show("Select a virtual event from the previous window");
-                this.Close();
-                return;
-            }
-            if (listLocations.SelectedIndices.Count == 0)
-                MessageBox.Show("Select a location from the list");
-            foreach (ListViewItem item in listLocations.SelectedItems)
-            {
-                string key = item.SubItems[0].Text;
-         
-                Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
-                p.SetRunningLocation(db.joggingLocations[key]);
-                MessageBox.Show("Location selected successfully");
-                Console.WriteLine(p.ToString());
-            }    
-        }
-
-        private void btnChooseLocationCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCreateNewLocation_Click(object sender, EventArgs e)
-        {
-            CreateNewLocationForm createNewLocation = new CreateNewLocationForm();
-            createNewLocation.Show();
         }
     }
 }

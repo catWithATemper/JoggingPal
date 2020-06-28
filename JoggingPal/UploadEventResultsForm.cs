@@ -22,25 +22,40 @@ namespace JoggingPal
 
         private void btnUploadResults_Click(object sender, EventArgs e)
         {
-            double? totalTime = null;
+            TimeSpan totalTime;
             double? maxSpeed = null;
-            int? avgHeartRate = null; 
+            int? avgHeartRate = null;
 
             Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
 
-            if (!string.IsNullOrEmpty(txtTotalTime.Text))
-                totalTime = double.Parse(txtTotalTime.Text);
+            if (string.IsNullOrWhiteSpace(txtTotalTime.Text)
+                || !TimeSpan.TryParse(txtTotalTime.Text, out totalTime))
+            {
+                MessageBox.Show("Please enter a value for the total time. Use the format hh:mm:ss");
+                return;
+            }
 
-            if (!string.IsNullOrEmpty(txtMaxSpeed.Text))
-                maxSpeed = double.Parse(txtMaxSpeed.Text);
+            double maxSpeedValue;
+            if (!string.IsNullOrWhiteSpace(txtMaxSpeed.Text))
+                if (!double.TryParse(txtMaxSpeed.Text, out maxSpeedValue))
+                {
+                    MessageBox.Show("Please enter a value for the maximum speed consisting of digits and one comma.");
+                    return;
+                }
+                else
+                    maxSpeed = maxSpeedValue;
 
-            if (!string.IsNullOrEmpty(txtAvgHeartRate.Text))
-                avgHeartRate = int.Parse(txtAvgHeartRate.Text);
+            int avgHeartRateValue;
+            if (!string.IsNullOrWhiteSpace(txtAvgHeartRate.Text))
+                if (!int.TryParse(txtAvgHeartRate.Text, out avgHeartRateValue))
+                {
+                    MessageBox.Show("Please enter a value for the average heart rate consisting of digits only.");
+                    return;
+                }
+                else
+                    avgHeartRate = avgHeartRateValue;
 
-            EventResults results = p.UploadEventResults(totalTime, maxSpeed, avgHeartRate);
-
-            p.ctx.CheckInAtEvent();
-            p.ctx.UploadEventResults();
+            p.UploadEventResults(totalTime, maxSpeed, avgHeartRate);
         }
     }
 }

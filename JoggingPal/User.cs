@@ -9,9 +9,8 @@ namespace JoggingPal
 {
     public class User : IUser
     {
-        //manage password
         public string UserName { get; }
-        public string Password;
+        public string Password { get; }
         IList<IUser> Members { get; }
 
         public User(string nameString, string passwordString)

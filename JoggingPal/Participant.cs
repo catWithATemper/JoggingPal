@@ -43,20 +43,20 @@ namespace JoggingPal
             ctx.CheckInAtEvent();        
         }
 
-        public EventResults UploadEventResults(double? totalTime, double? maxSpeed, int? avgHeartRate)
+        public EventResults UploadEventResults(TimeSpan totalTime, double? maxSpeed, int? avgHeartRate)
         {
             var director = new EventResultsDirector();
             var builder = new EventResultsConcreteBuilder();
             director.Builder = builder;
 
-            if (totalTime != null && maxSpeed != null && avgHeartRate != null)
-                director.BuildDetailedResults(totalTime.Value, maxSpeed.Value, avgHeartRate.Value);
-            else if (totalTime != null && maxSpeed != null && avgHeartRate == null)
-                director.BuildResultsWithMaxSpeed(totalTime.Value, maxSpeed.Value);
-            else if (totalTime != null && maxSpeed == null && avgHeartRate != null)
-                director.BuildResultsWithHeartRate(totalTime.Value, avgHeartRate.Value);
-            else if ((totalTime != null && maxSpeed == null && avgHeartRate == null))
-                director.BuildSimpleResults(totalTime.Value);
+            if (maxSpeed != null && avgHeartRate != null)
+                director.BuildDetailedResults(totalTime, maxSpeed.Value, avgHeartRate.Value);
+            else if (maxSpeed != null && avgHeartRate == null)
+                director.BuildResultsWithMaxSpeed(totalTime, maxSpeed.Value);
+            else if (maxSpeed == null && avgHeartRate != null)
+                director.BuildResultsWithHeartRate(totalTime, avgHeartRate.Value);
+            else if (maxSpeed == null && avgHeartRate == null)
+                director.BuildSimpleResults(totalTime);
             else
                 throw new InvalidOperationException();
 
@@ -66,7 +66,6 @@ namespace JoggingPal
 
             return EventResults;
         }
-
 
         public EventResults GetEventResults()
         {

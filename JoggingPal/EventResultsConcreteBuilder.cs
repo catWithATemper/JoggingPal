@@ -20,19 +20,19 @@ namespace JoggingPal
             this.Reset();
         }
 
-        public void BuildTotalTime(double totalTime)
+        public void BuildTotalTime(TimeSpan totalTime)
         {
-            eventResults.Add("Total time: ", totalTime);
+            eventResults.Add("Total time: ", totalTime.ToString());
         }
 
         public void BuildMaxSpeed(double maxSpeed)
         {
-            eventResults.Add("Maximum speed: ", maxSpeed);
+            eventResults.Add("Maximum speed: ", maxSpeed.ToString());
         }
 
         public void BuildAvgHeartRate(int avgHeartRate)
         {
-            eventResults.Add("Average heart rate: ", (double)avgHeartRate);
+            eventResults.Add("Average heart rate: ", avgHeartRate.ToString());
         }
 
         public EventResults GetResults()
