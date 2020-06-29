@@ -28,14 +28,11 @@ namespace JoggingPal
 
         private void btnChooseLocationOK_Click(object sender, EventArgs e)
         {
-            if (SelectedEvent == null)
+            if (listLocations.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Select a virtual event from the previous window");
-                Close();
+                MessageBox.Show("Select a location from the list or create a new one.");
                 return;
             }
-            if (listLocations.SelectedIndices.Count == 0)
-                MessageBox.Show("Select a location from the list");
             foreach (ListViewItem item in listLocations.SelectedItems)
             {
                 string key = item.SubItems[0].Text;

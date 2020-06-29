@@ -68,18 +68,21 @@ namespace JoggingPal
             string[] averageSpeedString = new string[2];
             foreach (Participant p in SelectedEvent.Participants)
             {
-                EventResults results = p.EventResults;
-                if (results.resultParts.ContainsKey("Total time: "))
+                if (p.EventResults != null)
                 {
-                    averageSpeedString[0] = p.EventParticipant.UserName;
-                    averageSpeedString[1] = results.resultParts["Total time: "].ToString();
+                    EventResults results = p.EventResults;
+                    if (results.resultParts.ContainsKey("Total time: "))
+                    {
+                        averageSpeedString[0] = p.EventParticipant.UserName;
+                        averageSpeedString[1] = results.resultParts["Total time: "].ToString();
 
-                    ListViewItem row = new ListViewItem(averageSpeedString);
+                        ListViewItem row = new ListViewItem(averageSpeedString);
 
-                    listAverageSpeed.Items.Add(row);
+                        listAverageSpeed.Items.Add(row);
+                    }
+                    listAverageSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listAverageSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
-                listAverageSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listAverageSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
@@ -90,17 +93,20 @@ namespace JoggingPal
 
             foreach (Participant p in SelectedEvent.Participants)
             {
-                EventResults results = p.EventResults;
-                if (results.resultParts.ContainsKey("Maximum speed: "))
-                { 
-                    maxSpeedString[0] = p.EventParticipant.UserName;
-                    maxSpeedString[1] = results.resultParts["Maximum speed: "].ToString();
-                    ListViewItem row = new ListViewItem(maxSpeedString);
+                if (p.EventResults != null)
+                {
+                    EventResults results = p.EventResults;
+                    if (results.resultParts.ContainsKey("Maximum speed: "))
+                    {
+                        maxSpeedString[0] = p.EventParticipant.UserName;
+                        maxSpeedString[1] = results.resultParts["Maximum speed: "].ToString();
+                        ListViewItem row = new ListViewItem(maxSpeedString);
 
-                    listMaxSpeed.Items.Add(row);
+                        listMaxSpeed.Items.Add(row);
+                    }
+                    listMaxSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listMaxSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
-                listMaxSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listMaxSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
@@ -111,17 +117,20 @@ namespace JoggingPal
 
             foreach (Participant p in SelectedEvent.Participants)
             {
-                EventResults results = p.EventResults;
-                if (results.resultParts.ContainsKey("Average heart rate: "))
-                { 
-                    avgHeartRateString[0] = p.EventParticipant.UserName;
-                    avgHeartRateString[1] = results.resultParts["Average heart rate: "].ToString();
-                    ListViewItem row = new ListViewItem(avgHeartRateString);
+                if (p.EventResults != null)
+                {
+                    EventResults results = p.EventResults;
+                    if (results.resultParts.ContainsKey("Average heart rate: "))
+                    {
+                        avgHeartRateString[0] = p.EventParticipant.UserName;
+                        avgHeartRateString[1] = results.resultParts["Average heart rate: "].ToString();
+                        ListViewItem row = new ListViewItem(avgHeartRateString);
 
-                    listAvgHeartRate.Items.Add(row);
+                        listAvgHeartRate.Items.Add(row);
+                    }
+                    listAvgHeartRate.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listAvgHeartRate.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
-                listAvgHeartRate.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listAvgHeartRate.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
     }

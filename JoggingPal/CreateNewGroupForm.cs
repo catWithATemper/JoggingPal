@@ -21,17 +21,21 @@ namespace JoggingPal
 
         private void btnCreateGroup_Click(object sender, EventArgs e)
         {
-            string groupName = txtUserGroupNAme.Text;
+            string groupName = txtUserGroupName.Text;
             if (String.IsNullOrWhiteSpace(groupName))
             {
                 MessageBox.Show("Please specify a name for the group.");
+                return;
             }
-            else
+            if (db.userGroups.ContainsKey(txtUserGroupName.Text))
             {
-                UserGroup newGroup = new UserGroup(LogInForm.CurrentUser, groupName);
-                db.userGroups.Add(newGroup.GroupName, newGroup);
-                Close();
+                MessageBox.Show("A group with this name already exists. Please provide a different title.");
+                return;
             }
+
+            UserGroup newGroup = new UserGroup(LogInForm.CurrentUser, groupName);
+            db.userGroups.Add(newGroup.GroupName, newGroup);
+            Close();
         }
     }
 }

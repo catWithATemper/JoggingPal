@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtUserGroupNAme = new System.Windows.Forms.TextBox();
+            this.txtUserGroupName = new System.Windows.Forms.TextBox();
             this.lblGroupName = new System.Windows.Forms.Label();
             this.btnCreateGroup = new System.Windows.Forms.Button();
             this.lbGroupAdmin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtUserGroupNAme
+            // txtUserGroupName
             // 
-            this.txtUserGroupNAme.Location = new System.Drawing.Point(41, 47);
-            this.txtUserGroupNAme.Name = "txtUserGroupNAme";
-            this.txtUserGroupNAme.Size = new System.Drawing.Size(203, 22);
-            this.txtUserGroupNAme.TabIndex = 0;
+            this.txtUserGroupName.Location = new System.Drawing.Point(41, 47);
+            this.txtUserGroupName.Name = "txtUserGroupName";
+            this.txtUserGroupName.Size = new System.Drawing.Size(203, 22);
+            this.txtUserGroupName.TabIndex = 0;
             // 
             // lblGroupName
             // 
@@ -77,7 +77,7 @@
             this.Controls.Add(this.lbGroupAdmin);
             this.Controls.Add(this.btnCreateGroup);
             this.Controls.Add(this.lblGroupName);
-            this.Controls.Add(this.txtUserGroupNAme);
+            this.Controls.Add(this.txtUserGroupName);
             this.Name = "CreateNewGroupForm";
             this.Text = "Create new group";
             this.ResumeLayout(false);
@@ -87,7 +87,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtUserGroupNAme;
+        private System.Windows.Forms.TextBox txtUserGroupName;
         private System.Windows.Forms.Label lblGroupName;
         private System.Windows.Forms.Button btnCreateGroup;
         private System.Windows.Forms.Label lbGroupAdmin;

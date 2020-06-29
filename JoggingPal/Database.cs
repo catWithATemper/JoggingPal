@@ -64,7 +64,7 @@ namespace JoggingPal
                 if (typeof(InPersonEvent).IsInstanceOfType(e))
                     inPersonEvents.Add(e.EventTitle, (InPersonEvent)e);
                 else
-                    virtualEvents.Add(e.EventTitle,(VirtualEvent)e);
+                    virtualEvents.Add(e.EventTitle, (VirtualEvent)e);
             }
 
             foreach (Event e in events.Values)
@@ -76,7 +76,7 @@ namespace JoggingPal
             }
 
             Participant part1 = new Participant(user1, jogging1);
-            Participant part2 = new Participant(user1, jogging3);
+            //Participant part2 = new Participant(user1, jogging3);
             Participant part3 = new Participant(user1, jogging4);
             part3.CheckInAtEvent();
 
@@ -101,7 +101,7 @@ namespace JoggingPal
             part5.CheckInAtEvent();
             part6.CheckInAtEvent();
 
-            EventResults results1 = part3.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), 7.4, 166);
+            //EventResults results1 = part3.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), 7.4, 166);
             EventResults results2 = part4.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), null, 170);
             EventResults results3 = part5.UploadEventResults(TimeSpan.Parse("00:34:00", CultureInfo.InvariantCulture), 6.5, null);
             EventResults results4 = part6.UploadEventResults(TimeSpan.Parse("00:35:00", CultureInfo.InvariantCulture), null, null);

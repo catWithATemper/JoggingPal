@@ -53,15 +53,16 @@ namespace JoggingPal
             else
                 eventTitle = txtInPersonEventTitle.Text;
 
-            foreach (ListViewItem item in listLocations.SelectedItems)
-            {
-                locationKey = item.SubItems[0].Text;
-                selectedLocation = db.joggingLocations[locationKey];
-            }
             if (listLocations.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Please select a location from the list or create a new one.");
                 return;
+            }
+
+            foreach (ListViewItem item in listLocations.SelectedItems)
+            {
+                locationKey = item.SubItems[0].Text;
+                selectedLocation = db.joggingLocations[locationKey];
             }
 
             Event newEvent = new InPersonEvent(dateTime, avgSpeed, eventTitle, selectedLocation);
@@ -109,8 +110,6 @@ namespace JoggingPal
             db.virtualEvents.Add(newEvent.EventTitle, (VirtualEvent)newEvent);
 
             Close();
-            Console.WriteLine(newEvent.ToString());
-
         }
 
         private void CreateNewEventForm_Load(object sender, EventArgs e)
@@ -155,6 +154,5 @@ namespace JoggingPal
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-
     }
 }

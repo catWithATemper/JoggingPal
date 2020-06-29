@@ -24,7 +24,6 @@ namespace JoggingPal
                 Close();
             */
             LogInForm.CurrentUser = db.users["Tom"];
-
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -40,27 +39,44 @@ namespace JoggingPal
 
         private void btnEventsSignUp_Click(object sender, EventArgs e)
         {
+            if (listInPersonEvents.SelectedItems.Count == 0
+                && listVirtualEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which event you want to sign up to.");
+                return;
+            }
+            
             Participant p = null;
             string key;
             foreach (ListViewItem item in listInPersonEvents.SelectedItems)
-            {
+            { 
                 key = item.SubItems[0].Text;
+                if (db.inPersonEvents[key].FindParticipant(LogInForm.CurrentUser) != null)
+                {
+                    MessageBox.Show("You have already signed up for this event.");
+                    return;
+                }
+                
                 p = new Participant(LogInForm.CurrentUser, db.inPersonEvents[key]);
+                listUpcomingEventsRefresh();
+                MessageBox.Show("You have signed up successfully");
+                return;
+ 
             }
             foreach (ListViewItem item in listVirtualEvents.SelectedItems)
             {
                 key = item.SubItems[0].Text;
-                p = new Participant(LogInForm.CurrentUser, db.virtualEvents[key]);
-            }
-            Console.WriteLine(p.ToString());
+                if (db.virtualEvents[key].FindParticipant(LogInForm.CurrentUser) != null)
+                {
+                    MessageBox.Show("You have already signed up for this event.");
+                    return;
+                }
 
-            if (p != null)
-            {
+                p = new Participant(LogInForm.CurrentUser, db.virtualEvents[key]);
                 listUpcomingEventsRefresh();
                 MessageBox.Show("You have signed up successfully");
+                return;
             }
-            else
-                MessageBox.Show("Select an event");
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -70,6 +86,11 @@ namespace JoggingPal
 
         private void btnChooseLocation_Click(object sender, EventArgs e)
         {
+            if (listVirtualEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a virtual event from the list.");
+                return;
+            }
             BrowseLocationsForm browseLocations = new BrowseLocationsForm();
 
             foreach (ListViewItem item in listVirtualEvents.SelectedItems)
@@ -96,8 +117,15 @@ namespace JoggingPal
 
         private void btnSignUpGroup_Click(object sender, EventArgs e)
         {
+            if (listInPersonEvents.SelectedItems.Count == 0
+                && listVirtualEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which event you want the group to be signed up to.");
+                return;
+            }
+            
             SignUpGroupForm signUpGroup = new SignUpGroupForm();
-            string key = null;
+            string key;
             foreach (ListViewItem item in listInPersonEvents.SelectedItems)
             {
                 key = item.SubItems[0].Text;
@@ -123,31 +151,55 @@ namespace JoggingPal
 
         private void btnJoinGroup_Click(object sender, EventArgs e)
         {
+            if (listGroups.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which group you would like to join.");
+                return;
+            }
             foreach (ListViewItem item in listGroups.SelectedItems)
             {
                 string key = item.SubItems[0].Text;
+                if (db.userGroups[key].GetMembers().Contains(LogInForm.CurrentUser))
+                {
+                    MessageBox.Show("You have already joined this group.");
+                    return;
+                }
                 db.userGroups[key].AddMember(LogInForm.CurrentUser);
-                foreach (User user in db.userGroups[key].GetMembers())
-                    Console.WriteLine(user.UserName);
+                listUserGroupsRefresh();
             }
-            listUserGroupsRefresh();
         }
 
         private void btnLeaveGroup_Click(object sender, EventArgs e)
         {
+            if (listGroups.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which group you would like to leave.");
+                return;
+            }
             foreach (ListViewItem item in listGroups.SelectedItems)
             {
                 string key = item.SubItems[0].Text;
-                if (LogInForm.CurrentUser.UserName != db.userGroups[key].Admin.UserName)
-                    db.userGroups[key].RemoveMember(LogInForm.CurrentUser);
-                foreach (User user in db.userGroups[key].GetMembers())
-                    Console.WriteLine(user.UserName);
+                if (LogInForm.CurrentUser.UserName == db.userGroups[key].Admin.UserName)
+                {
+                    MessageBox.Show("You cannot leave this group since you are its administrator.");
+                    return;
+                }
+                if (!db.userGroups[key].GetMembers().Contains(LogInForm.CurrentUser))
+                {
+                    MessageBox.Show("You have not joined this group yet.");
+                }
+                db.userGroups[key].RemoveMember(LogInForm.CurrentUser);
+                listUserGroupsRefresh();
             }
-            listUserGroupsRefresh();
         }
 
         private void btnCheckInAtEvent_Click(object sender, EventArgs e)
         {
+            if (listUpcomingEvents.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("Select an upcoming event from the list.");
+                return;
+            }
             Participant p = null;
             string key;
             foreach (ListViewItem item in listUpcomingEvents.SelectedItems)
@@ -156,28 +208,49 @@ namespace JoggingPal
                 p = db.events[key].FindParticipant(LogInForm.CurrentUser);
             }
             if (p.ctx.CurrentState == LocationSet.Instance)
-                p.ctx.CheckInAtEvent();
-
-            listUpcomingEventsRefresh();
+            {
+                p.CheckInAtEvent();
+                listUpcomingEventsRefresh();
+            }
+            else
+                MessageBox.Show("You have signed up to a virtual event. Select a location " +
+                    "before checking in at the event.");
         }
 
         private void btnUploadEventResults_Click(object sender, EventArgs e)
         {
+            if (listPastEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a past event from the list.");
+                return;
+            }
             UploadEventResultsForm uploadEventResults = new UploadEventResultsForm();
             foreach (ListViewItem item in listPastEvents.SelectedItems)
             {
                 string key = item.SubItems[0].Text;
                 uploadEventResults.SelectedEvent = db.pastEvents[key];
             }
-            uploadEventResults.ShowDialog();
 
             Participant p = uploadEventResults.SelectedEvent.FindParticipant(LogInForm.CurrentUser);
-
-            listPastEventsRefresh();
+            if (p.EventResults != null)
+            {
+                MessageBox.Show("You have already uploaded your results for this event.");
+                return;
+            }
+            else
+            {
+                uploadEventResults.ShowDialog();
+                listPastEventsRefresh();
+            }
         }
 
         private void btnEventResults_Click(object sender, EventArgs e)
         {
+            if (listPastEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a past event from the list.");
+                return;
+            }
             SeeEventResultsForm seeEventResults = new SeeEventResultsForm();
             foreach (ListViewItem item in listPastEvents.SelectedItems)
             {
@@ -222,7 +295,6 @@ namespace JoggingPal
                                                              columnHeader2,
                                                              columnHeader3,
                                                              columnHeader4});
-
             listPastEventsRefresh();
         }
 
@@ -274,7 +346,7 @@ namespace JoggingPal
             columnHeader1.Text = "Group name";
             columnHeader2.Text = "Administrator";
             columnHeader3.Text = "No. of members";
-            columnHeader3.Text = "Joined";
+            columnHeader4.Text = "Joined";
 
             listGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                             columnHeader2,
@@ -339,14 +411,17 @@ namespace JoggingPal
 
             foreach (InPersonEvent item in db.inPersonEvents.Values)
             {
-                InPersonEventElements[0] = item.EventTitle;
-                InPersonEventElements[1] = item.DateTime.ToString();
-                InPersonEventElements[2] = item.AverageSpeed.ToString();
-                InPersonEventElements[3] = item.RunningLocation.ToString();
+                if (item.DateTime.CompareTo(DateTime.Now) > 0)
+                {
+                    InPersonEventElements[0] = item.EventTitle;
+                    InPersonEventElements[1] = item.DateTime.ToString();
+                    InPersonEventElements[2] = item.AverageSpeed.ToString();
+                    InPersonEventElements[3] = item.RunningLocation.ToString();
 
-                ListViewItem row = new ListViewItem(InPersonEventElements);
+                    ListViewItem row = new ListViewItem(InPersonEventElements);
 
-                listInPersonEvents.Items.Add(row);
+                    listInPersonEvents.Items.Add(row);
+                }
             }
             listInPersonEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listInPersonEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -359,14 +434,17 @@ namespace JoggingPal
 
             foreach (VirtualEvent item in db.virtualEvents.Values)
             {
-                virtualEventElements[0] = item.EventTitle;
-                virtualEventElements[1] = item.DateTime.ToString();
-                virtualEventElements[2] = item.AverageSpeed.ToString();
-                virtualEventElements[3] = item.RouteLength.ToString();
+                if (item.DateTime.CompareTo(DateTime.Now) > 0)
+                {
+                    virtualEventElements[0] = item.EventTitle;
+                    virtualEventElements[1] = item.DateTime.ToString();
+                    virtualEventElements[2] = item.AverageSpeed.ToString();
+                    virtualEventElements[3] = item.RouteLength.ToString();
 
-                ListViewItem row = new ListViewItem(virtualEventElements);
+                    ListViewItem row = new ListViewItem(virtualEventElements);
 
-                listVirtualEvents.Items.Add(row);
+                    listVirtualEvents.Items.Add(row);
+                }
             }
             listVirtualEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listVirtualEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);

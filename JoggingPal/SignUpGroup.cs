@@ -56,6 +56,11 @@ namespace JoggingPal
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
+            if (listGroups.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a group from the list.");
+                return;
+            }
             UserGroup selectedGroup;
             Participant participant;
             foreach (ListViewItem item in listGroups.SelectedItems)
@@ -63,12 +68,9 @@ namespace JoggingPal
                 string key = item.SubItems[0].Text;
                 selectedGroup = db.userGroups[key];
                 foreach (User user in selectedGroup.Members)
-                {
                     participant = new Participant(user, SelectedEvent);
-                    Console.WriteLine(participant.ToString());
-                }         
             }
-            Close();        
+            Close();
         }
     }
 }
