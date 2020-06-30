@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="EventDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventDetailsForm.Designer.cs">
+      <DependentUpon>EventDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EventResultsUploaded.cs" />
     <Compile Include="CreateNewEventForm.cs">
       <SubType>Form</SubType>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateNewLocationForm.resx">
       <DependentUpon>CreateNewLocationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventDetailsForm.resx">
+      <DependentUpon>EventDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>

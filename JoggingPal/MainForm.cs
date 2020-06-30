@@ -136,8 +136,6 @@ namespace JoggingPal
                 key = item.SubItems[0].Text;
                 signUpGroup.SelectedEvent = db.virtualEvents[key];
             }
-            Console.WriteLine(signUpGroup.SelectedEvent.ToString());
-
             signUpGroup.ShowDialog();
             listUpcomingEventsRefresh();
         }
@@ -367,7 +365,7 @@ namespace JoggingPal
                     if (userEvent.DateTime.CompareTo(DateTime.Now) > 0)
                     {
                         upcomingEventElements[0] = userEvent.EventTitle;
-                        upcomingEventElements[1] = userEvent.DateTime.ToString();
+                        upcomingEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
                         upcomingEventElements[2] = userEvent.AverageSpeed.ToString();
                         upcomingEventElements[3] = p.ctx.CurrentState.ToString();
 
@@ -391,7 +389,7 @@ namespace JoggingPal
                     if (!(userEvent.DateTime.CompareTo(DateTime.Now) > 0))
                     {
                         pastEventElements[0] = userEvent.EventTitle;
-                        pastEventElements[1] = userEvent.DateTime.ToString();
+                        pastEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
                         pastEventElements[2] = userEvent.AverageSpeed.ToString();
                         pastEventElements[3] = p.ctx.CurrentState.ToString();
 
@@ -414,7 +412,7 @@ namespace JoggingPal
                 if (item.DateTime.CompareTo(DateTime.Now) > 0)
                 {
                     InPersonEventElements[0] = item.EventTitle;
-                    InPersonEventElements[1] = item.DateTime.ToString();
+                    InPersonEventElements[1] = item.DateTime.ToString("dd/MM/yyyy HH:mm");
                     InPersonEventElements[2] = item.AverageSpeed.ToString();
                     InPersonEventElements[3] = item.RunningLocation.ToString();
 
@@ -437,7 +435,7 @@ namespace JoggingPal
                 if (item.DateTime.CompareTo(DateTime.Now) > 0)
                 {
                     virtualEventElements[0] = item.EventTitle;
-                    virtualEventElements[1] = item.DateTime.ToString();
+                    virtualEventElements[1] = item.DateTime.ToString("dd/MM/yyyy HH:mm");
                     virtualEventElements[2] = item.AverageSpeed.ToString();
                     virtualEventElements[3] = item.RouteLength.ToString();
 
@@ -472,6 +470,33 @@ namespace JoggingPal
             }
             listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void btnEventDetails_Click(object sender, EventArgs e)
+        {
+            if (listUpcomingEvents.SelectedItems.Count == 0
+                && listPastEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select an event to view the details.");
+                return;
+            }
+
+            EventDetailsForm eventDetails = new EventDetailsForm();
+            string key;
+
+            foreach (ListViewItem item in listUpcomingEvents.SelectedItems)
+            {
+                key = item.SubItems[0].Text;
+                eventDetails.SelectedEvent = db.events[key];
+            }
+            foreach (ListViewItem item in listPastEvents.SelectedItems)
+            {
+                key = item.SubItems[0].Text;
+                eventDetails.SelectedEvent = db.events[key];
+            }
+            eventDetails.ShowDialog();
+            listUpcomingEventsRefresh();
+            listPastEventsRefresh();
         }
     }
 }

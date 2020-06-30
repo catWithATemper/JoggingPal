@@ -55,6 +55,7 @@
             this.btnJoinGroup = new System.Windows.Forms.Button();
             this.lblGroups = new System.Windows.Forms.Label();
             this.listGroups = new System.Windows.Forms.ListView();
+            this.btnEventDetails = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabUserArea.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // tabUserArea
             // 
+            this.tabUserArea.Controls.Add(this.btnEventDetails);
             this.tabUserArea.Controls.Add(this.btnEventResults);
             this.tabUserArea.Controls.Add(this.btnUploadEventResults);
             this.tabUserArea.Controls.Add(this.btnCheckInAtEvent);
@@ -363,6 +365,16 @@
             this.listGroups.UseCompatibleStateImageBehavior = false;
             this.listGroups.View = System.Windows.Forms.View.Details;
             // 
+            // btnEventDetails
+            // 
+            this.btnEventDetails.Location = new System.Drawing.Point(740, 314);
+            this.btnEventDetails.Name = "btnEventDetails";
+            this.btnEventDetails.Size = new System.Drawing.Size(140, 23);
+            this.btnEventDetails.TabIndex = 15;
+            this.btnEventDetails.Text = "Event details";
+            this.btnEventDetails.UseVisualStyleBackColor = true;
+            this.btnEventDetails.Click += new System.EventHandler(this.btnEventDetails_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -411,5 +423,6 @@
         private System.Windows.Forms.Button btnUploadEventResults;
         private System.Windows.Forms.Button btnCheckInAtEvent;
         private System.Windows.Forms.Button btnEventResults;
+        private System.Windows.Forms.Button btnEventDetails;
     }
 }

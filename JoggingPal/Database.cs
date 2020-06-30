@@ -53,11 +53,14 @@ namespace JoggingPal
                                                "Jogging together as a virtual group", 8.0);
             Event jogging4 = new InPersonEvent("01/06/2020 10:00:00 AM", 6.0,
                                                 "Morning jogging at Parco degli Acquedotti", route3);
+            Event jogging5 = new VirtualEvent("28/7/2020 7:00:00 PM", 7.0,
+                                   "Jogging in different p;aces", 8.0);
 
             events.Add(jogging1.EventTitle, jogging1);
             events.Add(jogging2.EventTitle, jogging2);
             events.Add(jogging3.EventTitle, jogging3);
             events.Add(jogging4.EventTitle, jogging4);
+            events.Add(jogging5.EventTitle, jogging5);
 
             foreach (Event e in events.Values)
             {
@@ -76,7 +79,7 @@ namespace JoggingPal
             }
 
             Participant part1 = new Participant(user1, jogging1);
-            //Participant part2 = new Participant(user1, jogging3);
+            Participant part2 = new Participant(user1, jogging3);
             Participant part3 = new Participant(user1, jogging4);
             part3.CheckInAtEvent();
 
@@ -101,10 +104,13 @@ namespace JoggingPal
             part5.CheckInAtEvent();
             part6.CheckInAtEvent();
 
-            //EventResults results1 = part3.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), 7.4, 166);
+            EventResults results1 = part3.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), 7.4, 166);
             EventResults results2 = part4.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), null, 170);
             EventResults results3 = part5.UploadEventResults(TimeSpan.Parse("00:34:00", CultureInfo.InvariantCulture), 6.5, null);
             EventResults results4 = part6.UploadEventResults(TimeSpan.Parse("00:35:00", CultureInfo.InvariantCulture), null, null);
+
+            Participant part7 = new Participant(user1, jogging5);
+            part7.SetRunningLocation(route3);
         }
 
         public static Database Instance()
