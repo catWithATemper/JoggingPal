@@ -86,25 +86,26 @@ namespace JoggingPal
 
         private void btnChooseLocation_Click(object sender, EventArgs e)
         {
-            if (listVirtualEvents.SelectedItems.Count == 0)
+            if (listUpcomingEvents.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Select a virtual event from the list.");
                 return;
             }
             BrowseLocationsForm browseLocations = new BrowseLocationsForm();
 
-            foreach (ListViewItem item in listVirtualEvents.SelectedItems)
-            {
+            foreach (ListViewItem item in listUpcomingEvents.SelectedItems)
+            {   
                 string key = item.SubItems[0].Text;
-                browseLocations.SelectedEvent = db.virtualEvents[key];
+                if (!typeof(VirtualEvent).IsInstanceOfType(db.events[key]))
+                {
+                    MessageBox.Show("Choosing a location is only possible for virtual events.");
+                    return;
+                }
+                else
+                    browseLocations.SelectedEvent = (VirtualEvent)db.events[key];
             }
             browseLocations.ShowDialog();
             listUpcomingEventsRefresh();
-        }
-
-        private void btnFindEvents_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectTab(tabEvents);
         }
 
         private void btnCreateNewEvent_Click(object sender, EventArgs e)
@@ -235,6 +236,8 @@ namespace JoggingPal
                 MessageBox.Show("You have already uploaded your results for this event.");
                 return;
             }
+            if (p.ctx.CurrentState != CheckedIn.Instance)
+                MessageBox.Show("Please check in at the event before uploading your results.");
             else
             {
                 uploadEventResults.ShowDialog();
@@ -267,7 +270,7 @@ namespace JoggingPal
 
             columnHeader1.Text = "Title";
             columnHeader2.Text = "Date and time";
-            columnHeader3.Text = "Average speed";
+            columnHeader3.Text = "Event Type";
             columnHeader4.Text = "State";
 
             listUpcomingEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
@@ -286,7 +289,7 @@ namespace JoggingPal
 
             columnHeader1.Text = "Title";
             columnHeader2.Text = "Date and time";
-            columnHeader3.Text = "Average speed";
+            columnHeader3.Text = "Event type";
             columnHeader4.Text = "State";
 
             listPastEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
@@ -364,9 +367,12 @@ namespace JoggingPal
                 if (p != null)
                     if (userEvent.DateTime.CompareTo(DateTime.Now) > 0)
                     {
+                        String eventType = typeof(InPersonEvent).IsInstanceOfType(userEvent) ? 
+                                            "In person" : "Virtual";
+
                         upcomingEventElements[0] = userEvent.EventTitle;
                         upcomingEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
-                        upcomingEventElements[2] = userEvent.AverageSpeed.ToString();
+                        upcomingEventElements[2] = eventType;
                         upcomingEventElements[3] = p.ctx.CurrentState.ToString();
 
                         ListViewItem row = new ListViewItem(upcomingEventElements);
@@ -388,9 +394,12 @@ namespace JoggingPal
                 if (p != null)
                     if (!(userEvent.DateTime.CompareTo(DateTime.Now) > 0))
                     {
+                        String eventType = typeof(InPersonEvent).IsInstanceOfType(userEvent) ?
+                                            "In person" : "Virtual";
+
                         pastEventElements[0] = userEvent.EventTitle;
                         pastEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
-                        pastEventElements[2] = userEvent.AverageSpeed.ToString();
+                        pastEventElements[2] = eventType;
                         pastEventElements[3] = p.ctx.CurrentState.ToString();
 
                         ListViewItem row = new ListViewItem(pastEventElements);
@@ -497,6 +506,11 @@ namespace JoggingPal
             eventDetails.ShowDialog();
             listUpcomingEventsRefresh();
             listPastEventsRefresh();
+        }
+
+        private void btnChooseLocation_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

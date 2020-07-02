@@ -59,7 +59,7 @@
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(35, 88);
+            this.dateTimePicker1.Location = new System.Drawing.Point(35, 61);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 22);
             this.dateTimePicker1.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             // txtAvgSpeed
             // 
-            this.txtAvgSpeed.Location = new System.Drawing.Point(35, 198);
+            this.txtAvgSpeed.Location = new System.Drawing.Point(35, 136);
             this.txtAvgSpeed.Name = "txtAvgSpeed";
             this.txtAvgSpeed.Size = new System.Drawing.Size(100, 22);
             this.txtAvgSpeed.TabIndex = 2;
@@ -116,7 +116,7 @@
             // 
             // txtInPersonEventTitle
             // 
-            this.txtInPersonEventTitle.Location = new System.Drawing.Point(35, 293);
+            this.txtInPersonEventTitle.Location = new System.Drawing.Point(35, 205);
             this.txtInPersonEventTitle.Name = "txtInPersonEventTitle";
             this.txtInPersonEventTitle.Size = new System.Drawing.Size(100, 22);
             this.txtInPersonEventTitle.TabIndex = 15;
@@ -124,7 +124,7 @@
             // lblInPersonEventTitle
             // 
             this.lblInPersonEventTitle.AutoSize = true;
-            this.lblInPersonEventTitle.Location = new System.Drawing.Point(32, 258);
+            this.lblInPersonEventTitle.Location = new System.Drawing.Point(33, 185);
             this.lblInPersonEventTitle.Name = "lblInPersonEventTitle";
             this.lblInPersonEventTitle.Size = new System.Drawing.Size(70, 17);
             this.lblInPersonEventTitle.TabIndex = 14;
@@ -162,7 +162,7 @@
             // lblAvgSpeed
             // 
             this.lblAvgSpeed.AutoSize = true;
-            this.lblAvgSpeed.Location = new System.Drawing.Point(32, 163);
+            this.lblAvgSpeed.Location = new System.Drawing.Point(33, 116);
             this.lblAvgSpeed.Name = "lblAvgSpeed";
             this.lblAvgSpeed.Size = new System.Drawing.Size(104, 17);
             this.lblAvgSpeed.TabIndex = 7;

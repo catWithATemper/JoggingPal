@@ -154,5 +154,7 @@ namespace JoggingPal
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
+
+
     }
 }

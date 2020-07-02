@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -32,11 +33,14 @@ namespace JoggingPal
         {
             ColumnHeader columnHeader1 = new ColumnHeader();
             ColumnHeader columnHeader2 = new ColumnHeader();
+            ColumnHeader columnHeader3 = new ColumnHeader();
             columnHeader1.Text = "Participant";
-            columnHeader2.Text = "Average speed";
+            columnHeader2.Text = "Total time hh:mm:ss";
+            columnHeader3.Text = "Average pace min/km";
 
             listAverageSpeed.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                columnHeader2 });
+                                                                columnHeader2,
+                                                                columnHeader3});
 
             listAverageSpeedRefresh();
         }
@@ -45,7 +49,7 @@ namespace JoggingPal
             ColumnHeader columnHeader1 = new ColumnHeader();
             ColumnHeader columnHeader2 = new ColumnHeader();
             columnHeader1.Text = "Participant";
-            columnHeader2.Text = "Maximum speed";
+            columnHeader2.Text = "Maximum speed km/h";
 
             listMaxSpeed.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                                 columnHeader2 });
@@ -65,7 +69,7 @@ namespace JoggingPal
         private void listAverageSpeedRefresh()
         {
             listAverageSpeed.Items.Clear();
-            string[] averageSpeedString = new string[2];
+            string[] averageSpeedString = new string[3];
             foreach (Participant p in SelectedEvent.Participants)
             {
                 if (p.EventResults != null)
@@ -73,8 +77,16 @@ namespace JoggingPal
                     EventResults results = p.EventResults;
                     if (results.resultParts.ContainsKey("Total time: "))
                     {
+                        TimeSpan totalTime = TimeSpan.Parse(results.resultParts["Total time: "],
+                                            CultureInfo.InvariantCulture);
+
+                        int distanceInMeters = (int)(p.JoggingLocation.RouteLength * 1000);
+
+                        TimeSpan avgPace = new TimeSpan(totalTime.Ticks / distanceInMeters*1000);
+                       
                         averageSpeedString[0] = p.EventParticipant.UserName;
                         averageSpeedString[1] = results.resultParts["Total time: "].ToString();
+                        averageSpeedString[2] = avgPace.Minutes.ToString() + ":" + avgPace.Seconds.ToString();
 
                         ListViewItem row = new ListViewItem(averageSpeedString);
 

@@ -61,6 +61,9 @@ namespace JoggingPal
                 return;
             }
 
+            if (routeLength == 0)
+                MessageBox.Show("The length of the jogging route should be greater than 0.");
+
             Location l = new Location(routeName, latitude, longitude, routeLength);
             db.joggingLocations.Add(l.RouteName, l);
             Close();

@@ -15,12 +15,12 @@ namespace JoggingPal
 
         public void UploadEventResults(ParticipationContext ctx)
         {
-
+            ctx.CurrentState = EventResultsUploaded.Instance;
         }
 
-        public void CheckInAtEvent(ParticipationContext ctx) { }
+        public void CheckInAtEvent(ParticipationContext ctx) => throw new InvalidCastException();
 
-        public void SetLocation(ParticipationContext ctx) { }
+        public void SetLocation(ParticipationContext ctx) => throw new InvalidCastException();
 
         public override string ToString()
         {

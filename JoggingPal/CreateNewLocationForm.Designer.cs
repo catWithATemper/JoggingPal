@@ -38,6 +38,7 @@
             this.lblLength = new System.Windows.Forms.Label();
             this.btnCreateNewLocationOK = new System.Windows.Forms.Button();
             this.btnCreateNewLocationCancel = new System.Windows.Forms.Button();
+            this.lblRouteLengthKm = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtRouteName
@@ -123,11 +124,21 @@
             this.btnCreateNewLocationCancel.Text = "Cancel";
             this.btnCreateNewLocationCancel.UseVisualStyleBackColor = true;
             // 
+            // lblRouteLengthKm
+            // 
+            this.lblRouteLengthKm.AutoSize = true;
+            this.lblRouteLengthKm.Location = new System.Drawing.Point(252, 229);
+            this.lblRouteLengthKm.Name = "lblRouteLengthKm";
+            this.lblRouteLengthKm.Size = new System.Drawing.Size(26, 17);
+            this.lblRouteLengthKm.TabIndex = 10;
+            this.lblRouteLengthKm.Text = "km";
+            // 
             // CreateNewLocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 308);
+            this.Controls.Add(this.lblRouteLengthKm);
             this.Controls.Add(this.btnCreateNewLocationCancel);
             this.Controls.Add(this.btnCreateNewLocationOK);
             this.Controls.Add(this.lblLength);
@@ -157,5 +168,6 @@
         private System.Windows.Forms.Label lblLength;
         private System.Windows.Forms.Button btnCreateNewLocationOK;
         private System.Windows.Forms.Button btnCreateNewLocationCancel;
+        private System.Windows.Forms.Label lblRouteLengthKm;
     }
 }

@@ -45,16 +45,16 @@ namespace JoggingPal
             joggingLocations.Add(route2.RouteName, route2);
             joggingLocations.Add(route3.RouteName, route3);
 
-            Event jogging1 = new InPersonEvent("10/7/2020 11:00:00 AM", 7.0,
+            Event jogging1 = new InPersonEvent("01/08/2020 11:00:00 AM", 7.0,
                                                 "Jogging at Ostpark", route1);
             Event jogging2 = new InPersonEvent("09/7/2020 05:00:00 PM", 7.0,
                                                 "After work jogging ",route1);
-            Event jogging3 = new VirtualEvent("02/7/2020 11:00:00 AM", 7.0,
+            Event jogging3 = new VirtualEvent("15/7/2020 11:00:00 AM", 7.0,
                                                "Jogging together as a virtual group", 8.0);
             Event jogging4 = new InPersonEvent("01/06/2020 10:00:00 AM", 6.0,
                                                 "Morning jogging at Parco degli Acquedotti", route3);
             Event jogging5 = new VirtualEvent("28/7/2020 7:00:00 PM", 7.0,
-                                   "Jogging in different p;aces", 8.0);
+                                   "Jogging in different places", 8.0);
 
             events.Add(jogging1.EventTitle, jogging1);
             events.Add(jogging2.EventTitle, jogging2);

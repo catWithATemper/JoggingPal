@@ -35,6 +35,9 @@
             this.lblMaxSpeed = new System.Windows.Forms.Label();
             this.lblAvgHeartRate = new System.Windows.Forms.Label();
             this.btnUploadResults = new System.Windows.Forms.Button();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblMaxSpeedKmh = new System.Windows.Forms.Label();
+            this.lblAvgBpm = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTotalTime
@@ -87,7 +90,7 @@
             // 
             // btnUploadResults
             // 
-            this.btnUploadResults.Location = new System.Drawing.Point(276, 74);
+            this.btnUploadResults.Location = new System.Drawing.Point(278, 38);
             this.btnUploadResults.Name = "btnUploadResults";
             this.btnUploadResults.Size = new System.Drawing.Size(126, 23);
             this.btnUploadResults.TabIndex = 6;
@@ -95,11 +98,41 @@
             this.btnUploadResults.UseVisualStyleBackColor = true;
             this.btnUploadResults.Click += new System.EventHandler(this.btnUploadResults_Click);
             // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(184, 72);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(68, 17);
+            this.lblTime.TabIndex = 7;
+            this.lblTime.Text = "hh:mm:ss";
+            // 
+            // lblMaxSpeedKmh
+            // 
+            this.lblMaxSpeedKmh.AutoSize = true;
+            this.lblMaxSpeedKmh.Location = new System.Drawing.Point(184, 139);
+            this.lblMaxSpeedKmh.Name = "lblMaxSpeedKmh";
+            this.lblMaxSpeedKmh.Size = new System.Drawing.Size(38, 17);
+            this.lblMaxSpeedKmh.TabIndex = 8;
+            this.lblMaxSpeedKmh.Text = "km/h";
+            // 
+            // lblAvgBpm
+            // 
+            this.lblAvgBpm.AutoSize = true;
+            this.lblAvgBpm.Location = new System.Drawing.Point(184, 205);
+            this.lblAvgBpm.Name = "lblAvgBpm";
+            this.lblAvgBpm.Size = new System.Drawing.Size(35, 17);
+            this.lblAvgBpm.TabIndex = 9;
+            this.lblAvgBpm.Text = "bpm";
+            // 
             // UploadEventResultsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 278);
+            this.Controls.Add(this.lblAvgBpm);
+            this.Controls.Add(this.lblMaxSpeedKmh);
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnUploadResults);
             this.Controls.Add(this.lblAvgHeartRate);
             this.Controls.Add(this.lblMaxSpeed);
@@ -123,5 +156,8 @@
         private System.Windows.Forms.Label lblMaxSpeed;
         private System.Windows.Forms.Label lblAvgHeartRate;
         private System.Windows.Forms.Button btnUploadResults;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblMaxSpeedKmh;
+        private System.Windows.Forms.Label lblAvgBpm;
     }
 }

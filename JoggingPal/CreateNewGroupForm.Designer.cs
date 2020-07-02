@@ -52,7 +52,7 @@
             // 
             // btnCreateGroup
             // 
-            this.btnCreateGroup.Location = new System.Drawing.Point(358, 47);
+            this.btnCreateGroup.Location = new System.Drawing.Point(405, 46);
             this.btnCreateGroup.Name = "btnCreateGroup";
             this.btnCreateGroup.Size = new System.Drawing.Size(126, 23);
             this.btnCreateGroup.TabIndex = 2;

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabAvgSpeed = new System.Windows.Forms.TabPage();
+            this.tabAvgPace = new System.Windows.Forms.TabPage();
             this.listAverageSpeed = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabMaxSpeed = new System.Windows.Forms.TabPage();
@@ -39,14 +39,14 @@
             this.listAvgHeartRate = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabAvgSpeed.SuspendLayout();
+            this.tabAvgPace.SuspendLayout();
             this.tabMaxSpeed.SuspendLayout();
             this.tabAvgHeartRate.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabAvgSpeed);
+            this.tabControl1.Controls.Add(this.tabAvgPace);
             this.tabControl1.Controls.Add(this.tabMaxSpeed);
             this.tabControl1.Controls.Add(this.tabAvgHeartRate);
             this.tabControl1.Location = new System.Drawing.Point(-2, 2);
@@ -55,17 +55,17 @@
             this.tabControl1.Size = new System.Drawing.Size(695, 327);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabAvgSpeed
+            // tabAvgPace
             // 
-            this.tabAvgSpeed.Controls.Add(this.listAverageSpeed);
-            this.tabAvgSpeed.Controls.Add(this.label1);
-            this.tabAvgSpeed.Location = new System.Drawing.Point(4, 25);
-            this.tabAvgSpeed.Name = "tabAvgSpeed";
-            this.tabAvgSpeed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAvgSpeed.Size = new System.Drawing.Size(687, 298);
-            this.tabAvgSpeed.TabIndex = 0;
-            this.tabAvgSpeed.Text = "Average speed";
-            this.tabAvgSpeed.UseVisualStyleBackColor = true;
+            this.tabAvgPace.Controls.Add(this.listAverageSpeed);
+            this.tabAvgPace.Controls.Add(this.label1);
+            this.tabAvgPace.Location = new System.Drawing.Point(4, 25);
+            this.tabAvgPace.Name = "tabAvgPace";
+            this.tabAvgPace.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAvgPace.Size = new System.Drawing.Size(687, 298);
+            this.tabAvgPace.TabIndex = 0;
+            this.tabAvgPace.Text = "Average pace";
+            this.tabAvgPace.UseVisualStyleBackColor = true;
             // 
             // listAverageSpeed
             // 
@@ -158,8 +158,8 @@
             this.Text = "Event results";
             this.Load += new System.EventHandler(this.SeeEventResultsForm_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabAvgSpeed.ResumeLayout(false);
-            this.tabAvgSpeed.PerformLayout();
+            this.tabAvgPace.ResumeLayout(false);
+            this.tabAvgPace.PerformLayout();
             this.tabMaxSpeed.ResumeLayout(false);
             this.tabMaxSpeed.PerformLayout();
             this.tabAvgHeartRate.ResumeLayout(false);
@@ -171,7 +171,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabAvgSpeed;
+        private System.Windows.Forms.TabPage tabAvgPace;
         private System.Windows.Forms.ListView listAverageSpeed;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabMaxSpeed;

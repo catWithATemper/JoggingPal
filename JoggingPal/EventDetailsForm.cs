@@ -58,7 +58,7 @@ namespace JoggingPal
 
             string[] eventAvgSpeedRow = new string[2];
             eventAvgSpeedRow[0] = "Average speed: ";
-            eventAvgSpeedRow[1] = SelectedEvent.AverageSpeed.ToString() + " minuti/km";
+            eventAvgSpeedRow[1] = SelectedEvent.AverageSpeed.ToString() + " minutes/km";
             listEventDetails.Items.Add(new ListViewItem(eventAvgSpeedRow));
 
             Participant participant = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
@@ -105,6 +105,16 @@ namespace JoggingPal
                 locationRow1[1] = "Location not yet set by participant";
                 listEventDetails.Items.Add(new ListViewItem(locationRow1));
             }
+
+            string[] participantStateRow = new string[2];
+            participantStateRow[0] = "Participant state: ";
+            participantStateRow[1] = participant.ctx.CurrentState.ToString();
+            listEventDetails.Items.Add(new ListViewItem(participantStateRow));
+
+            string[] numberOfParticipantsRow = new string[2];
+            numberOfParticipantsRow[0] = "No. of participants: ";
+            numberOfParticipantsRow[1] = SelectedEvent.Participants.Count.ToString();
+            listEventDetails.Items.Add(new ListViewItem(numberOfParticipantsRow));
 
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
