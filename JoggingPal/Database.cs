@@ -14,14 +14,66 @@ namespace JoggingPal
     {
         private static Database instance = new Database();
 
-        public Dictionary<string, User> users = new Dictionary<string, User>();
-        public Dictionary<string, Event> events = new Dictionary<string, Event>();
-        public Dictionary<string, VirtualEvent> virtualEvents = new Dictionary<string, VirtualEvent>();
-        public Dictionary<string, InPersonEvent> inPersonEvents = new Dictionary<string, InPersonEvent>();
-        public Dictionary<string, Location> joggingLocations = new Dictionary<string, Location>();
-        public Dictionary<string, UserGroup> userGroups = new Dictionary<string, UserGroup>();
-        public Dictionary<string, Event> pastEvents = new Dictionary<string, Event>();
-        public Dictionary<string, Event> upcomingEvents = new Dictionary<string, Event>();
+        public Dictionary<string, User> Users { get; } = new Dictionary<string, User>();
+        public Dictionary<string, Event> Events { get; } = new Dictionary<string, Event>();
+        public Dictionary<string, Location> JoggingLocations { get; } = new Dictionary<string, Location>();
+        public Dictionary<string, UserGroup> UserGroups { get; } = new Dictionary<string, UserGroup>();
+
+        public Dictionary<string, InPersonEvent> InPersonEvents
+        {
+            get
+            {
+                Dictionary<string, InPersonEvent> inPersonEvents = new Dictionary<string, InPersonEvent>();
+                foreach (Event e in Events.Values)
+                {
+                    if (typeof(InPersonEvent).IsInstanceOfType(e))
+                        inPersonEvents.Add(e.EventTitle, (InPersonEvent)e);
+                }
+                return inPersonEvents;
+            }
+        }
+
+         public Dictionary<string, VirtualEvent> VirtualEvents
+        {
+            get
+            {
+                Dictionary<string, VirtualEvent> virtualEvents = new Dictionary<string, VirtualEvent>();
+                foreach (Event e in Events.Values)
+                {
+                    if (typeof(VirtualEvent).IsInstanceOfType(e))
+                        virtualEvents.Add(e.EventTitle, (VirtualEvent)e);
+                }
+                return virtualEvents;
+            }
+        }
+
+        public Dictionary<string, Event> PastEvents
+        {
+            get
+            {
+                Dictionary<string, Event> pastEvents = new Dictionary<string, Event>();
+                foreach (Event e in Events.Values)
+                {
+                    if (e.DateTime.CompareTo(DateTime.Now) <= 0)
+                        pastEvents.Add(e.EventTitle, e);
+                }
+                return pastEvents;
+            }
+        }
+
+        public Dictionary<string, Event> UpcomingEvents
+        {
+            get
+            {
+                Dictionary<string, Event> upcomingEvents = new Dictionary<string, Event>();
+                foreach (Event e in Events.Values)
+                {
+                    if (e.DateTime.CompareTo(DateTime.Now) > 0)
+                        upcomingEvents.Add(e.EventTitle, e);
+                }
+                return upcomingEvents;
+            }
+        }
 
         protected Database () 
         {
@@ -31,19 +83,19 @@ namespace JoggingPal
             User user4 = new User("Mario");
             User user5 = new User("Lucia");
 
-            users.Add(user1.UserName, user1);
-            users.Add(user2.UserName, user2);
-            users.Add(user3.UserName, user3);
-            users.Add(user4.UserName, user4);
-            users.Add(user5.UserName, user5);
+            Users.Add(user1.UserName, user1);
+            Users.Add(user2.UserName, user2);
+            Users.Add(user3.UserName, user3);
+            Users.Add(user4.UserName, user4);
+            Users.Add(user5.UserName, user5);
 
             Location route1 = new Location("Ostpark, Munich", 48.112242, 11.630701, 5);
             Location route2 = new Location("Parco di Villa Borghese, Rome", 41.914614, 12.481987, 5);
             Location route3 = new Location("Parco degli Acquedotti, Rome", 41.853406, 12.557115, 7);
 
-            joggingLocations.Add(route1.RouteName, route1);
-            joggingLocations.Add(route2.RouteName, route2);
-            joggingLocations.Add(route3.RouteName, route3);
+            JoggingLocations.Add(route1.RouteName, route1);
+            JoggingLocations.Add(route2.RouteName, route2);
+            JoggingLocations.Add(route3.RouteName, route3);
 
             Event jogging1 = new InPersonEvent("01/08/2020 11:00:00 AM", 7.0,
                                                 "Jogging at Ostpark", route1);
@@ -56,27 +108,11 @@ namespace JoggingPal
             Event jogging5 = new VirtualEvent("28/7/2020 7:00:00 PM", 7.0,
                                    "Jogging in different places", 8.0);
 
-            events.Add(jogging1.EventTitle, jogging1);
-            events.Add(jogging2.EventTitle, jogging2);
-            events.Add(jogging3.EventTitle, jogging3);
-            events.Add(jogging4.EventTitle, jogging4);
-            events.Add(jogging5.EventTitle, jogging5);
-
-            foreach (Event e in events.Values)
-            {
-                if (typeof(InPersonEvent).IsInstanceOfType(e))
-                    inPersonEvents.Add(e.EventTitle, (InPersonEvent)e);
-                else
-                    virtualEvents.Add(e.EventTitle, (VirtualEvent)e);
-            }
-
-            foreach (Event e in events.Values)
-            {
-                if (e.DateTime.CompareTo(DateTime.Now) > 0)
-                    upcomingEvents.Add(e.EventTitle, e);
-                else
-                    pastEvents.Add(e.EventTitle, e);
-            }
+            Events.Add(jogging1.EventTitle, jogging1);
+            Events.Add(jogging2.EventTitle, jogging2);
+            Events.Add(jogging3.EventTitle, jogging3);
+            Events.Add(jogging4.EventTitle, jogging4);
+            Events.Add(jogging5.EventTitle, jogging5);
 
             Participant part1 = new Participant(user1, jogging1);
             Participant part2 = new Participant(user1, jogging3);
@@ -87,9 +123,9 @@ namespace JoggingPal
             UserGroup group2 = new UserGroup(user2, "Milan Joggers");
             UserGroup group3 = new UserGroup(user3, "City jogggers");
 
-            userGroups.Add(group1.GroupName, group1);
-            userGroups.Add(group2.GroupName, group2);
-            userGroups.Add(group3.GroupName, group3);
+            UserGroups.Add(group1.GroupName, group1);
+            UserGroups.Add(group2.GroupName, group2);
+            UserGroups.Add(group3.GroupName, group3);
 
             group1.AddMember(user3);
             group1.AddMember(user4);

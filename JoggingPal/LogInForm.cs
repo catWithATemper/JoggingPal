@@ -26,15 +26,13 @@ namespace JoggingPal
             txtPassword.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
-            
-            
             string username = txtUsername.Text;
-            if (db.users.ContainsKey(username))
-                if (txtPassword.Text == db.users[username].Password)
+            if (db.Users.ContainsKey(username))
+                if (txtPassword.Text == db.Users[username].Password)
                 {
-                    CurrentUser = db.users[username];
+                    CurrentUser = db.Users[username];
                     MessageBox.Show("You are logged in");
                     DialogResult = DialogResult.OK;
                     Close();

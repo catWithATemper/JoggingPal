@@ -58,7 +58,7 @@ namespace JoggingPal
 
             string[] eventAvgSpeedRow = new string[2];
             eventAvgSpeedRow[0] = "Average speed: ";
-            eventAvgSpeedRow[1] = SelectedEvent.AverageSpeed.ToString() + " minutes/km";
+            eventAvgSpeedRow[1] = SelectedEvent.AverageSpeed.ToString() + " km/h";
             listEventDetails.Items.Add(new ListViewItem(eventAvgSpeedRow));
 
             Participant participant = SelectedEvent.FindParticipant(LogInForm.CurrentUser);

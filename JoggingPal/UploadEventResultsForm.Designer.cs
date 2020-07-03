@@ -38,6 +38,7 @@
             this.lblTime = new System.Windows.Forms.Label();
             this.lblMaxSpeedKmh = new System.Windows.Forms.Label();
             this.lblAvgBpm = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTotalTime
@@ -92,7 +93,7 @@
             // 
             this.btnUploadResults.Location = new System.Drawing.Point(278, 38);
             this.btnUploadResults.Name = "btnUploadResults";
-            this.btnUploadResults.Size = new System.Drawing.Size(126, 23);
+            this.btnUploadResults.Size = new System.Drawing.Size(125, 25);
             this.btnUploadResults.TabIndex = 6;
             this.btnUploadResults.Text = "Upload results";
             this.btnUploadResults.UseVisualStyleBackColor = true;
@@ -125,11 +126,22 @@
             this.lblAvgBpm.TabIndex = 9;
             this.lblAvgBpm.Text = "bpm";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(278, 90);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 25);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // UploadEventResultsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 278);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblAvgBpm);
             this.Controls.Add(this.lblMaxSpeedKmh);
             this.Controls.Add(this.lblTime);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblMaxSpeedKmh;
         private System.Windows.Forms.Label lblAvgBpm;
+        private System.Windows.Forms.Button button1;
     }
 }

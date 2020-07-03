@@ -126,7 +126,6 @@
     <Compile Include="SignUpGroup.Designer.cs">
       <DependentUpon>SignUpGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tester.cs" />
     <Compile Include="UploadEventResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>

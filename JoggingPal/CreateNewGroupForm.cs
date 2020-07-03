@@ -27,14 +27,19 @@ namespace JoggingPal
                 MessageBox.Show("Please specify a name for the group.");
                 return;
             }
-            if (db.userGroups.ContainsKey(txtUserGroupName.Text))
+            if (db.UserGroups.ContainsKey(txtUserGroupName.Text))
             {
                 MessageBox.Show("A group with this name already exists. Please provide a different title.");
                 return;
             }
 
             UserGroup newGroup = new UserGroup(LogInForm.CurrentUser, groupName);
-            db.userGroups.Add(newGroup.GroupName, newGroup);
+            db.UserGroups.Add(newGroup.GroupName, newGroup);
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

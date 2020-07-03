@@ -37,7 +37,7 @@ namespace JoggingPal
 
             string[] groupElements = new string[3];
 
-            foreach (UserGroup group in db.userGroups.Values)
+            foreach (UserGroup group in db.UserGroups.Values)
             {
                 if (LogInForm.CurrentUser.UserName.Equals(group.Admin.UserName))
                 {
@@ -66,10 +66,15 @@ namespace JoggingPal
             foreach (ListViewItem item in listGroups.SelectedItems)
             {
                 string key = item.SubItems[0].Text;
-                selectedGroup = db.userGroups[key];
+                selectedGroup = db.UserGroups[key];
                 foreach (User user in selectedGroup.Members)
                     participant = new Participant(user, SelectedEvent);
             }
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

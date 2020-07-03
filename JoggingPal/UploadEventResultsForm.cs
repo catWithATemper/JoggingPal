@@ -57,5 +57,10 @@ namespace JoggingPal
 
             p.UploadEventResults(totalTime, maxSpeed, avgHeartRate);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

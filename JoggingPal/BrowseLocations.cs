@@ -38,7 +38,7 @@ namespace JoggingPal
                 string key = item.SubItems[0].Text;
          
                 Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
-                p.SetRunningLocation(db.joggingLocations[key]);
+                p.SetRunningLocation(db.JoggingLocations[key]);
                 MessageBox.Show("Location selected successfully");
             }    
         }
@@ -61,7 +61,7 @@ namespace JoggingPal
             ColumnHeader columnHeader2 = new ColumnHeader();
             ColumnHeader columnHeader3 = new ColumnHeader();
             columnHeader1.Text = "Route name";
-            columnHeader2.Text = "Length in km";
+            columnHeader2.Text = "Length";
             columnHeader3.Text = "Starting point";
             listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                                     columnHeader2,
@@ -74,10 +74,10 @@ namespace JoggingPal
             listLocations.Items.Clear();
 
             string[] elements = new string[3];
-            foreach (Location item in db.joggingLocations.Values)
+            foreach (Location item in db.JoggingLocations.Values)
             {
                 elements[0] = item.RouteName;
-                elements[1] = item.RouteLength.ToString();
+                elements[1] = item.RouteLength.ToString() + " km";
                 elements[2] = item.StartingPoint.ToString();
                 ListViewItem row = new ListViewItem(elements);
                 listLocations.Items.Add(row);

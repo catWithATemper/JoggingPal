@@ -29,26 +29,30 @@
         private void InitializeComponent()
         {
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.txtAvgSpeed = new System.Windows.Forms.TextBox();
+            this.txtAvgSpeedTab1 = new System.Windows.Forms.TextBox();
             this.listLocations = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabInPersonEvent = new System.Windows.Forms.TabPage();
-            this.txtInPersonEventTitle = new System.Windows.Forms.TextBox();
-            this.lblInPersonEventTitle = new System.Windows.Forms.Label();
+            this.btnCancelTab1 = new System.Windows.Forms.Button();
+            this.lblAvgSpeedKmhTab1 = new System.Windows.Forms.Label();
+            this.txtEventTitleTab1 = new System.Windows.Forms.TextBox();
+            this.lblEventTitleTab1 = new System.Windows.Forms.Label();
             this.btnCreateNewLocation = new System.Windows.Forms.Button();
             this.btnCreateNewInPersonEventOK = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
-            this.lblAvgSpeed = new System.Windows.Forms.Label();
-            this.lblDateTime = new System.Windows.Forms.Label();
+            this.lblAvgSpeedTab1 = new System.Windows.Forms.Label();
+            this.lblDateAndTimeTab1 = new System.Windows.Forms.Label();
             this.tabVirtualEvent = new System.Windows.Forms.TabPage();
-            this.txtVirtualEventTitle = new System.Windows.Forms.TextBox();
-            this.lblVirtualEventTitle = new System.Windows.Forms.Label();
+            this.btnCancelTab2 = new System.Windows.Forms.Button();
+            this.lblAvgSpeedKmhTab2 = new System.Windows.Forms.Label();
+            this.txtEventTitleTab2 = new System.Windows.Forms.TextBox();
+            this.lblEventTitleTab2 = new System.Windows.Forms.Label();
             this.btnCreateNewVirtualEventoOk = new System.Windows.Forms.Button();
-            this.txtVirtEventAvgSpeed = new System.Windows.Forms.TextBox();
-            this.lblVirtEventAvgSpeed = new System.Windows.Forms.Label();
-            this.lblLength = new System.Windows.Forms.Label();
-            this.lblDateAndTime = new System.Windows.Forms.Label();
-            this.txtVirtualEventLength = new System.Windows.Forms.TextBox();
+            this.txtAvgSpeedTab2 = new System.Windows.Forms.TextBox();
+            this.lblAvgSpeedTab2 = new System.Windows.Forms.Label();
+            this.lblLengthTab1 = new System.Windows.Forms.Label();
+            this.lblDateAndTimeTab2 = new System.Windows.Forms.Label();
+            this.txtLengthTab2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabInPersonEvent.SuspendLayout();
@@ -63,14 +67,13 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 22);
             this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // txtAvgSpeed
+            // txtAvgSpeedTab1
             // 
-            this.txtAvgSpeed.Location = new System.Drawing.Point(35, 136);
-            this.txtAvgSpeed.Name = "txtAvgSpeed";
-            this.txtAvgSpeed.Size = new System.Drawing.Size(100, 22);
-            this.txtAvgSpeed.TabIndex = 2;
+            this.txtAvgSpeedTab1.Location = new System.Drawing.Point(35, 136);
+            this.txtAvgSpeedTab1.Name = "txtAvgSpeedTab1";
+            this.txtAvgSpeedTab1.Size = new System.Drawing.Size(100, 22);
+            this.txtAvgSpeedTab1.TabIndex = 2;
             // 
             // listLocations
             // 
@@ -96,16 +99,18 @@
             // 
             // tabInPersonEvent
             // 
-            this.tabInPersonEvent.Controls.Add(this.txtInPersonEventTitle);
-            this.tabInPersonEvent.Controls.Add(this.lblInPersonEventTitle);
+            this.tabInPersonEvent.Controls.Add(this.btnCancelTab1);
+            this.tabInPersonEvent.Controls.Add(this.lblAvgSpeedKmhTab1);
+            this.tabInPersonEvent.Controls.Add(this.txtEventTitleTab1);
+            this.tabInPersonEvent.Controls.Add(this.lblEventTitleTab1);
             this.tabInPersonEvent.Controls.Add(this.btnCreateNewLocation);
             this.tabInPersonEvent.Controls.Add(this.btnCreateNewInPersonEventOK);
             this.tabInPersonEvent.Controls.Add(this.lblLocation);
-            this.tabInPersonEvent.Controls.Add(this.lblAvgSpeed);
-            this.tabInPersonEvent.Controls.Add(this.lblDateTime);
+            this.tabInPersonEvent.Controls.Add(this.lblAvgSpeedTab1);
+            this.tabInPersonEvent.Controls.Add(this.lblDateAndTimeTab1);
             this.tabInPersonEvent.Controls.Add(this.listLocations);
             this.tabInPersonEvent.Controls.Add(this.dateTimePicker1);
-            this.tabInPersonEvent.Controls.Add(this.txtAvgSpeed);
+            this.tabInPersonEvent.Controls.Add(this.txtAvgSpeedTab1);
             this.tabInPersonEvent.Location = new System.Drawing.Point(4, 25);
             this.tabInPersonEvent.Name = "tabInPersonEvent";
             this.tabInPersonEvent.Padding = new System.Windows.Forms.Padding(3);
@@ -114,21 +119,40 @@
             this.tabInPersonEvent.Text = "In person event";
             this.tabInPersonEvent.UseVisualStyleBackColor = true;
             // 
-            // txtInPersonEventTitle
+            // btnCancelTab1
             // 
-            this.txtInPersonEventTitle.Location = new System.Drawing.Point(35, 205);
-            this.txtInPersonEventTitle.Name = "txtInPersonEventTitle";
-            this.txtInPersonEventTitle.Size = new System.Drawing.Size(100, 22);
-            this.txtInPersonEventTitle.TabIndex = 15;
+            this.btnCancelTab1.Location = new System.Drawing.Point(376, 341);
+            this.btnCancelTab1.Name = "btnCancelTab1";
+            this.btnCancelTab1.Size = new System.Drawing.Size(75, 25);
+            this.btnCancelTab1.TabIndex = 17;
+            this.btnCancelTab1.Text = "Cancel";
+            this.btnCancelTab1.UseVisualStyleBackColor = true;
+            this.btnCancelTab1.Click += new System.EventHandler(this.btnCancelTab1_Click);
             // 
-            // lblInPersonEventTitle
+            // lblAvgSpeedKmhTab1
             // 
-            this.lblInPersonEventTitle.AutoSize = true;
-            this.lblInPersonEventTitle.Location = new System.Drawing.Point(33, 185);
-            this.lblInPersonEventTitle.Name = "lblInPersonEventTitle";
-            this.lblInPersonEventTitle.Size = new System.Drawing.Size(70, 17);
-            this.lblInPersonEventTitle.TabIndex = 14;
-            this.lblInPersonEventTitle.Text = "Event title";
+            this.lblAvgSpeedKmhTab1.AutoSize = true;
+            this.lblAvgSpeedKmhTab1.Location = new System.Drawing.Point(147, 141);
+            this.lblAvgSpeedKmhTab1.Name = "lblAvgSpeedKmhTab1";
+            this.lblAvgSpeedKmhTab1.Size = new System.Drawing.Size(38, 17);
+            this.lblAvgSpeedKmhTab1.TabIndex = 16;
+            this.lblAvgSpeedKmhTab1.Text = "km/h";
+            // 
+            // txtEventTitleTab1
+            // 
+            this.txtEventTitleTab1.Location = new System.Drawing.Point(35, 205);
+            this.txtEventTitleTab1.Name = "txtEventTitleTab1";
+            this.txtEventTitleTab1.Size = new System.Drawing.Size(100, 22);
+            this.txtEventTitleTab1.TabIndex = 15;
+            // 
+            // lblEventTitleTab1
+            // 
+            this.lblEventTitleTab1.AutoSize = true;
+            this.lblEventTitleTab1.Location = new System.Drawing.Point(33, 185);
+            this.lblEventTitleTab1.Name = "lblEventTitleTab1";
+            this.lblEventTitleTab1.Size = new System.Drawing.Size(70, 17);
+            this.lblEventTitleTab1.TabIndex = 14;
+            this.lblEventTitleTab1.Text = "Event title";
             // 
             // btnCreateNewLocation
             // 
@@ -144,7 +168,7 @@
             // 
             this.btnCreateNewInPersonEventOK.Location = new System.Drawing.Point(144, 345);
             this.btnCreateNewInPersonEventOK.Name = "btnCreateNewInPersonEventOK";
-            this.btnCreateNewInPersonEventOK.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateNewInPersonEventOK.Size = new System.Drawing.Size(75, 25);
             this.btnCreateNewInPersonEventOK.TabIndex = 12;
             this.btnCreateNewInPersonEventOK.Text = "Ok";
             this.btnCreateNewInPersonEventOK.UseVisualStyleBackColor = true;
@@ -159,34 +183,36 @@
             this.lblLocation.TabIndex = 9;
             this.lblLocation.Text = "Location";
             // 
-            // lblAvgSpeed
+            // lblAvgSpeedTab1
             // 
-            this.lblAvgSpeed.AutoSize = true;
-            this.lblAvgSpeed.Location = new System.Drawing.Point(33, 116);
-            this.lblAvgSpeed.Name = "lblAvgSpeed";
-            this.lblAvgSpeed.Size = new System.Drawing.Size(104, 17);
-            this.lblAvgSpeed.TabIndex = 7;
-            this.lblAvgSpeed.Text = "Average speed";
+            this.lblAvgSpeedTab1.AutoSize = true;
+            this.lblAvgSpeedTab1.Location = new System.Drawing.Point(33, 116);
+            this.lblAvgSpeedTab1.Name = "lblAvgSpeedTab1";
+            this.lblAvgSpeedTab1.Size = new System.Drawing.Size(104, 17);
+            this.lblAvgSpeedTab1.TabIndex = 7;
+            this.lblAvgSpeedTab1.Text = "Average speed";
             // 
-            // lblDateTime
+            // lblDateAndTimeTab1
             // 
-            this.lblDateTime.AutoSize = true;
-            this.lblDateTime.Location = new System.Drawing.Point(32, 38);
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(96, 17);
-            this.lblDateTime.TabIndex = 6;
-            this.lblDateTime.Text = "Date and time";
+            this.lblDateAndTimeTab1.AutoSize = true;
+            this.lblDateAndTimeTab1.Location = new System.Drawing.Point(32, 38);
+            this.lblDateAndTimeTab1.Name = "lblDateAndTimeTab1";
+            this.lblDateAndTimeTab1.Size = new System.Drawing.Size(96, 17);
+            this.lblDateAndTimeTab1.TabIndex = 6;
+            this.lblDateAndTimeTab1.Text = "Date and time";
             // 
             // tabVirtualEvent
             // 
-            this.tabVirtualEvent.Controls.Add(this.txtVirtualEventTitle);
-            this.tabVirtualEvent.Controls.Add(this.lblVirtualEventTitle);
+            this.tabVirtualEvent.Controls.Add(this.btnCancelTab2);
+            this.tabVirtualEvent.Controls.Add(this.lblAvgSpeedKmhTab2);
+            this.tabVirtualEvent.Controls.Add(this.txtEventTitleTab2);
+            this.tabVirtualEvent.Controls.Add(this.lblEventTitleTab2);
             this.tabVirtualEvent.Controls.Add(this.btnCreateNewVirtualEventoOk);
-            this.tabVirtualEvent.Controls.Add(this.txtVirtEventAvgSpeed);
-            this.tabVirtualEvent.Controls.Add(this.lblVirtEventAvgSpeed);
-            this.tabVirtualEvent.Controls.Add(this.lblLength);
-            this.tabVirtualEvent.Controls.Add(this.lblDateAndTime);
-            this.tabVirtualEvent.Controls.Add(this.txtVirtualEventLength);
+            this.tabVirtualEvent.Controls.Add(this.txtAvgSpeedTab2);
+            this.tabVirtualEvent.Controls.Add(this.lblAvgSpeedTab2);
+            this.tabVirtualEvent.Controls.Add(this.lblLengthTab1);
+            this.tabVirtualEvent.Controls.Add(this.lblDateAndTimeTab2);
+            this.tabVirtualEvent.Controls.Add(this.txtLengthTab2);
             this.tabVirtualEvent.Controls.Add(this.dateTimePicker2);
             this.tabVirtualEvent.Location = new System.Drawing.Point(4, 25);
             this.tabVirtualEvent.Name = "tabVirtualEvent";
@@ -196,72 +222,91 @@
             this.tabVirtualEvent.Text = "Virtual event";
             this.tabVirtualEvent.UseVisualStyleBackColor = true;
             // 
-            // txtVirtualEventTitle
+            // btnCancelTab2
             // 
-            this.txtVirtualEventTitle.Location = new System.Drawing.Point(32, 231);
-            this.txtVirtualEventTitle.Name = "txtVirtualEventTitle";
-            this.txtVirtualEventTitle.Size = new System.Drawing.Size(100, 22);
-            this.txtVirtualEventTitle.TabIndex = 23;
+            this.btnCancelTab2.Location = new System.Drawing.Point(462, 360);
+            this.btnCancelTab2.Name = "btnCancelTab2";
+            this.btnCancelTab2.Size = new System.Drawing.Size(75, 25);
+            this.btnCancelTab2.TabIndex = 25;
+            this.btnCancelTab2.Text = "Cancel";
+            this.btnCancelTab2.UseVisualStyleBackColor = true;
+            this.btnCancelTab2.Click += new System.EventHandler(this.btnCancelTab2_Click);
             // 
-            // lblVirtualEventTitle
+            // lblAvgSpeedKmhTab2
             // 
-            this.lblVirtualEventTitle.AutoSize = true;
-            this.lblVirtualEventTitle.Location = new System.Drawing.Point(29, 211);
-            this.lblVirtualEventTitle.Name = "lblVirtualEventTitle";
-            this.lblVirtualEventTitle.Size = new System.Drawing.Size(70, 17);
-            this.lblVirtualEventTitle.TabIndex = 22;
-            this.lblVirtualEventTitle.Text = "Event title";
+            this.lblAvgSpeedKmhTab2.AutoSize = true;
+            this.lblAvgSpeedKmhTab2.Location = new System.Drawing.Point(135, 164);
+            this.lblAvgSpeedKmhTab2.Name = "lblAvgSpeedKmhTab2";
+            this.lblAvgSpeedKmhTab2.Size = new System.Drawing.Size(38, 17);
+            this.lblAvgSpeedKmhTab2.TabIndex = 24;
+            this.lblAvgSpeedKmhTab2.Text = "km/h";
+            // 
+            // txtEventTitleTab2
+            // 
+            this.txtEventTitleTab2.Location = new System.Drawing.Point(32, 231);
+            this.txtEventTitleTab2.Name = "txtEventTitleTab2";
+            this.txtEventTitleTab2.Size = new System.Drawing.Size(100, 22);
+            this.txtEventTitleTab2.TabIndex = 23;
+            // 
+            // lblEventTitleTab2
+            // 
+            this.lblEventTitleTab2.AutoSize = true;
+            this.lblEventTitleTab2.Location = new System.Drawing.Point(29, 211);
+            this.lblEventTitleTab2.Name = "lblEventTitleTab2";
+            this.lblEventTitleTab2.Size = new System.Drawing.Size(70, 17);
+            this.lblEventTitleTab2.TabIndex = 22;
+            this.lblEventTitleTab2.Text = "Event title";
             // 
             // btnCreateNewVirtualEventoOk
             // 
             this.btnCreateNewVirtualEventoOk.Location = new System.Drawing.Point(200, 360);
             this.btnCreateNewVirtualEventoOk.Name = "btnCreateNewVirtualEventoOk";
-            this.btnCreateNewVirtualEventoOk.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateNewVirtualEventoOk.Size = new System.Drawing.Size(75, 25);
             this.btnCreateNewVirtualEventoOk.TabIndex = 21;
             this.btnCreateNewVirtualEventoOk.Text = "OK";
             this.btnCreateNewVirtualEventoOk.UseVisualStyleBackColor = true;
             this.btnCreateNewVirtualEventoOk.Click += new System.EventHandler(this.btnCreateNewVirtualEventoOk_Click);
             // 
-            // txtVirtEventAvgSpeed
+            // txtAvgSpeedTab2
             // 
-            this.txtVirtEventAvgSpeed.Location = new System.Drawing.Point(23, 159);
-            this.txtVirtEventAvgSpeed.Name = "txtVirtEventAvgSpeed";
-            this.txtVirtEventAvgSpeed.Size = new System.Drawing.Size(100, 22);
-            this.txtVirtEventAvgSpeed.TabIndex = 18;
+            this.txtAvgSpeedTab2.Location = new System.Drawing.Point(23, 159);
+            this.txtAvgSpeedTab2.Name = "txtAvgSpeedTab2";
+            this.txtAvgSpeedTab2.Size = new System.Drawing.Size(100, 22);
+            this.txtAvgSpeedTab2.TabIndex = 18;
             // 
-            // lblVirtEventAvgSpeed
+            // lblAvgSpeedTab2
             // 
-            this.lblVirtEventAvgSpeed.AutoSize = true;
-            this.lblVirtEventAvgSpeed.Location = new System.Drawing.Point(24, 124);
-            this.lblVirtEventAvgSpeed.Name = "lblVirtEventAvgSpeed";
-            this.lblVirtEventAvgSpeed.Size = new System.Drawing.Size(106, 17);
-            this.lblVirtEventAvgSpeed.TabIndex = 17;
-            this.lblVirtEventAvgSpeed.Text = "Average Speed";
+            this.lblAvgSpeedTab2.AutoSize = true;
+            this.lblAvgSpeedTab2.Location = new System.Drawing.Point(24, 124);
+            this.lblAvgSpeedTab2.Name = "lblAvgSpeedTab2";
+            this.lblAvgSpeedTab2.Size = new System.Drawing.Size(106, 17);
+            this.lblAvgSpeedTab2.TabIndex = 17;
+            this.lblAvgSpeedTab2.Text = "Average Speed";
             // 
-            // lblLength
+            // lblLengthTab1
             // 
-            this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(20, 285);
-            this.lblLength.Name = "lblLength";
-            this.lblLength.Size = new System.Drawing.Size(89, 17);
-            this.lblLength.TabIndex = 16;
-            this.lblLength.Text = "Route length";
+            this.lblLengthTab1.AutoSize = true;
+            this.lblLengthTab1.Location = new System.Drawing.Point(20, 285);
+            this.lblLengthTab1.Name = "lblLengthTab1";
+            this.lblLengthTab1.Size = new System.Drawing.Size(89, 17);
+            this.lblLengthTab1.TabIndex = 16;
+            this.lblLengthTab1.Text = "Route length";
             // 
-            // lblDateAndTime
+            // lblDateAndTimeTab2
             // 
-            this.lblDateAndTime.AutoSize = true;
-            this.lblDateAndTime.Location = new System.Drawing.Point(20, 25);
-            this.lblDateAndTime.Name = "lblDateAndTime";
-            this.lblDateAndTime.Size = new System.Drawing.Size(96, 17);
-            this.lblDateAndTime.TabIndex = 14;
-            this.lblDateAndTime.Text = "Date and time";
+            this.lblDateAndTimeTab2.AutoSize = true;
+            this.lblDateAndTimeTab2.Location = new System.Drawing.Point(20, 25);
+            this.lblDateAndTimeTab2.Name = "lblDateAndTimeTab2";
+            this.lblDateAndTimeTab2.Size = new System.Drawing.Size(96, 17);
+            this.lblDateAndTimeTab2.TabIndex = 14;
+            this.lblDateAndTimeTab2.Text = "Date and time";
             // 
-            // txtVirtualEventLength
+            // txtLengthTab2
             // 
-            this.txtVirtualEventLength.Location = new System.Drawing.Point(23, 305);
-            this.txtVirtualEventLength.Name = "txtVirtualEventLength";
-            this.txtVirtualEventLength.Size = new System.Drawing.Size(100, 22);
-            this.txtVirtualEventLength.TabIndex = 12;
+            this.txtLengthTab2.Location = new System.Drawing.Point(23, 305);
+            this.txtLengthTab2.Name = "txtLengthTab2";
+            this.txtLengthTab2.Size = new System.Drawing.Size(100, 22);
+            this.txtLengthTab2.TabIndex = 12;
             // 
             // dateTimePicker2
             // 
@@ -292,26 +337,30 @@
 
         #endregion
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox txtAvgSpeed;
+        private System.Windows.Forms.TextBox txtAvgSpeedTab1;
         private System.Windows.Forms.ListView listLocations;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabInPersonEvent;
         private System.Windows.Forms.TabPage tabVirtualEvent;
         private System.Windows.Forms.Label lblLocation;
-        private System.Windows.Forms.Label lblAvgSpeed;
-        private System.Windows.Forms.Label lblDateTime;
-        private System.Windows.Forms.Label lblLength;
-        private System.Windows.Forms.Label lblDateAndTime;
-        private System.Windows.Forms.TextBox txtVirtualEventLength;
+        private System.Windows.Forms.Label lblAvgSpeedTab1;
+        private System.Windows.Forms.Label lblDateAndTimeTab1;
+        private System.Windows.Forms.Label lblLengthTab1;
+        private System.Windows.Forms.Label lblDateAndTimeTab2;
+        private System.Windows.Forms.TextBox txtLengthTab2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox txtVirtEventAvgSpeed;
-        private System.Windows.Forms.Label lblVirtEventAvgSpeed;
+        private System.Windows.Forms.TextBox txtAvgSpeedTab2;
+        private System.Windows.Forms.Label lblAvgSpeedTab2;
         private System.Windows.Forms.Button btnCreateNewInPersonEventOK;
         private System.Windows.Forms.Button btnCreateNewVirtualEventoOk;
         private System.Windows.Forms.Button btnCreateNewLocation;
-        private System.Windows.Forms.TextBox txtInPersonEventTitle;
-        private System.Windows.Forms.Label lblInPersonEventTitle;
-        private System.Windows.Forms.Label lblVirtualEventTitle;
-        private System.Windows.Forms.TextBox txtVirtualEventTitle;
+        private System.Windows.Forms.TextBox txtEventTitleTab1;
+        private System.Windows.Forms.Label lblEventTitleTab1;
+        private System.Windows.Forms.Label lblEventTitleTab2;
+        private System.Windows.Forms.TextBox txtEventTitleTab2;
+        private System.Windows.Forms.Label lblAvgSpeedKmhTab1;
+        private System.Windows.Forms.Label lblAvgSpeedKmhTab2;
+        private System.Windows.Forms.Button btnCancelTab1;
+        private System.Windows.Forms.Button btnCancelTab2;
     }
 }

@@ -30,7 +30,7 @@ namespace JoggingPal
                 MessageBox.Show("Please enter a name for the new jogging route.");
                 return;
             }
-            if (db.joggingLocations.ContainsKey(txtRouteName.Text))
+            if (db.JoggingLocations.ContainsKey(txtRouteName.Text))
             {
                 MessageBox.Show("A jogging route with this name already exists. Please provide a different title.");
                 return;
@@ -65,7 +65,12 @@ namespace JoggingPal
                 MessageBox.Show("The length of the jogging route should be greater than 0.");
 
             Location l = new Location(routeName, latitude, longitude, routeLength);
-            db.joggingLocations.Add(l.RouteName, l);
+            db.JoggingLocations.Add(l.RouteName, l);
+            Close();
+        }
+
+        private void btnCreateNewLocationCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

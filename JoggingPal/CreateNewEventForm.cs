@@ -18,11 +18,6 @@ namespace JoggingPal
             InitializeComponent();
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(dateTimePicker1.Value.ToString());
-        }
-
         private void btnCreateNewInPersonEventOK_Click(object sender, EventArgs e)
         {
             Location selectedLocation = null;
@@ -32,26 +27,26 @@ namespace JoggingPal
             double avgSpeed;
             string eventTitle;
 
-            if (string.IsNullOrWhiteSpace(txtAvgSpeed.Text) 
-                || !double.TryParse(txtAvgSpeed.Text, out avgSpeed))
+            if (string.IsNullOrWhiteSpace(txtAvgSpeedTab1.Text) 
+                || !double.TryParse(txtAvgSpeedTab1.Text, out avgSpeed))
             {
                 MessageBox.Show("Please enter a value for the event average speed consisting of digits and one comma.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtInPersonEventTitle.Text))
+            if (string.IsNullOrWhiteSpace(txtEventTitleTab1.Text))
             {           
                 MessageBox.Show("Please enter a title for the event.");
                 return;
             }
 
-            if (db.events.ContainsKey(txtInPersonEventTitle.Text))
+            if (db.Events.ContainsKey(txtEventTitleTab1.Text))
             {
                 MessageBox.Show("An event with this title already exists. Please provide a different title.");
                 return;
             }
             else
-                eventTitle = txtInPersonEventTitle.Text;
+                eventTitle = txtEventTitleTab1.Text;
 
             if (listLocations.SelectedItems.Count == 0)
             {
@@ -62,12 +57,11 @@ namespace JoggingPal
             foreach (ListViewItem item in listLocations.SelectedItems)
             {
                 locationKey = item.SubItems[0].Text;
-                selectedLocation = db.joggingLocations[locationKey];
+                selectedLocation = db.JoggingLocations[locationKey];
             }
 
             Event newEvent = new InPersonEvent(dateTime, avgSpeed, eventTitle, selectedLocation);
-            db.events.Add(newEvent.EventTitle, newEvent);
-            db.inPersonEvents.Add(newEvent.EventTitle, (InPersonEvent)newEvent);
+            db.Events.Add(newEvent.EventTitle, newEvent);
             Close();
         }
 
@@ -78,36 +72,35 @@ namespace JoggingPal
             string eventTitle;
             double routeLength;
 
-            if (string.IsNullOrWhiteSpace(txtVirtEventAvgSpeed.Text)
-                || !double.TryParse(txtVirtEventAvgSpeed.Text, out avgSpeed))
+            if (string.IsNullOrWhiteSpace(txtAvgSpeedTab2.Text)
+                || !double.TryParse(txtAvgSpeedTab2.Text, out avgSpeed))
             {
                 MessageBox.Show("Please enter a value for the event average speed consisting of digits and one comma.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtVirtualEventTitle.Text))
+            if (string.IsNullOrWhiteSpace(txtEventTitleTab2.Text))
             {
                 MessageBox.Show("Please enter a title for the event.");
                 return;
             }
-            if (db.events.ContainsKey(txtVirtualEventTitle.Text))
+            if (db.Events.ContainsKey(txtEventTitleTab2.Text))
             {
                 MessageBox.Show("An event with this title already exists. Please provide a different title.");
                 return;
             }
             else
-                eventTitle = txtVirtualEventTitle.Text;
+                eventTitle = txtEventTitleTab2.Text;
 
-            if (string.IsNullOrWhiteSpace(txtVirtualEventLength.Text)
-            || !double.TryParse(txtVirtualEventLength.Text, out routeLength))
+            if (string.IsNullOrWhiteSpace(txtLengthTab2.Text)
+            || !double.TryParse(txtLengthTab2.Text, out routeLength))
             {
                 MessageBox.Show("Please enter a value for the event route length consisting of digits and one comma.");
                 return;
             }
 
             Event newEvent = new VirtualEvent(dateTime, avgSpeed, eventTitle, routeLength);
-            db.events.Add(newEvent.EventTitle, newEvent);
-            db.virtualEvents.Add(newEvent.EventTitle, (VirtualEvent)newEvent);
+            db.Events.Add(newEvent.EventTitle, newEvent);
 
             Close();
         }
@@ -143,7 +136,7 @@ namespace JoggingPal
         {
             listLocations.Items.Clear();
             string[] elements = new string[4];
-            foreach (Location item in db.joggingLocations.Values)
+            foreach (Location item in db.JoggingLocations.Values)
             {
                 elements[0] = item.RouteName;
                 elements[1] = item.RouteLength.ToString();
@@ -155,6 +148,14 @@ namespace JoggingPal
             listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        private void btnCancelTab1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void btnCancelTab2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

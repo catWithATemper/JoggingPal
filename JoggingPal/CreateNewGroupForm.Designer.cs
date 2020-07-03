@@ -32,6 +32,7 @@
             this.lblGroupName = new System.Windows.Forms.Label();
             this.btnCreateGroup = new System.Windows.Forms.Button();
             this.lbGroupAdmin = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUserGroupName
@@ -54,7 +55,7 @@
             // 
             this.btnCreateGroup.Location = new System.Drawing.Point(405, 46);
             this.btnCreateGroup.Name = "btnCreateGroup";
-            this.btnCreateGroup.Size = new System.Drawing.Size(126, 23);
+            this.btnCreateGroup.Size = new System.Drawing.Size(125, 25);
             this.btnCreateGroup.TabIndex = 2;
             this.btnCreateGroup.Text = "Create group";
             this.btnCreateGroup.UseVisualStyleBackColor = true;
@@ -69,11 +70,22 @@
             this.lbGroupAdmin.TabIndex = 3;
             this.lbGroupAdmin.Text = "You will be the administrator for the new group.";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(405, 103);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(125, 25);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // CreateNewGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 214);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lbGroupAdmin);
             this.Controls.Add(this.btnCreateGroup);
             this.Controls.Add(this.lblGroupName);
@@ -91,5 +103,6 @@
         private System.Windows.Forms.Label lblGroupName;
         private System.Windows.Forms.Button btnCreateGroup;
         private System.Windows.Forms.Label lbGroupAdmin;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

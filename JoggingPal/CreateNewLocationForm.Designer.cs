@@ -109,7 +109,7 @@
             // 
             this.btnCreateNewLocationOK.Location = new System.Drawing.Point(459, 51);
             this.btnCreateNewLocationOK.Name = "btnCreateNewLocationOK";
-            this.btnCreateNewLocationOK.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateNewLocationOK.Size = new System.Drawing.Size(75, 25);
             this.btnCreateNewLocationOK.TabIndex = 8;
             this.btnCreateNewLocationOK.Text = "OK";
             this.btnCreateNewLocationOK.UseVisualStyleBackColor = true;
@@ -119,10 +119,11 @@
             // 
             this.btnCreateNewLocationCancel.Location = new System.Drawing.Point(459, 120);
             this.btnCreateNewLocationCancel.Name = "btnCreateNewLocationCancel";
-            this.btnCreateNewLocationCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateNewLocationCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCreateNewLocationCancel.TabIndex = 9;
             this.btnCreateNewLocationCancel.Text = "Cancel";
             this.btnCreateNewLocationCancel.UseVisualStyleBackColor = true;
+            this.btnCreateNewLocationCancel.Click += new System.EventHandler(this.btnCreateNewLocationCancel_Click);
             // 
             // lblRouteLengthKm
             // 

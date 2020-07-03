@@ -11,21 +11,7 @@ namespace JoggingPal
     {
         public static void Main()
         {
-            //Tester.TestCreateLocation();
-            //Tester.TestCreateInPersonEvent();
-            //Tester.TestCreateVirtualEvent();
-            //Tester.TestUserCreateLocation();
-            //Tester.TestUserCreateInPersonEvent();
-            //Tester.TestUserCreateVirtualEvent();
-            //Tester.TestUserSignUpForEvent();
-            //Tester.TestUserGroupSignUpForEvent();
-            //Tester.TestCompositeUserGroup();
-            //Tester.TestEventResultsBuilder();
-            //Tester.TestParticipationState();
-
-
             Application.Run(new MainForm());
-
         }
     }
 }
