@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Results
 {
     class EventResultsDirector
     {
@@ -39,7 +35,7 @@ namespace JoggingPal
             builder.BuildAvgHeartRate(avgHeartRate);
         }
 
-       
-    
+
+
     }
 }

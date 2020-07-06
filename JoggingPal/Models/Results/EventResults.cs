@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Results
 {
     public class EventResults
     {
         public Dictionary<string, string> resultParts = new Dictionary<string, string>();
-        
+
         public void Add(string resultKey, string resultValue)
         {
             resultParts.Add(resultKey, resultValue);
         }
 
-        public String ListParts()
+        public string ListParts()
         {
-            String str = String.Join(", ", resultParts);
+            string str = string.Join(", ", resultParts);
             return "Event results: " + str + "\n";
         }
-
-
     }
 }

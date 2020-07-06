@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Events
 {
     // extend Event
     public class VirtualEvent : Event
-    { 
+    {
         public double RouteLength { get; }
 
         public VirtualEvent(string dateTimeString, double avgSpeed, string title, double length)
@@ -23,9 +19,9 @@ namespace JoggingPal
             RouteLength = length;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            return (base.ToString() + " Routelength: " + RouteLength + " km");
+            return base.ToString() + " Routelength: " + RouteLength + " km";
         }
     }
 }

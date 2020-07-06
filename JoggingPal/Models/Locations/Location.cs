@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Device.Location;
+﻿using System.Device.Location;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Locations
 {
     public class Location
     {
@@ -20,10 +15,9 @@ namespace JoggingPal
             RouteLength = length;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            return (RouteName + ", " + StartingPoint.ToString() + ", " + RouteLength + " km");
+            return RouteName + ", " + StartingPoint.ToString() + ", " + RouteLength + " km";
         }
-
     }
 }

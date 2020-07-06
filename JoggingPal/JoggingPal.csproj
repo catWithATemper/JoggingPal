@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{39C205EF-2392-4247-8108-6472C66A44CB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>JoggingPal</RootNamespace>
     <AssemblyName>JoggingPal</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -55,13 +55,13 @@
     <None Include="Class diagram.puml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowseLocations.cs">
+    <Compile Include="BrowseLocationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BrowseLocations.Designer.cs">
-      <DependentUpon>BrowseLocations.cs</DependentUpon>
+    <Compile Include="BrowseLocationsForm.Designer.cs">
+      <DependentUpon>BrowseLocationsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckedIn.cs" />
+    <Compile Include="Models\ParticipantStates\CheckedIn.cs" />
     <Compile Include="CreateNewGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,28 +74,28 @@
     <Compile Include="CreateNewLocationForm.Designer.cs">
       <DependentUpon>CreateNewLocationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="Event.cs" />
+    <Compile Include="Db\Database.cs" />
+    <Compile Include="Models\Events\Event.cs" />
     <Compile Include="EventDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EventDetailsForm.Designer.cs">
       <DependentUpon>EventDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EventResultsUploaded.cs" />
+    <Compile Include="Models\ParticipantStates\EventResultsUploaded.cs" />
     <Compile Include="CreateNewEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateNewEventForm.Designer.cs">
       <DependentUpon>CreateNewEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IEventResultsBuilder.cs" />
-    <Compile Include="EventResultsConcreteBuilder.cs" />
-    <Compile Include="EventResultsDirector.cs" />
-    <Compile Include="InPersonEvent.cs" />
-    <Compile Include="IUser.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="LocationSet.cs" />
+    <Compile Include="Models\Results\IEventResultsBuilder.cs" />
+    <Compile Include="Models\Results\EventResultsConcreteBuilder.cs" />
+    <Compile Include="Models\Results\EventResultsDirector.cs" />
+    <Compile Include="Models\Events\InPersonEvent.cs" />
+    <Compile Include="Models\Users\IUser.cs" />
+    <Compile Include="Models\Locations\Location.cs" />
+    <Compile Include="Models\ParticipantStates\LocationSet.cs" />
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,23 +108,23 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Participant.cs" />
-    <Compile Include="ParticipantState.cs" />
-    <Compile Include="ParticipationContext.cs" />
+    <Compile Include="Models\Participants\Participant.cs" />
+    <Compile Include="Models\ParticipantStates\IParticipantState.cs" />
+    <Compile Include="Models\ParticipantStates\ParticipationContext.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="EventResults.cs" />
+    <Compile Include="Models\Results\EventResults.cs" />
     <Compile Include="SeeEventResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SeeEventResultsForm.Designer.cs">
       <DependentUpon>SeeEventResultsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SignedUp.cs" />
-    <Compile Include="SignUpGroup.cs">
+    <Compile Include="Models\ParticipantStates\SignedUp.cs" />
+    <Compile Include="SignUpGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SignUpGroup.Designer.cs">
-      <DependentUpon>SignUpGroup.cs</DependentUpon>
+    <Compile Include="SignUpGroupForm.Designer.cs">
+      <DependentUpon>SignUpGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UploadEventResultsForm.cs">
       <SubType>Form</SubType>
@@ -132,9 +132,9 @@
     <Compile Include="UploadEventResultsForm.Designer.cs">
       <DependentUpon>UploadEventResultsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <Compile Include="UserGroup.cs" />
-    <Compile Include="VirtualEvent.cs" />
+    <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Models\Users\UserGroup.cs" />
+    <Compile Include="Models\Events\VirtualEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -145,8 +145,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BrowseLocations.resx">
-      <DependentUpon>BrowseLocations.cs</DependentUpon>
+    <EmbeddedResource Include="BrowseLocationsForm.resx">
+      <DependentUpon>BrowseLocationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateNewEventForm.resx">
       <DependentUpon>CreateNewEventForm.cs</DependentUpon>
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="SeeEventResultsForm.resx">
       <DependentUpon>SeeEventResultsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignUpGroup.resx">
-      <DependentUpon>SignUpGroup.cs</DependentUpon>
+    <EmbeddedResource Include="SignUpGroupForm.resx">
+      <DependentUpon>SignUpGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UploadEventResultsForm.resx">
       <DependentUpon>UploadEventResultsForm.cs</DependentUpon>

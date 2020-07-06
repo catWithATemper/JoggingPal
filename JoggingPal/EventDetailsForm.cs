@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Participants;
+using JoggingPal.Models.ParticipantStates;
+using System;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -70,15 +66,15 @@ namespace JoggingPal
 
                 string[] locationRow1 = new string[2];
                 locationRow1[0] = "Location: ";
-                locationRow1[1] = participant.JoggingLocation.RouteName;
+                locationRow1[1] = participant.RunningLocation.RouteName;
                 listEventDetails.Items.Add(new ListViewItem(locationRow1));
 
                 string[] locationRow2 = new string[2];
-                locationRow2[1] = participant.JoggingLocation.StartingPoint.ToString();
+                locationRow2[1] = participant.RunningLocation.StartingPoint.ToString();
                 listEventDetails.Items.Add(new ListViewItem(locationRow2));
 
                 string[] locationRow3 = new string[2];
-                locationRow3[1] = "Route length: " + participant.JoggingLocation.RouteLength.ToString() + " km";
+                locationRow3[1] = "Route length: " + participant.RunningLocation.RouteLength.ToString() + " km";
                 listEventDetails.Items.Add(new ListViewItem(locationRow3));
 
                 if (typeof(InPersonEvent).IsInstanceOfType(SelectedEvent))

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Forms;
+using JoggingPal.Models.Events;
+using JoggingPal.Models.Participants;
+using JoggingPal.Db;
+using JoggingPal.Models.Results;
 
 namespace JoggingPal
 {
@@ -24,12 +21,12 @@ namespace JoggingPal
 
         private void SeeEventResultsForm_Load(object sender, EventArgs e)
         {;
-            listAverageSpeedLoad();
+            listAveragePaceLoad();
             listMaxSpeedLoad();
             listAvgHeartRateLoad();
         }
 
-        private void listAverageSpeedLoad() 
+        private void listAveragePaceLoad() 
         {
             ColumnHeader columnHeader1 = new ColumnHeader();
             ColumnHeader columnHeader2 = new ColumnHeader();
@@ -38,11 +35,10 @@ namespace JoggingPal
             columnHeader2.Text = "Total time hh:mm:ss";
             columnHeader3.Text = "Average pace min/km";
 
-            listAverageSpeed.Columns.AddRange(new ColumnHeader[] { columnHeader1,
+            listAveragePace.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                                 columnHeader2,
                                                                 columnHeader3});
-
-            listAverageSpeedRefresh();
+            listAveragePaceRefresh();
         }
         private void listMaxSpeedLoad() 
         {
@@ -66,10 +62,10 @@ namespace JoggingPal
                                                                 columnHeader2 });
             listAvgHeartRateRefresh();
         }
-        private void listAverageSpeedRefresh()
+        private void listAveragePaceRefresh()
         {
-            listAverageSpeed.Items.Clear();
-            string[] averageSpeedString = new string[3];
+            listAveragePace.Items.Clear();
+            string[] averagePaceString = new string[3];
             foreach (Participant p in SelectedEvent.Participants)
             {
                 if (p.EventResults != null)
@@ -80,20 +76,20 @@ namespace JoggingPal
                         TimeSpan totalTime = TimeSpan.Parse(results.resultParts["Total time: "],
                                             CultureInfo.InvariantCulture);
 
-                        int distanceInMeters = (int)(p.JoggingLocation.RouteLength * 1000);
+                        int distanceInMeters = (int)(p.RunningLocation.RouteLength * 1000);
 
                         TimeSpan avgPace = new TimeSpan(totalTime.Ticks / distanceInMeters*1000);
                        
-                        averageSpeedString[0] = p.EventParticipant.UserName;
-                        averageSpeedString[1] = results.resultParts["Total time: "].ToString();
-                        averageSpeedString[2] = avgPace.Minutes.ToString() + ":" + avgPace.Seconds.ToString();
+                        averagePaceString[0] = p.EventParticipant.UserName;
+                        averagePaceString[1] = results.resultParts["Total time: "].ToString();
+                        averagePaceString[2] = avgPace.Minutes.ToString() + ":" + avgPace.Seconds.ToString();
 
-                        ListViewItem row = new ListViewItem(averageSpeedString);
+                        ListViewItem row = new ListViewItem(averagePaceString);
 
-                        listAverageSpeed.Items.Add(row);
+                        listAveragePace.Items.Add(row);
                     }
-                    listAverageSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    listAverageSpeed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                    listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
             }
         }

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using JoggingPal.Models.Events;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Users
 {
     public class UserGroup : IUser
     {
@@ -12,7 +9,7 @@ namespace JoggingPal
         public string GroupName { get; }
         public IList<IUser> Members { get; }
 
-        public UserGroup(User administrator, String name)
+        public UserGroup(User administrator, string name)
         {
             Admin = administrator;
             GroupName = name;
@@ -36,30 +33,20 @@ namespace JoggingPal
             return Members;
         }
 
-        public void JoinGroup(UserGroup group)
-        {
-            group.AddMember(this);
-        }
-
-        public void LeaveGroup(UserGroup group)
-        {
-            group.RemoveMember(this);
-        }
-
         public void SignUpForEvent(Event selectedEvent)
-        { 
+        {
             foreach (IUser user in Members)
             {
                 user.SignUpForEvent(selectedEvent);
             }
         }
 
-        public UserGroup CreateUserGroup(String name)
+        public UserGroup CreateUserGroup(string name)
         {
-            return new UserGroup(this.Admin, name);
+            return new UserGroup(Admin, name);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return "Group name: " + GroupName + " Admin: " + Admin.UserName + " members: "
                 + Members.Count;

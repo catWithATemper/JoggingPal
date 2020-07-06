@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Locations;
+using System;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Events
 {
     public class InPersonEvent : Event
-    
     {
         public Location RunningLocation { get; }
 
@@ -24,9 +19,9 @@ namespace JoggingPal
             RunningLocation = location;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            return (base.ToString() + " Location: " + RunningLocation.RouteName);
+            return base.ToString() + " Location: " + RunningLocation.RouteName;
         }
     }
 }

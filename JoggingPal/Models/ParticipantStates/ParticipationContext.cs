@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.ParticipantStates;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Participants
 {
     public class ParticipationContext
     {
@@ -16,7 +12,7 @@ namespace JoggingPal
 
         public Participant Participant { get; set; }
 
-        public ParticipantState CurrentState { get; set; }
+        public IParticipantState CurrentState { get; set; }
 
         public void SetLocation() => CurrentState.SetLocation(this);
 

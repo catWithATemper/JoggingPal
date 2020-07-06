@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Participants;
+using System;
 
-namespace JoggingPal
+namespace JoggingPal.Models.ParticipantStates
 {
-    class LocationSet : ParticipantState
+    class LocationSet : IParticipantState
     {
         private static readonly LocationSet instance = new LocationSet();
         private LocationSet() { }
@@ -20,7 +17,7 @@ namespace JoggingPal
 
         public void SetLocation(ParticipationContext ctx)
         {
-            ctx.CurrentState = LocationSet.Instance;
+            ctx.CurrentState = Instance;
         }
 
         public void UploadEventResults(ParticipationContext ctx) => throw new InvalidCastException();

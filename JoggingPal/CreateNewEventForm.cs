@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Locations;
+using JoggingPal.Db;
+using System;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -57,7 +53,7 @@ namespace JoggingPal
             foreach (ListViewItem item in listLocations.SelectedItems)
             {
                 locationKey = item.SubItems[0].Text;
-                selectedLocation = db.JoggingLocations[locationKey];
+                selectedLocation = db.RunningLocations[locationKey];
             }
 
             Event newEvent = new InPersonEvent(dateTime, avgSpeed, eventTitle, selectedLocation);
@@ -136,7 +132,7 @@ namespace JoggingPal
         {
             listLocations.Items.Clear();
             string[] elements = new string[4];
-            foreach (Location item in db.JoggingLocations.Values)
+            foreach (Location item in db.RunningLocations.Values)
             {
                 elements[0] = item.RouteName;
                 elements[1] = item.RouteLength.ToString();

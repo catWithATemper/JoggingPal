@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Results
 {
     class EventResultsConcreteBuilder : IEventResultsBuilder
     {
@@ -17,7 +13,7 @@ namespace JoggingPal
 
         public EventResultsConcreteBuilder()
         {
-            this.Reset();
+            Reset();
         }
 
         public void BuildTotalTime(TimeSpan totalTime)
@@ -38,7 +34,7 @@ namespace JoggingPal
         public EventResults GetResults()
         {
             EventResults results = eventResults;
-            this.Reset();
+            Reset();
             return results;
         }
     }

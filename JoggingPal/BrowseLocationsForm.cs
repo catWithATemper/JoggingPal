@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Locations;
+using JoggingPal.Models.Participants;
+using JoggingPal.Db;
+using System;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -38,9 +35,10 @@ namespace JoggingPal
                 string key = item.SubItems[0].Text;
          
                 Participant p = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
-                p.SetRunningLocation(db.JoggingLocations[key]);
+                p.SetRunningLocation(db.RunningLocations[key]);
                 MessageBox.Show("Location selected successfully");
-            }    
+            }
+            Close();
         }
 
         private void btnChooseLocationCancel_Click(object sender, EventArgs e)
@@ -74,7 +72,7 @@ namespace JoggingPal
             listLocations.Items.Clear();
 
             string[] elements = new string[3];
-            foreach (Location item in db.JoggingLocations.Values)
+            foreach (Location item in db.RunningLocations.Values)
             {
                 elements[0] = item.RouteName;
                 elements[1] = item.RouteLength.ToString() + " km";

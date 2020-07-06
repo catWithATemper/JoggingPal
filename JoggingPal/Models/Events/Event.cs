@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using JoggingPal.Models.Participants;
+using JoggingPal.Models.Users;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Events
 {
     public abstract class Event
-
     {
         public DateTime DateTime { get; }
 
@@ -18,8 +15,8 @@ namespace JoggingPal
 
         public IList<Participant> Participants { get; }
 
-        public Event(string dateTimeString, double avgSpeed, string title) :this (
-            DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture), 
+        public Event(string dateTimeString, double avgSpeed, string title) : this(
+            DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture),
             avgSpeed, title)
         {
 
@@ -43,10 +40,10 @@ namespace JoggingPal
             return null;
         }
 
-
-        public override String ToString()
+        public override string ToString()
         {
-            return " at " + DateTime.ToString() + " average speed: " + AverageSpeed + " km/h";
+            return EventTitle + "Date and time: " + DateTime.ToString() + " average speed: " 
+                + AverageSpeed + " km/h";
         }
     }
 }

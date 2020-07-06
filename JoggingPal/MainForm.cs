@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Participants;
+using JoggingPal.Models.ParticipantStates;
+using JoggingPal.Models.Users;
+using JoggingPal.Db;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -17,14 +16,13 @@ namespace JoggingPal
         public MainForm()
         {
             InitializeComponent();
-            /*
+            
             LogInForm logIn = new LogInForm();
             var result = logIn.ShowDialog();
             if (result == DialogResult.Cancel)
                 Close();
-            */
             
-            LogInForm.CurrentUser = db.Users["Tom"];
+            //LogInForm.CurrentUser = db.Users["Tom"];
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -206,6 +204,12 @@ namespace JoggingPal
             {
                 key = item.SubItems[0].Text;
                 p = db.Events[key].FindParticipant(LogInForm.CurrentUser);
+            }
+            if (p.ctx.CurrentState == CheckedIn.Instance
+                || p.ctx.CurrentState == EventResultsUploaded.Instance)
+            {
+                MessageBox.Show("You have already checked in at this event.");
+                return;
             }
             if (p.ctx.CurrentState == LocationSet.Instance)
             {

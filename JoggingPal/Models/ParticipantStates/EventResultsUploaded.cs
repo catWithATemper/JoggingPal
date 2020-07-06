@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Participants;
+using System;
 
-namespace JoggingPal
+namespace JoggingPal.Models.ParticipantStates
 {
-    class EventResultsUploaded : ParticipantState
+    class EventResultsUploaded : IParticipantState
     {
         private static readonly EventResultsUploaded instance = new EventResultsUploaded();
         private EventResultsUploaded() { }
@@ -15,7 +12,7 @@ namespace JoggingPal
 
         public void UploadEventResults(ParticipationContext ctx)
         {
-            ctx.CurrentState = EventResultsUploaded.Instance;
+            ctx.CurrentState = Instance;
         }
 
         public void CheckInAtEvent(ParticipationContext ctx) => throw new InvalidCastException();

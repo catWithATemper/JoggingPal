@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Locations;
+using JoggingPal.Models.Results;
+using JoggingPal.Models.Users;
+using System;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Participants
 {
     public class Participant
     {
         public User EventParticipant { get; }
-        public Event JoggingEvent { get; }
-        public Location JoggingLocation { get; set; }
+        public Event RunningEvent { get; }
+        public Location RunningLocation { get; set; }
 
         public ParticipationContext ctx;
         public EventResults EventResults { get; set; }
@@ -19,28 +18,28 @@ namespace JoggingPal
         public Participant(User user, Event selectedEvent)
         {
             EventParticipant = user;
-            JoggingEvent = selectedEvent;
+            RunningEvent = selectedEvent;
 
-            JoggingEvent.Participants.Add(this);
+            RunningEvent.Participants.Add(this);
 
             ctx = new ParticipationContext(this);
 
-            if (typeof(InPersonEvent).IsInstanceOfType(JoggingEvent))
+            if (typeof(InPersonEvent).IsInstanceOfType(RunningEvent))
             {
-                JoggingLocation = ((InPersonEvent)JoggingEvent).RunningLocation;
+                RunningLocation = ((InPersonEvent)RunningEvent).RunningLocation;
                 ctx.SetLocation();
             }
         }
 
         public void SetRunningLocation(Location location)
         {
-            JoggingLocation = location;
+            RunningLocation = location;
             ctx.SetLocation();
         }
 
         public void CheckInAtEvent()
         {
-            ctx.CheckInAtEvent();        
+            ctx.CheckInAtEvent();
         }
 
         public EventResults UploadEventResults(TimeSpan totalTime, double? maxSpeed, int? avgHeartRate)
@@ -67,15 +66,10 @@ namespace JoggingPal
             return EventResults;
         }
 
-        public EventResults GetEventResults()
+        public override string ToString()
         {
-            return this.EventResults;
-        }
-
-        public override String ToString()
-        {
-            return (EventParticipant.UserName + " has signed up for " + JoggingEvent.ToString()
-                + JoggingLocation.ToString());
+            return EventParticipant.UserName + " has signed up for " + RunningEvent.ToString()
+                + RunningLocation.ToString();
         }
     }
 }

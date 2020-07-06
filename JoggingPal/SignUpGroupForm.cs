@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Participants;
+using JoggingPal.Models.Users;
+using JoggingPal.Db;
+using System;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -68,7 +65,8 @@ namespace JoggingPal
                 string key = item.SubItems[0].Text;
                 selectedGroup = db.UserGroups[key];
                 foreach (User user in selectedGroup.Members)
-                    participant = new Participant(user, SelectedEvent);
+                    if (SelectedEvent.FindParticipant(user) == null)
+                        participant = new Participant(user, SelectedEvent);
             }
             Close();
         }

@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabAvgPace = new System.Windows.Forms.TabPage();
-            this.listAverageSpeed = new System.Windows.Forms.ListView();
+            this.listAveragePace = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabMaxSpeed = new System.Windows.Forms.TabPage();
             this.listMaxSpeed = new System.Windows.Forms.ListView();
@@ -57,7 +57,7 @@
             // 
             // tabAvgPace
             // 
-            this.tabAvgPace.Controls.Add(this.listAverageSpeed);
+            this.tabAvgPace.Controls.Add(this.listAveragePace);
             this.tabAvgPace.Controls.Add(this.label1);
             this.tabAvgPace.Location = new System.Drawing.Point(4, 25);
             this.tabAvgPace.Name = "tabAvgPace";
@@ -67,15 +67,15 @@
             this.tabAvgPace.Text = "Average pace";
             this.tabAvgPace.UseVisualStyleBackColor = true;
             // 
-            // listAverageSpeed
+            // listAveragePace
             // 
-            this.listAverageSpeed.HideSelection = false;
-            this.listAverageSpeed.Location = new System.Drawing.Point(13, 57);
-            this.listAverageSpeed.Name = "listAverageSpeed";
-            this.listAverageSpeed.Size = new System.Drawing.Size(626, 220);
-            this.listAverageSpeed.TabIndex = 1;
-            this.listAverageSpeed.UseCompatibleStateImageBehavior = false;
-            this.listAverageSpeed.View = System.Windows.Forms.View.Details;
+            this.listAveragePace.HideSelection = false;
+            this.listAveragePace.Location = new System.Drawing.Point(13, 57);
+            this.listAveragePace.Name = "listAveragePace";
+            this.listAveragePace.Size = new System.Drawing.Size(626, 220);
+            this.listAveragePace.TabIndex = 1;
+            this.listAveragePace.UseCompatibleStateImageBehavior = false;
+            this.listAveragePace.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -172,7 +172,7 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabAvgPace;
-        private System.Windows.Forms.ListView listAverageSpeed;
+        private System.Windows.Forms.ListView listAveragePace;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabMaxSpeed;
         private System.Windows.Forms.ListView listMaxSpeed;

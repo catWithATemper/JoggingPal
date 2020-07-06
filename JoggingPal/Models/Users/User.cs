@@ -1,11 +1,10 @@
-﻿using System;
+﻿using JoggingPal.Models.Events;
+using JoggingPal.Models.Locations;
+using JoggingPal.Models.Participants;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JoggingPal
+namespace JoggingPal.Models.Users
+
 {
     public class User : IUser
     {
@@ -17,13 +16,6 @@ namespace JoggingPal
         {
             UserName = nameString;
             Password = passwordString;
-            Members = new List<IUser>();
-        }
-
-        public User(string nameString)
-        {
-            UserName = nameString;
-            Password = "password";
             Members = new List<IUser>();
         }
 
@@ -41,20 +33,10 @@ namespace JoggingPal
         {
             return new VirtualEvent(dateTimeString, avgSpeed, eventTitle, length);
         }
-       
-        public UserGroup CreateUserGroup(String name)
+
+        public UserGroup CreateUserGroup(string name)
         {
             return new UserGroup(this, name);
-        }
-
-        public void JoinGroup(UserGroup group)
-        {
-            group.AddMember(this);
-        }
-
-        public void LeaveGroup(UserGroup group)
-        {
-            group.RemoveMember(this);
         }
 
         public void AddMember(IUser user)

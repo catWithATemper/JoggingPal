@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Locations;
+using JoggingPal.Db;
+using System;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -27,12 +22,12 @@ namespace JoggingPal
 
             if (String.IsNullOrWhiteSpace(txtRouteName.Text))
             {
-                MessageBox.Show("Please enter a name for the new jogging route.");
+                MessageBox.Show("Please enter a name for the new running location.");
                 return;
             }
-            if (db.JoggingLocations.ContainsKey(txtRouteName.Text))
+            if (db.RunningLocations.ContainsKey(txtRouteName.Text))
             {
-                MessageBox.Show("A jogging route with this name already exists. Please provide a different title.");
+                MessageBox.Show("A route with this name already exists. Please provide a different title.");
                 return;
             }
             else
@@ -62,10 +57,10 @@ namespace JoggingPal
             }
 
             if (routeLength == 0)
-                MessageBox.Show("The length of the jogging route should be greater than 0.");
+                MessageBox.Show("The length of the route should be greater than 0.");
 
             Location l = new Location(routeName, latitude, longitude, routeLength);
-            db.JoggingLocations.Add(l.RouteName, l);
+            db.RunningLocations.Add(l.RouteName, l);
             Close();
         }
 

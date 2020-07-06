@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoggingPal.Models.Participants;
+using System;
 
-namespace JoggingPal
+namespace JoggingPal.Models.ParticipantStates
 {
-    class SignedUp : ParticipantState
+    class SignedUp : IParticipantState
     {
         private static readonly SignedUp instance = new SignedUp();
         private SignedUp() { }
