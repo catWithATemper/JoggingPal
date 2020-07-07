@@ -55,8 +55,9 @@ namespace JoggingPal
                     MessageBox.Show("You have already signed up for this event.");
                     return;
                 }
-                
-                p = new Participant(LogInForm.CurrentUser, db.InPersonEvents[key]);
+
+                LogInForm.CurrentUser.SignUpForEvent(db.InPersonEvents[key]);
+                //p = new Participant(LogInForm.CurrentUser, db.InPersonEvents[key]);
                 listUpcomingEventsRefresh();
                 MessageBox.Show("You have signed up successfully");
                 return;
@@ -71,7 +72,8 @@ namespace JoggingPal
                     return;
                 }
 
-                p = new Participant(LogInForm.CurrentUser, db.VirtualEvents[key]);
+                //p = new Participant(LogInForm.CurrentUser, db.VirtualEvents[key]);
+                LogInForm.CurrentUser.SignUpForEvent(db.VirtualEvents[key]);
                 listUpcomingEventsRefresh();
                 MessageBox.Show("You have signed up successfully");
                 return;

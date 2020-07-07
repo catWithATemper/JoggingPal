@@ -58,15 +58,18 @@ namespace JoggingPal
                 MessageBox.Show("Select a group from the list.");
                 return;
             }
-            UserGroup selectedGroup;
-            Participant participant;
             foreach (ListViewItem item in listGroups.SelectedItems)
             {
                 string key = item.SubItems[0].Text;
-                selectedGroup = db.UserGroups[key];
+                UserGroup selectedGroup = db.UserGroups[key];
+
+                selectedGroup.SignUpForEvent(SelectedEvent);
+
+                /*
                 foreach (User user in selectedGroup.Members)
                     if (SelectedEvent.FindParticipant(user) == null)
-                        participant = new Participant(user, SelectedEvent);
+                        new Participant(user, SelectedEvent);
+                */
             }
             Close();
         }

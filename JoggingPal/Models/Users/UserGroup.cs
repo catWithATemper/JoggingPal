@@ -22,7 +22,6 @@ namespace JoggingPal.Models.Users
             Members.Add(user);
         }
 
-
         public void RemoveMember(IUser user)
         {
             Members.Remove(user);
@@ -36,14 +35,9 @@ namespace JoggingPal.Models.Users
         public void SignUpForEvent(Event selectedEvent)
         {
             foreach (IUser user in Members)
-            {
-                user.SignUpForEvent(selectedEvent);
-            }
-        }
-
-        public UserGroup CreateUserGroup(string name)
-        {
-            return new UserGroup(Admin, name);
+                if (typeof(User).IsInstanceOfType(user)
+                    && selectedEvent.FindParticipant((User)user) == null)
+                    user.SignUpForEvent(selectedEvent);
         }
 
         public override string ToString()

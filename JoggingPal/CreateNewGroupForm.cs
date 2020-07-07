@@ -27,7 +27,7 @@ namespace JoggingPal
                 return;
             }
 
-            UserGroup newGroup = new UserGroup(LogInForm.CurrentUser, groupName);
+            UserGroup newGroup = LogInForm.CurrentUser.CreateUserGroup(groupName);
             db.UserGroups.Add(newGroup.GroupName, newGroup);
             Close();
         }

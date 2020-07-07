@@ -5,8 +5,8 @@ namespace JoggingPal.Models.Users
     public interface IUser
     {
         void SignUpForEvent(Event selectedEvent);
-
-        UserGroup CreateUserGroup(string name);
+        
+        //UserGroup CreateUserGroup(string name);
 
         void AddMember(IUser user);
 
