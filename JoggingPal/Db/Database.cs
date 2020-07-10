@@ -18,29 +18,29 @@ namespace JoggingPal.Db
         public Dictionary<string, Location> RunningLocations { get; } = new Dictionary<string, Location>();
         public Dictionary<string, UserGroup> UserGroups { get; } = new Dictionary<string, UserGroup>();
 
-        public Dictionary<string, InPersonEvent> InPersonEvents
+        public Dictionary<string, Event> InPersonEvents
         {
             get
             {
-                Dictionary<string, InPersonEvent> inPersonEvents = new Dictionary<string, InPersonEvent>();
+                Dictionary<string, Event> inPersonEvents = new Dictionary<string, Event>();
                 foreach (Event e in Events.Values)
                 {
                     if (typeof(InPersonEvent).IsInstanceOfType(e))
-                        inPersonEvents.Add(e.EventTitle, (InPersonEvent)e);
+                        inPersonEvents.Add(e.EventTitle, e);
                 }
                 return inPersonEvents;
             }
         }
 
-        public Dictionary<string, VirtualEvent> VirtualEvents
+        public Dictionary<string, Event> VirtualEvents
         {
             get
             {
-                Dictionary<string, VirtualEvent> virtualEvents = new Dictionary<string, VirtualEvent>();
+                Dictionary<string, Event> virtualEvents = new Dictionary<string, Event>();
                 foreach (Event e in Events.Values)
                 {
                     if (typeof(VirtualEvent).IsInstanceOfType(e))
-                        virtualEvents.Add(e.EventTitle, (VirtualEvent)e);
+                        virtualEvents.Add(e.EventTitle, e);
                 }
                 return virtualEvents;
             }
@@ -96,16 +96,18 @@ namespace JoggingPal.Db
             RunningLocations.Add(route2.RouteName, route2);
             RunningLocations.Add(route3.RouteName, route3);
 
-            Event jogging1 = new InPersonEvent("01/08/2020 11:00:00 AM", 7.0,
-                                                "Jogging at Ostpark", route1);
-            Event jogging2 = new InPersonEvent("09/7/2020 05:00:00 PM", 7.0,
-                                                "After work jogging ", route1);
-            Event jogging3 = new VirtualEvent("15/7/2020 11:00:00 AM", 7.0,
-                                               "Jogging together as a virtual group", 8.0);
-            Event jogging4 = new InPersonEvent("01/06/2020 10:00:00 AM", 6.0,
-                                                "Morning jogging at Parco degli Acquedotti", route3);
-            Event jogging5 = new VirtualEvent("28/7/2020 7:00:00 PM", 7.0,
-                                   "Jogging in different places", 8.0);
+            Event jogging1 = new InPersonEvent(new DateTime(2020, 08, 01, 11, 00, 00),
+                                                7.0, "Jogging at Ostpark", route1);
+            Event jogging2 = new InPersonEvent(new DateTime(2020, 08, 09, 17, 00, 00),
+                                                7.0, "After work jogging ", route1);
+            Event jogging3 = new VirtualEvent(new DateTime(2020, 7, 15, 11, 00, 00),
+                                                7.0, "Jogging together as a virtual group", 8.0);
+            Event jogging4 = new InPersonEvent(new DateTime(2020, 06, 01, 10, 00, 00), 
+                                                6.0, "Morning jogging at Parco degli Acquedotti", route3);
+            Event jogging5 = new VirtualEvent(new DateTime(2020, 7, 28, 19, 00, 00),
+                                                7.0, "Jogging in different places", 8.0);
+            Event jogging6 = new VirtualEvent(new DateTime(2020, 9, 15, 11, 00, 00),
+                                                7.0, "Morning jogging", 8.0);
 
             Events.Add(jogging1.EventTitle, jogging1);
             Events.Add(jogging2.EventTitle, jogging2);

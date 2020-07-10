@@ -7,12 +7,6 @@ namespace JoggingPal.Models.Events
     {
         public double RouteLength { get; }
 
-        public VirtualEvent(string dateTimeString, double avgSpeed, string title, double length)
-        : base(dateTimeString, avgSpeed, title)
-        {
-            RouteLength = length;
-        }
-
         public VirtualEvent(DateTime dateTime, double avgSpeed, string title, double length)
         : base(dateTime, avgSpeed, title)
         {

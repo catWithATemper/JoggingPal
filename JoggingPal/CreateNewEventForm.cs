@@ -23,6 +23,12 @@ namespace JoggingPal
             double avgSpeed;
             string eventTitle;
 
+            if (dateTime.CompareTo(DateTime.Now) <= 0)
+            {
+                MessageBox.Show("You can only create events that take place in the future.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtAvgSpeedTab1.Text) 
                 || !double.TryParse(txtAvgSpeedTab1.Text, out avgSpeed))
             {
@@ -67,6 +73,12 @@ namespace JoggingPal
             double avgSpeed;
             string eventTitle;
             double routeLength;
+
+            if (dateTime.CompareTo(DateTime.Now) <= 0)
+            {
+                MessageBox.Show("You can only create events that take place in the future.");
+                return;
+            }
 
             if (string.IsNullOrWhiteSpace(txtAvgSpeedTab2.Text)
                 || !double.TryParse(txtAvgSpeedTab2.Text, out avgSpeed))

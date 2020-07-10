@@ -64,12 +64,6 @@ namespace JoggingPal
                 UserGroup selectedGroup = db.UserGroups[key];
 
                 selectedGroup.SignUpForEvent(SelectedEvent);
-
-                /*
-                foreach (User user in selectedGroup.Members)
-                    if (SelectedEvent.FindParticipant(user) == null)
-                        new Participant(user, SelectedEvent);
-                */
             }
             Close();
         }

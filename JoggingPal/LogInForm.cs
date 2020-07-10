@@ -31,7 +31,13 @@ namespace JoggingPal
                     MessageBox.Show("You are logged in");
                     DialogResult = DialogResult.OK;
                     Close();
-                }   
+                }
+                else
+                {
+                    MessageBox.Show("Username and password do not match.");
+                    txtUsername.Clear();
+                    txtPassword.Clear();
+                }
         }
     }
 }

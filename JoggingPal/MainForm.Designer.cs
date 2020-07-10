@@ -98,7 +98,7 @@
             // 
             this.btnChooseLocation.Location = new System.Drawing.Point(726, 112);
             this.btnChooseLocation.Name = "btnChooseLocation";
-            this.btnChooseLocation.Size = new System.Drawing.Size(150, 25);
+            this.btnChooseLocation.Size = new System.Drawing.Size(155, 25);
             this.btnChooseLocation.TabIndex = 16;
             this.btnChooseLocation.Text = "Choose location";
             this.btnChooseLocation.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             // 
             this.btnEventResults.Location = new System.Drawing.Point(726, 295);
             this.btnEventResults.Name = "btnEventResults";
-            this.btnEventResults.Size = new System.Drawing.Size(150, 25);
+            this.btnEventResults.Size = new System.Drawing.Size(155, 25);
             this.btnEventResults.TabIndex = 14;
             this.btnEventResults.Text = "See event results";
             this.btnEventResults.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             // 
             this.btnUploadEventResults.Location = new System.Drawing.Point(726, 245);
             this.btnUploadEventResults.Name = "btnUploadEventResults";
-            this.btnUploadEventResults.Size = new System.Drawing.Size(150, 25);
+            this.btnUploadEventResults.Size = new System.Drawing.Size(155, 25);
             this.btnUploadEventResults.TabIndex = 13;
             this.btnUploadEventResults.Text = "Upload your results";
             this.btnUploadEventResults.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             // 
             this.btnCheckInAtEvent.Location = new System.Drawing.Point(726, 165);
             this.btnCheckInAtEvent.Name = "btnCheckInAtEvent";
-            this.btnCheckInAtEvent.Size = new System.Drawing.Size(150, 25);
+            this.btnCheckInAtEvent.Size = new System.Drawing.Size(155, 25);
             this.btnCheckInAtEvent.TabIndex = 12;
             this.btnCheckInAtEvent.Text = "Check in at an event";
             this.btnCheckInAtEvent.UseVisualStyleBackColor = true;
@@ -157,13 +157,14 @@
             // 
             this.listPastEvents.FullRowSelect = true;
             this.listPastEvents.HideSelection = false;
-            this.listPastEvents.Location = new System.Drawing.Point(33, 245);
+            this.listPastEvents.Location = new System.Drawing.Point(30, 245);
             this.listPastEvents.MultiSelect = false;
             this.listPastEvents.Name = "listPastEvents";
             this.listPastEvents.Size = new System.Drawing.Size(660, 190);
             this.listPastEvents.TabIndex = 10;
             this.listPastEvents.UseCompatibleStateImageBehavior = false;
             this.listPastEvents.View = System.Windows.Forms.View.Details;
+            this.listPastEvents.Click += new System.EventHandler(this.listPastEvents_Click);
             // 
             // btnUserAreaLogOut
             // 
@@ -205,6 +206,7 @@
             this.listUpcomingEvents.TabIndex = 4;
             this.listUpcomingEvents.UseCompatibleStateImageBehavior = false;
             this.listUpcomingEvents.View = System.Windows.Forms.View.Details;
+            this.listUpcomingEvents.Click += new System.EventHandler(this.listUpcomingEvents_Click);
             // 
             // tabEvents
             // 
@@ -283,6 +285,7 @@
             this.listVirtualEvents.TabIndex = 1;
             this.listVirtualEvents.UseCompatibleStateImageBehavior = false;
             this.listVirtualEvents.View = System.Windows.Forms.View.Details;
+            this.listVirtualEvents.Click += new System.EventHandler(this.listVirtualEvents_Click);
             // 
             // listInPersonEvents
             // 
@@ -296,6 +299,7 @@
             this.listInPersonEvents.TabIndex = 0;
             this.listInPersonEvents.UseCompatibleStateImageBehavior = false;
             this.listInPersonEvents.View = System.Windows.Forms.View.Details;
+            this.listInPersonEvents.Click += new System.EventHandler(this.listInPersonEvents_Click);
             // 
             // tabGroups
             // 

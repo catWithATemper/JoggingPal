@@ -6,6 +6,7 @@ using JoggingPal.Db;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace JoggingPal
 {
@@ -21,8 +22,6 @@ namespace JoggingPal
             var result = logIn.ShowDialog();
             if (result == DialogResult.Cancel)
                 Close();
-            
-            //LogInForm.CurrentUser = db.Users["Tom"];
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -44,8 +43,8 @@ namespace JoggingPal
                 MessageBox.Show("Select which event you want to sign up to.");
                 return;
             }
-            
-            Participant p = null;
+
+            /*
             string key;
             foreach (ListViewItem item in listInPersonEvents.SelectedItems)
             { 
@@ -55,14 +54,21 @@ namespace JoggingPal
                     MessageBox.Show("You have already signed up for this event.");
                     return;
                 }
+                else
+                {
+                    LogInForm.CurrentUser.SignUpForEvent(db.InPersonEvents[key]);
+                    listUpcomingEventsRefresh();
+                    MessageBox.Show("You have signed up successfully");
+                    //return;
+                }
 
-                LogInForm.CurrentUser.SignUpForEvent(db.InPersonEvents[key]);
-                //p = new Participant(LogInForm.CurrentUser, db.InPersonEvents[key]);
-                listUpcomingEventsRefresh();
-                MessageBox.Show("You have signed up successfully");
-                return;
- 
             }
+            */
+            EventSignUp(listInPersonEvents.SelectedItems, db.InPersonEvents);
+
+            EventSignUp(listVirtualEvents.SelectedItems, db.VirtualEvents);
+
+            /*
             foreach (ListViewItem item in listVirtualEvents.SelectedItems)
             {
                 key = item.SubItems[0].Text;
@@ -71,12 +77,35 @@ namespace JoggingPal
                     MessageBox.Show("You have already signed up for this event.");
                     return;
                 }
+                else
+                {
+                    LogInForm.CurrentUser.SignUpForEvent(db.VirtualEvents[key]);
+                    listUpcomingEventsRefresh();
+                    MessageBox.Show("You have signed up successfully");
+                    //return;
+                }
+            }
+            */
+        }
 
-                //p = new Participant(LogInForm.CurrentUser, db.VirtualEvents[key]);
-                LogInForm.CurrentUser.SignUpForEvent(db.VirtualEvents[key]);
-                listUpcomingEventsRefresh();
-                MessageBox.Show("You have signed up successfully");
-                return;
+        private void EventSignUp(ListView.SelectedListViewItemCollection selectedItems,
+                                Dictionary<String, Event> events)
+        {
+            foreach (ListViewItem item in selectedItems)
+            {
+                String key = item.SubItems[0].Text;
+                if (events[key].FindParticipant(LogInForm.CurrentUser) != null)
+                {
+                    MessageBox.Show("You have already signed up for this event.");
+                    return;
+                }
+                else
+                {
+                    LogInForm.CurrentUser.SignUpForEvent(events[key]);
+                    listUpcomingEventsRefresh();
+                    MessageBox.Show("You have signed up successfully");
+                    //return;
+                }
             }
         }
 
@@ -512,6 +541,27 @@ namespace JoggingPal
             eventDetails.ShowDialog();
             listUpcomingEventsRefresh();
             listPastEventsRefresh();
+        }
+
+
+        private void listUpcomingEvents_Click(object sender, EventArgs e)
+        {
+            listPastEvents.SelectedItems.Clear();
+        }
+
+        private void listPastEvents_Click(object sender, EventArgs e)
+        {
+            listUpcomingEvents.SelectedItems.Clear();
+        }
+
+        private void listInPersonEvents_Click(object sender, EventArgs e)
+        {
+            listVirtualEvents.SelectedItems.Clear();
+        }
+
+        private void listVirtualEvents_Click(object sender, EventArgs e)
+        {
+            listInPersonEvents.SelectedItems.Clear();
         }
     }
 }

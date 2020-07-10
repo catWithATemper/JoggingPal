@@ -15,13 +15,6 @@ namespace JoggingPal.Models.Events
 
         public IList<Participant> Participants { get; }
 
-        public Event(string dateTimeString, double avgSpeed, string title) : this(
-            DateTime.Parse(dateTimeString, System.Globalization.CultureInfo.CurrentCulture),
-            avgSpeed, title)
-        {
-
-        }
-
         public Event(DateTime dateTime, double avgSpeed, string title)
         {
             AverageSpeed = avgSpeed;
