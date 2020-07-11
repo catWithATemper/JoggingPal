@@ -68,30 +68,34 @@ namespace JoggingPal
             string[] averagePaceString = new string[3];
             foreach (Participant p in SelectedEvent.Participants)
             {
-                if (p.EventResults != null)
+                if (p.EventResults != null &&
+                    p.EventResults.resultParts.ContainsKey("Total time: "))
                 {
                     EventResults results = p.EventResults;
-                    if (results.resultParts.ContainsKey("Total time: "))
-                    {
-                        TimeSpan totalTime = TimeSpan.Parse(results.resultParts["Total time: "],
-                                            CultureInfo.InvariantCulture);
+                    TimeSpan totalTime = TimeSpan.Parse(results.resultParts["Total time: "],
+                                        CultureInfo.InvariantCulture);
 
-                        int distanceInMeters = (int)(p.RunningLocation.RouteLength * 1000);
+                    TimeSpan avgPace = CalculateAvgPace(p.RunningLocation.RouteLength,
+                                        totalTime);
 
-                        TimeSpan avgPace = new TimeSpan(totalTime.Ticks / distanceInMeters*1000);
-                       
-                        averagePaceString[0] = p.EventParticipant.UserName;
-                        averagePaceString[1] = results.resultParts["Total time: "].ToString();
-                        averagePaceString[2] = avgPace.Minutes.ToString() + ":" + avgPace.Seconds.ToString();
+                    averagePaceString[0] = p.EventParticipant.UserName;
+                    averagePaceString[1] = results.resultParts["Total time: "].ToString();
+                    averagePaceString[2] = avgPace.Minutes.ToString() + ":" + avgPace.Seconds.ToString();
 
-                        ListViewItem row = new ListViewItem(averagePaceString);
+                    ListViewItem row = new ListViewItem(averagePaceString);
 
-                        listAveragePace.Items.Add(row);
-                    }
-                    listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                    listAveragePace.Items.Add(row);
                 }
             }
+            listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private TimeSpan CalculateAvgPace(double routeLengthInKm, TimeSpan totalTime )
+        {
+            int distanceInMeters = (int)(routeLengthInKm * 1000);
+            TimeSpan avgPace = new TimeSpan(totalTime.Ticks / distanceInMeters * 1000);
+            return avgPace;
         }
 
         private void listMaxSpeedRefresh() 

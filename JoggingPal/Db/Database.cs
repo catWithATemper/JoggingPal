@@ -106,7 +106,7 @@ namespace JoggingPal.Db
                                                 6.0, "Morning jogging at Parco degli Acquedotti", route3);
             Event jogging5 = new VirtualEvent(new DateTime(2020, 7, 28, 19, 00, 00),
                                                 7.0, "Jogging in different places", 8.0);
-            Event jogging6 = new VirtualEvent(new DateTime(2020, 9, 15, 11, 00, 00),
+            Event jogging6 = new VirtualEvent(new DateTime(2020, 5, 15, 11, 00, 00),
                                                 7.0, "Morning jogging", 8.0);
 
             Events.Add(jogging1.EventTitle, jogging1);
@@ -114,6 +114,7 @@ namespace JoggingPal.Db
             Events.Add(jogging3.EventTitle, jogging3);
             Events.Add(jogging4.EventTitle, jogging4);
             Events.Add(jogging5.EventTitle, jogging5);
+            Events.Add(jogging6.EventTitle, jogging6);
 
             Participant part1 = new Participant(user1, jogging1);
             Participant part2 = new Participant(user1, jogging3);
@@ -122,12 +123,15 @@ namespace JoggingPal.Db
             Participant part5 = new Participant(user3, jogging4);
             Participant part6 = new Participant(user4, jogging4);
             Participant part7 = new Participant(user1, jogging5);
+            Participant part8 = new Participant(user1, jogging6);
             part7.SetRunningLocation(route3);
+            part8.SetRunningLocation(route2);
 
             part3.CheckInAtEvent();
             part4.CheckInAtEvent();
             part5.CheckInAtEvent();
             part6.CheckInAtEvent();
+            part8.CheckInAtEvent();
 
             EventResults results1 = part3.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), 7.4, 166);
             EventResults results2 = part4.UploadEventResults(TimeSpan.Parse("00:31:00", CultureInfo.InvariantCulture), null, 170);

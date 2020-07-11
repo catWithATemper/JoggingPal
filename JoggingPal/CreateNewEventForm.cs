@@ -67,6 +67,7 @@ namespace JoggingPal
             Close();
         }
 
+
         private void btnCreateNewVirtualEventoOk_Click(object sender, EventArgs e)
         {
             DateTime dateTime = dateTimePicker2.Value;

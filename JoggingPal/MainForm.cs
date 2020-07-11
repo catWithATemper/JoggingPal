@@ -156,19 +156,23 @@ namespace JoggingPal
             }
             
             SignUpGroupForm signUpGroup = new SignUpGroupForm();
-            string key;
-            foreach (ListViewItem item in listInPersonEvents.SelectedItems)
-            {
-                key = item.SubItems[0].Text;
-                signUpGroup.SelectedEvent = db.InPersonEvents[key];
-            }
-            foreach (ListViewItem item in listVirtualEvents.SelectedItems)
-            {
-                key = item.SubItems[0].Text;
-                signUpGroup.SelectedEvent = db.VirtualEvents[key];
-            }
+
+            EventSignupGroup(listInPersonEvents.SelectedItems, db.InPersonEvents, signUpGroup);
+            EventSignupGroup(listVirtualEvents.SelectedItems, db.VirtualEvents, signUpGroup);
+            
             signUpGroup.ShowDialog();
             listUpcomingEventsRefresh();
+        }
+
+        private void EventSignupGroup(ListView.SelectedListViewItemCollection selectedItems,
+                                        Dictionary<String, Event> events,
+                                        SignUpGroupForm signUpGroup)
+        {
+            foreach (ListViewItem item in selectedItems)
+            {
+                string key = item.SubItems[0].Text;
+                signUpGroup.SelectedEvent = events[key];
+            }
         }
 
         private void btnCreateNewGroup_Click(object sender, EventArgs e)

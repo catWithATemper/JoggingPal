@@ -8,7 +8,6 @@ namespace JoggingPal
 {
     public partial class UploadEventResultsForm : Form
     {
-        Database db = Database.Instance();
         public UploadEventResultsForm()
         {
             InitializeComponent();
@@ -33,6 +32,7 @@ namespace JoggingPal
 
             double maxSpeedValue;
             if (!string.IsNullOrWhiteSpace(txtMaxSpeed.Text))
+            {
                 if (!double.TryParse(txtMaxSpeed.Text, out maxSpeedValue))
                 {
                     MessageBox.Show("Please enter a value for the maximum speed consisting of digits and one comma.");
@@ -40,9 +40,11 @@ namespace JoggingPal
                 }
                 else
                     maxSpeed = maxSpeedValue;
+            }
 
             int avgHeartRateValue;
             if (!string.IsNullOrWhiteSpace(txtAvgHeartRate.Text))
+            {
                 if (!int.TryParse(txtAvgHeartRate.Text, out avgHeartRateValue))
                 {
                     MessageBox.Show("Please enter a value for the average heart rate consisting of digits only.");
@@ -50,8 +52,9 @@ namespace JoggingPal
                 }
                 else
                     avgHeartRate = avgHeartRateValue;
-
+            }
             p.UploadEventResults(totalTime, maxSpeed, avgHeartRate);
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

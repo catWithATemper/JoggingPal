@@ -2,6 +2,7 @@
 using JoggingPal.Models.Participants;
 using JoggingPal.Models.ParticipantStates;
 using System;
+using System.CodeDom;
 using System.Windows.Forms;
 
 namespace JoggingPal
@@ -30,32 +31,26 @@ namespace JoggingPal
             listEventDetailsRefresh();
         }
 
+        private void AddRow(string label, string value)
+        {
+            string[] eventRow = new string[] {label, value };
+            listEventDetails.Items.Add(new ListViewItem(eventRow));
+        }
+
         private void listEventDetailsRefresh()
         {
             listEventDetails.Items.Clear();
 
-            string[] eventTypeRow = new string[2];
-            eventTypeRow[0] = "Event type: ";
+            string eventType;
             if (typeof(InPersonEvent).IsInstanceOfType(SelectedEvent))
-                eventTypeRow[1] = "In person event";
+                eventType = "In person event";
             else
-                eventTypeRow[1] = "Virtual event";
-            listEventDetails.Items.Add(new ListViewItem(eventTypeRow));
+                eventType = "Virtual event";
 
-            string[] eventDateTimeRow = new string[2];
-            eventDateTimeRow[0] = "Date and time: ";
-            eventDateTimeRow[1] = SelectedEvent.DateTime.ToString("dddd, dd MMMM yyyy HH:mm");
-            listEventDetails.Items.Add(new ListViewItem(eventDateTimeRow));
-
-            string[] eventTitleRow = new string[2];
-            eventTitleRow[0] = "Event title: ";
-            eventTitleRow[1] = SelectedEvent.EventTitle;
-            listEventDetails.Items.Add(new ListViewItem(eventTitleRow));
-
-            string[] eventAvgSpeedRow = new string[2];
-            eventAvgSpeedRow[0] = "Average speed: ";
-            eventAvgSpeedRow[1] = SelectedEvent.AverageSpeed.ToString() + " km/h";
-            listEventDetails.Items.Add(new ListViewItem(eventAvgSpeedRow));
+            AddRow("Event type: ", eventType);
+            AddRow("Date and time: ", SelectedEvent.DateTime.ToString("dddd, dd MMMM yyyy HH:mm"));
+            AddRow("Event title: ", SelectedEvent.EventTitle);
+            AddRow("Average speed: ", SelectedEvent.AverageSpeed.ToString() + " km/h");
 
             Participant participant = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
 
@@ -63,54 +58,26 @@ namespace JoggingPal
                 || participant.ctx.CurrentState == CheckedIn.Instance
                 || participant.ctx.CurrentState == EventResultsUploaded.Instance)
             {
-
-                string[] locationRow1 = new string[2];
-                locationRow1[0] = "Location: ";
-                locationRow1[1] = participant.RunningLocation.RouteName;
-                listEventDetails.Items.Add(new ListViewItem(locationRow1));
-
-                string[] locationRow2 = new string[2];
-                locationRow2[1] = participant.RunningLocation.StartingPoint.ToString();
-                listEventDetails.Items.Add(new ListViewItem(locationRow2));
-
-                string[] locationRow3 = new string[2];
-                locationRow3[1] = "Route length: " + participant.RunningLocation.RouteLength.ToString() + " km";
-                listEventDetails.Items.Add(new ListViewItem(locationRow3));
+                AddRow("Location: ", participant.RunningLocation.RouteName);
+                AddRow("", participant.RunningLocation.StartingPoint.ToString());
+                AddRow("", "Route length: " + participant.RunningLocation.RouteLength.ToString() + " km");
 
                 if (typeof(InPersonEvent).IsInstanceOfType(SelectedEvent))
                 {
-                    InPersonEvent e = (InPersonEvent)SelectedEvent;
-
-                    string[] locationRow4 = new string[2];
-                    locationRow4[1] = "Location set by event organizer";
-                    listEventDetails.Items.Add(new ListViewItem(locationRow4));
+                    AddRow("", "Location set by event organizer");
                 }
                 else
                 {
-                    VirtualEvent e = (VirtualEvent)SelectedEvent;
-
-                    string[] locationRow4 = new string[2];
-                    locationRow4[1] = "Location set by participant";
-                    listEventDetails.Items.Add(new ListViewItem(locationRow4));
+                    AddRow("", "Location set by participant");
                 }
             }
             else
             {
-                string[] locationRow1 = new string[2];
-                locationRow1[0] = "Location: ";
-                locationRow1[1] = "Location not yet set by participant";
-                listEventDetails.Items.Add(new ListViewItem(locationRow1));
+                AddRow("Location: ", "Location not yet set by participant");
             }
 
-            string[] participantStateRow = new string[2];
-            participantStateRow[0] = "Participant state: ";
-            participantStateRow[1] = participant.ctx.CurrentState.ToString();
-            listEventDetails.Items.Add(new ListViewItem(participantStateRow));
-
-            string[] numberOfParticipantsRow = new string[2];
-            numberOfParticipantsRow[0] = "No. of participants: ";
-            numberOfParticipantsRow[1] = SelectedEvent.Participants.Count.ToString();
-            listEventDetails.Items.Add(new ListViewItem(numberOfParticipantsRow));
+            AddRow("Participant state: ", participant.ctx.CurrentState.ToString());
+            AddRow("No. of participants: ", SelectedEvent.Participants.Count.ToString());
 
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
