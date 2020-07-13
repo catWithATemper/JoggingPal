@@ -18,39 +18,6 @@ namespace JoggingPal
 
         public Event SelectedEvent { get; set; }
 
-        private void SignUpGroupForm_Load(object sender, EventArgs e)
-        {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-
-            columnHeader1.Text = "Group name";
-            columnHeader2.Text = "Administrator";
-            columnHeader3.Text = "No. of members";
-
-            listGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                             columnHeader2,
-                                                             columnHeader3});
-
-            string[] groupElements = new string[3];
-
-            foreach (UserGroup group in db.UserGroups.Values)
-            {
-                if (LogInForm.CurrentUser.UserName.Equals(group.Admin.UserName))
-                {
-                    groupElements[0] = group.GroupName;
-                    groupElements[1] = group.Admin.UserName;
-                    groupElements[2] = group.Members.Count.ToString();
-
-                    ListViewItem row = new ListViewItem(groupElements);
-
-                    listGroups.Items.Add(row);
-                }
-            }
-            listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (listGroups.SelectedItems.Count == 0)
@@ -71,6 +38,38 @@ namespace JoggingPal
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void SignUpGroupForm_Load(object sender, EventArgs e)
+        {
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            ColumnHeader columnHeader2 = new ColumnHeader();
+            ColumnHeader columnHeader3 = new ColumnHeader();
+
+            columnHeader1.Text = "Group name";
+            columnHeader2.Text = "Administrator";
+            columnHeader3.Text = "No. of members";
+
+            listGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
+                                                             columnHeader2,
+                                                             columnHeader3});
+            string[] groupElements = new string[3];
+
+            foreach (UserGroup group in db.UserGroups.Values)
+            {
+                if (LogInForm.CurrentUser.UserName.Equals(group.Admin.UserName))
+                {
+                    groupElements[0] = group.GroupName;
+                    groupElements[1] = group.Admin.UserName;
+                    groupElements[2] = group.Members.Count.ToString();
+
+                    ListViewItem row = new ListViewItem(groupElements);
+
+                    listGroups.Items.Add(row);
+                }
+            }
+            listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }

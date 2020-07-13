@@ -32,88 +32,12 @@ namespace JoggingPal
             listPastEventsLoad();
             listInPersonEventsLoad();
             listVirtualEventsLoad();
-            listGroupsLoad();
+            listUserGroupsLoad();
         }
 
-        private void btnEventsSignUp_Click(object sender, EventArgs e)
-        {
-            if (listInPersonEvents.SelectedItems.Count == 0
-                && listVirtualEvents.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Select which event you want to sign up to.");
-                return;
-            }
-
-            /*
-            string key;
-            foreach (ListViewItem item in listInPersonEvents.SelectedItems)
-            { 
-                key = item.SubItems[0].Text;
-                if (db.InPersonEvents[key].FindParticipant(LogInForm.CurrentUser) != null)
-                {
-                    MessageBox.Show("You have already signed up for this event.");
-                    return;
-                }
-                else
-                {
-                    LogInForm.CurrentUser.SignUpForEvent(db.InPersonEvents[key]);
-                    listUpcomingEventsRefresh();
-                    MessageBox.Show("You have signed up successfully");
-                    //return;
-                }
-
-            }
-            */
-            EventSignUp(listInPersonEvents.SelectedItems, db.InPersonEvents);
-
-            EventSignUp(listVirtualEvents.SelectedItems, db.VirtualEvents);
-
-            /*
-            foreach (ListViewItem item in listVirtualEvents.SelectedItems)
-            {
-                key = item.SubItems[0].Text;
-                if (db.VirtualEvents[key].FindParticipant(LogInForm.CurrentUser) != null)
-                {
-                    MessageBox.Show("You have already signed up for this event.");
-                    return;
-                }
-                else
-                {
-                    LogInForm.CurrentUser.SignUpForEvent(db.VirtualEvents[key]);
-                    listUpcomingEventsRefresh();
-                    MessageBox.Show("You have signed up successfully");
-                    //return;
-                }
-            }
-            */
-        }
-
-        private void EventSignUp(ListView.SelectedListViewItemCollection selectedItems,
-                                Dictionary<String, Event> events)
-        {
-            foreach (ListViewItem item in selectedItems)
-            {
-                String key = item.SubItems[0].Text;
-                if (events[key].FindParticipant(LogInForm.CurrentUser) != null)
-                {
-                    MessageBox.Show("You have already signed up for this event.");
-                    return;
-                }
-                else
-                {
-                    LogInForm.CurrentUser.SignUpForEvent(events[key]);
-                    listUpcomingEventsRefresh();
-                    MessageBox.Show("You have signed up successfully");
-                    //return;
-                }
-            }
-        }
-
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+        //
+        //Tab 1: User area
+        //
         private void btnChooseLocation_Click(object sender, EventArgs e)
         {
             if (listUpcomingEvents.SelectedItems.Count == 0)
@@ -124,7 +48,7 @@ namespace JoggingPal
             BrowseLocationsForm browseLocations = new BrowseLocationsForm();
 
             foreach (ListViewItem item in listUpcomingEvents.SelectedItems)
-            {   
+            {
                 string key = item.SubItems[0].Text;
                 if (!typeof(VirtualEvent).IsInstanceOfType(db.Events[key]))
                 {
@@ -136,94 +60,6 @@ namespace JoggingPal
             }
             browseLocations.ShowDialog();
             listUpcomingEventsRefresh();
-        }
-
-        private void btnCreateNewEvent_Click(object sender, EventArgs e)
-        {
-            CreateNewEventForm createNewEvent = new CreateNewEventForm();
-            createNewEvent.ShowDialog();
-            listInPersonEventsRefresh();
-            listVirtualEventsRefresh();
-        }
-
-        private void btnSignUpGroup_Click(object sender, EventArgs e)
-        {
-            if (listInPersonEvents.SelectedItems.Count == 0
-                && listVirtualEvents.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Select which event you want the group to be signed up to.");
-                return;
-            }
-            
-            SignUpGroupForm signUpGroup = new SignUpGroupForm();
-
-            EventSignupGroup(listInPersonEvents.SelectedItems, db.InPersonEvents, signUpGroup);
-            EventSignupGroup(listVirtualEvents.SelectedItems, db.VirtualEvents, signUpGroup);
-            
-            signUpGroup.ShowDialog();
-            listUpcomingEventsRefresh();
-        }
-
-        private void EventSignupGroup(ListView.SelectedListViewItemCollection selectedItems,
-                                        Dictionary<String, Event> events,
-                                        SignUpGroupForm signUpGroup)
-        {
-            foreach (ListViewItem item in selectedItems)
-            {
-                string key = item.SubItems[0].Text;
-                signUpGroup.SelectedEvent = events[key];
-            }
-        }
-
-        private void btnCreateNewGroup_Click(object sender, EventArgs e)
-        {
-            CreateNewGroupForm createNewGroup = new CreateNewGroupForm();
-            createNewGroup.ShowDialog();
-            listUserGroupsRefresh();
-        }
-
-        private void btnJoinGroup_Click(object sender, EventArgs e)
-        {
-            if (listGroups.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Select which group you would like to join.");
-                return;
-            }
-            foreach (ListViewItem item in listGroups.SelectedItems)
-            {
-                string key = item.SubItems[0].Text;
-                if (db.UserGroups[key].GetMembers().Contains(LogInForm.CurrentUser))
-                {
-                    MessageBox.Show("You have already joined this group.");
-                    return;
-                }
-                db.UserGroups[key].AddMember(LogInForm.CurrentUser);
-                listUserGroupsRefresh();
-            }
-        }
-
-        private void btnLeaveGroup_Click(object sender, EventArgs e)
-        {
-            if (listGroups.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Select which group you would like to leave.");
-                return;
-            }
-            foreach (ListViewItem item in listGroups.SelectedItems)
-            {
-                string key = item.SubItems[0].Text;
-                if (LogInForm.CurrentUser.UserName == db.UserGroups[key].Admin.UserName)
-                {
-                    MessageBox.Show("You cannot leave this group since you are its administrator.");
-                    return;
-                }
-                if (!db.UserGroups[key].GetMembers().Contains(LogInForm.CurrentUser))
-                {
-                    MessageBox.Show("You have not joined this group yet.");
-                }
-                db.UserGroups[key].RemoveMember(LogInForm.CurrentUser);
-                listUserGroupsRefresh();
-            }
         }
 
         private void btnCheckInAtEvent_Click(object sender, EventArgs e)
@@ -285,7 +121,7 @@ namespace JoggingPal
             }
         }
 
-        private void btnEventResults_Click(object sender, EventArgs e)
+        private void btnSeeEventResults_Click(object sender, EventArgs e)
         {
             if (listPastEvents.SelectedItems.Count == 0)
             {
@@ -299,6 +135,38 @@ namespace JoggingPal
                 seeEventResults.SelectedEvent = db.PastEvents[key];
             }
             seeEventResults.ShowDialog();
+        }
+
+        private void btnEventDetails_Click(object sender, EventArgs e)
+        {
+            if (listUpcomingEvents.SelectedItems.Count == 0
+                && listPastEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select an event to view the details.");
+                return;
+            }
+
+            EventDetailsForm eventDetails = new EventDetailsForm();
+            string key;
+
+            foreach (ListViewItem item in listUpcomingEvents.SelectedItems)
+            {
+                key = item.SubItems[0].Text;
+                eventDetails.SelectedEvent = db.Events[key];
+            }
+            foreach (ListViewItem item in listPastEvents.SelectedItems)
+            {
+                key = item.SubItems[0].Text;
+                eventDetails.SelectedEvent = db.Events[key];
+            }
+            eventDetails.ShowDialog();
+            listUpcomingEventsRefresh();
+            listPastEventsRefresh();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void listUpcomingEventsLoad()
@@ -339,6 +207,142 @@ namespace JoggingPal
             listPastEventsRefresh();
         }
 
+        private void listUpcomingEventsRefresh()
+        {
+            listUpcomingEvents.Items.Clear();
+            string[] upcomingEventElements = new string[4];
+
+            foreach (Event userEvent in db.UpcomingEvents.Values)
+            {
+                Participant p = userEvent.FindParticipant(LogInForm.CurrentUser);
+                if (p != null)
+                {
+                    String eventType = typeof(InPersonEvent).IsInstanceOfType(userEvent) ?
+                                        "In person" : "Virtual";
+
+                    upcomingEventElements[0] = userEvent.EventTitle;
+                    upcomingEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
+                    upcomingEventElements[2] = eventType;
+                    upcomingEventElements[3] = p.ctx.CurrentState.ToString();
+
+                    ListViewItem row = new ListViewItem(upcomingEventElements);
+
+                    listUpcomingEvents.Items.Add(row);
+                }
+
+            }
+            listUpcomingEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listUpcomingEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void listPastEventsRefresh()
+        {
+            listPastEvents.Items.Clear();
+            string[] pastEventElements = new string[4];
+            foreach (Event userEvent in db.PastEvents.Values)
+            {
+                Participant p = userEvent.FindParticipant(LogInForm.CurrentUser);
+                if (p != null)
+                {
+                    String eventType = typeof(InPersonEvent).IsInstanceOfType(userEvent) ?
+                                        "In person" : "Virtual";
+
+                    pastEventElements[0] = userEvent.EventTitle;
+                    pastEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
+                    pastEventElements[2] = eventType;
+                    pastEventElements[3] = p.ctx.CurrentState.ToString();
+
+                    ListViewItem row = new ListViewItem(pastEventElements);
+
+                    listPastEvents.Items.Add(row);
+                }
+            }
+            listPastEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listPastEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void listUpcomingEvents_Click(object sender, EventArgs e)
+        {
+            listPastEvents.SelectedItems.Clear();
+        }
+
+        private void listPastEvents_Click(object sender, EventArgs e)
+        {
+            listUpcomingEvents.SelectedItems.Clear();
+        }
+
+        //
+        //Tab 2: Find events
+        //
+        private void btnSignUpForEvent_Click(object sender, EventArgs e)
+        {
+            if (listInPersonEvents.SelectedItems.Count == 0
+                && listVirtualEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which event you want to sign up to.");
+                return;
+            }
+            SignUpForEvent(listInPersonEvents.SelectedItems, db.InPersonEvents);
+            SignUpForEvent(listVirtualEvents.SelectedItems, db.VirtualEvents);
+        }
+
+        private void SignUpForEvent(ListView.SelectedListViewItemCollection selectedItems,
+                                Dictionary<String, Event> events)
+        {
+            foreach (ListViewItem item in selectedItems)
+            {
+                String key = item.SubItems[0].Text;
+                if (events[key].FindParticipant(LogInForm.CurrentUser) != null)
+                {
+                    MessageBox.Show("You have already signed up for this event.");
+                    return;
+                }
+                else
+                {
+                    LogInForm.CurrentUser.SignUpForEvent(events[key]);
+                    listUpcomingEventsRefresh();
+                    MessageBox.Show("You have signed up successfully");
+                }
+            }
+        }
+
+        private void btnSignUpGroup_Click(object sender, EventArgs e)
+        {
+            if (listInPersonEvents.SelectedItems.Count == 0
+                && listVirtualEvents.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which event you want the group to be signed up to.");
+                return;
+            }
+            
+            SignUpGroupForm signUpGroup = new SignUpGroupForm();
+
+            SignUpGroupForEvent(listInPersonEvents.SelectedItems, db.InPersonEvents, signUpGroup);
+            SignUpGroupForEvent(listVirtualEvents.SelectedItems, db.VirtualEvents, signUpGroup);
+            
+            signUpGroup.ShowDialog();
+            listUpcomingEventsRefresh();
+        }
+
+        private void SignUpGroupForEvent(ListView.SelectedListViewItemCollection selectedItems,
+                                        Dictionary<String, Event> events,
+                                        SignUpGroupForm signUpGroup)
+        {
+            foreach (ListViewItem item in selectedItems)
+            {
+                string key = item.SubItems[0].Text;
+                signUpGroup.SelectedEvent = events[key];
+            }
+        }
+
+        private void btnCreateNewEvent_Click(object sender, EventArgs e)
+        {
+            CreateNewEventForm createNewEvent = new CreateNewEventForm();
+            createNewEvent.ShowDialog();
+            listInPersonEventsRefresh();
+            listVirtualEventsRefresh();
+        }
+
         private void listInPersonEventsLoad()
         {
             ColumnHeader columnHeader1 = new ColumnHeader();
@@ -372,82 +376,9 @@ namespace JoggingPal
 
             listVirtualEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                                     columnHeader2,
-                                                                    columnHeader3, 
+                                                                    columnHeader3,
                                                                     columnHeader4});
             listVirtualEventsRefresh();
-        }
-
-        private void listGroupsLoad()
-        {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            ColumnHeader columnHeader4 = new ColumnHeader();
-
-            columnHeader1.Text = "Group name";
-            columnHeader2.Text = "Administrator";
-            columnHeader3.Text = "No. of members";
-            columnHeader4.Text = "Joined";
-
-            listGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                            columnHeader2,
-                                                            columnHeader3,
-                                                            columnHeader4});
-            listUserGroupsRefresh();
-        }
-
-        private void listUpcomingEventsRefresh()
-        {
-            listUpcomingEvents.Items.Clear();
-            string[] upcomingEventElements = new string[4];
-
-            foreach (Event userEvent in db.UpcomingEvents.Values)
-            {
-                Participant p = userEvent.FindParticipant(LogInForm.CurrentUser);
-                if (p != null)
-                {
-                    String eventType = typeof(InPersonEvent).IsInstanceOfType(userEvent) ?
-                                        "In person" : "Virtual";
-
-                    upcomingEventElements[0] = userEvent.EventTitle;
-                    upcomingEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
-                    upcomingEventElements[2] = eventType;
-                    upcomingEventElements[3] = p.ctx.CurrentState.ToString();
-
-                    ListViewItem row = new ListViewItem(upcomingEventElements);
-
-                    listUpcomingEvents.Items.Add(row);
-                }
-                    
-            }
-            listUpcomingEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listUpcomingEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
-        private void listPastEventsRefresh()
-        {
-            listPastEvents.Items.Clear();
-            string[] pastEventElements = new string[4];
-            foreach (Event userEvent in db.PastEvents.Values)
-            {
-                Participant p = userEvent.FindParticipant(LogInForm.CurrentUser);
-                if (p != null)
-                {
-                    String eventType = typeof(InPersonEvent).IsInstanceOfType(userEvent) ?
-                                        "In person" : "Virtual";
-
-                    pastEventElements[0] = userEvent.EventTitle;
-                    pastEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
-                    pastEventElements[2] = eventType;
-                    pastEventElements[3] = p.ctx.CurrentState.ToString();
-
-                    ListViewItem row = new ListViewItem(pastEventElements);
-
-                    listPastEvents.Items.Add(row);
-                }
-            }
-            listPastEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listPastEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void listInPersonEventsRefresh()
@@ -496,9 +427,92 @@ namespace JoggingPal
             listVirtualEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        private void listInPersonEvents_Click(object sender, EventArgs e)
+        {
+            listVirtualEvents.SelectedItems.Clear();
+        }
+
+        private void listVirtualEvents_Click(object sender, EventArgs e)
+        {
+            listInPersonEvents.SelectedItems.Clear();
+        }
+
+        //
+        //Tab 3: Find groups
+        //
+        private void btnCreateNewGroup_Click(object sender, EventArgs e)
+        {
+            CreateNewGroupForm createNewGroup = new CreateNewGroupForm();
+            createNewGroup.ShowDialog();
+            listUserGroupsRefresh();
+        }
+
+        private void btnJoinGroup_Click(object sender, EventArgs e)
+        {
+            if (listUserGroups.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which group you would like to join.");
+                return;
+            }
+            foreach (ListViewItem item in listUserGroups.SelectedItems)
+            {
+                string key = item.SubItems[0].Text;
+                if (db.UserGroups[key].GetMembers().Contains(LogInForm.CurrentUser))
+                {
+                    MessageBox.Show("You have already joined this group.");
+                    return;
+                }
+                db.UserGroups[key].AddMember(LogInForm.CurrentUser);
+                listUserGroupsRefresh();
+            }
+        }
+
+        private void btnLeaveGroup_Click(object sender, EventArgs e)
+        {
+            if (listUserGroups.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select which group you would like to leave.");
+                return;
+            }
+            foreach (ListViewItem item in listUserGroups.SelectedItems)
+            {
+                string key = item.SubItems[0].Text;
+                if (LogInForm.CurrentUser.UserName == db.UserGroups[key].Admin.UserName)
+                {
+                    MessageBox.Show("You cannot leave this group since you are its administrator.");
+                    return;
+                }
+                if (!db.UserGroups[key].GetMembers().Contains(LogInForm.CurrentUser))
+                {
+                    MessageBox.Show("You have not joined this group yet.");
+                }
+                db.UserGroups[key].RemoveMember(LogInForm.CurrentUser);
+                listUserGroupsRefresh();
+            }
+        }
+
+        private void listUserGroupsLoad()
+        {
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            ColumnHeader columnHeader2 = new ColumnHeader();
+            ColumnHeader columnHeader3 = new ColumnHeader();
+            ColumnHeader columnHeader4 = new ColumnHeader();
+
+            columnHeader1.Text = "Group name";
+            columnHeader2.Text = "Administrator";
+            columnHeader3.Text = "No. of members";
+            columnHeader4.Text = "Joined";
+
+            listUserGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
+                                                            columnHeader2,
+                                                            columnHeader3,
+                                                            columnHeader4});
+            listUserGroupsRefresh();
+        }
+
         private void listUserGroupsRefresh()
         {
-            listGroups.Items.Clear();
+            listUserGroups.Items.Clear();
             string[] groupElements = new string[4];
 
             foreach (UserGroup group in db.UserGroups.Values)
@@ -514,58 +528,10 @@ namespace JoggingPal
 
                 ListViewItem row = new ListViewItem(groupElements);
 
-                listGroups.Items.Add(row);
+                listUserGroups.Items.Add(row);
             }
-            listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
-        private void btnEventDetails_Click(object sender, EventArgs e)
-        {
-            if (listUpcomingEvents.SelectedItems.Count == 0
-                && listPastEvents.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Select an event to view the details.");
-                return;
-            }
-
-            EventDetailsForm eventDetails = new EventDetailsForm();
-            string key;
-
-            foreach (ListViewItem item in listUpcomingEvents.SelectedItems)
-            {
-                key = item.SubItems[0].Text;
-                eventDetails.SelectedEvent = db.Events[key];
-            }
-            foreach (ListViewItem item in listPastEvents.SelectedItems)
-            {
-                key = item.SubItems[0].Text;
-                eventDetails.SelectedEvent = db.Events[key];
-            }
-            eventDetails.ShowDialog();
-            listUpcomingEventsRefresh();
-            listPastEventsRefresh();
-        }
-
-
-        private void listUpcomingEvents_Click(object sender, EventArgs e)
-        {
-            listPastEvents.SelectedItems.Clear();
-        }
-
-        private void listPastEvents_Click(object sender, EventArgs e)
-        {
-            listUpcomingEvents.SelectedItems.Clear();
-        }
-
-        private void listInPersonEvents_Click(object sender, EventArgs e)
-        {
-            listVirtualEvents.SelectedItems.Clear();
-        }
-
-        private void listVirtualEvents_Click(object sender, EventArgs e)
-        {
-            listInPersonEvents.SelectedItems.Clear();
+            listUserGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listUserGroups.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }

@@ -32,7 +32,7 @@
             this.tabUserArea = new System.Windows.Forms.TabPage();
             this.btnChooseLocation = new System.Windows.Forms.Button();
             this.btnEventDetails = new System.Windows.Forms.Button();
-            this.btnEventResults = new System.Windows.Forms.Button();
+            this.btnSeeEventResults = new System.Windows.Forms.Button();
             this.btnUploadEventResults = new System.Windows.Forms.Button();
             this.btnCheckInAtEvent = new System.Windows.Forms.Button();
             this.lblPastEvents = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.btnLeaveGroup = new System.Windows.Forms.Button();
             this.btnJoinGroup = new System.Windows.Forms.Button();
             this.lblGroups = new System.Windows.Forms.Label();
-            this.listGroups = new System.Windows.Forms.ListView();
+            this.listUserGroups = new System.Windows.Forms.ListView();
             this.tabControl1.SuspendLayout();
             this.tabUserArea.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -77,7 +77,7 @@
             // 
             this.tabUserArea.Controls.Add(this.btnChooseLocation);
             this.tabUserArea.Controls.Add(this.btnEventDetails);
-            this.tabUserArea.Controls.Add(this.btnEventResults);
+            this.tabUserArea.Controls.Add(this.btnSeeEventResults);
             this.tabUserArea.Controls.Add(this.btnUploadEventResults);
             this.tabUserArea.Controls.Add(this.btnCheckInAtEvent);
             this.tabUserArea.Controls.Add(this.lblPastEvents);
@@ -114,15 +114,15 @@
             this.btnEventDetails.UseVisualStyleBackColor = true;
             this.btnEventDetails.Click += new System.EventHandler(this.btnEventDetails_Click);
             // 
-            // btnEventResults
+            // btnSeeEventResults
             // 
-            this.btnEventResults.Location = new System.Drawing.Point(726, 295);
-            this.btnEventResults.Name = "btnEventResults";
-            this.btnEventResults.Size = new System.Drawing.Size(155, 25);
-            this.btnEventResults.TabIndex = 14;
-            this.btnEventResults.Text = "See event results";
-            this.btnEventResults.UseVisualStyleBackColor = true;
-            this.btnEventResults.Click += new System.EventHandler(this.btnEventResults_Click);
+            this.btnSeeEventResults.Location = new System.Drawing.Point(726, 295);
+            this.btnSeeEventResults.Name = "btnSeeEventResults";
+            this.btnSeeEventResults.Size = new System.Drawing.Size(155, 25);
+            this.btnSeeEventResults.TabIndex = 14;
+            this.btnSeeEventResults.Text = "See event results";
+            this.btnSeeEventResults.UseVisualStyleBackColor = true;
+            this.btnSeeEventResults.Click += new System.EventHandler(this.btnSeeEventResults_Click);
             // 
             // btnUploadEventResults
             // 
@@ -271,7 +271,7 @@
             this.btnEventsSignUp.TabIndex = 2;
             this.btnEventsSignUp.Text = "Sign Up";
             this.btnEventsSignUp.UseVisualStyleBackColor = true;
-            this.btnEventsSignUp.Click += new System.EventHandler(this.btnEventsSignUp_Click);
+            this.btnEventsSignUp.Click += new System.EventHandler(this.btnSignUpForEvent_Click);
             // 
             // listVirtualEvents
             // 
@@ -307,7 +307,7 @@
             this.tabGroups.Controls.Add(this.btnLeaveGroup);
             this.tabGroups.Controls.Add(this.btnJoinGroup);
             this.tabGroups.Controls.Add(this.lblGroups);
-            this.tabGroups.Controls.Add(this.listGroups);
+            this.tabGroups.Controls.Add(this.listUserGroups);
             this.tabGroups.Location = new System.Drawing.Point(4, 25);
             this.tabGroups.Name = "tabGroups";
             this.tabGroups.Padding = new System.Windows.Forms.Padding(3);
@@ -355,17 +355,17 @@
             this.lblGroups.TabIndex = 1;
             this.lblGroups.Text = "User groups";
             // 
-            // listGroups
+            // listUserGroups
             // 
-            this.listGroups.FullRowSelect = true;
-            this.listGroups.HideSelection = false;
-            this.listGroups.Location = new System.Drawing.Point(35, 48);
-            this.listGroups.MultiSelect = false;
-            this.listGroups.Name = "listGroups";
-            this.listGroups.Size = new System.Drawing.Size(493, 243);
-            this.listGroups.TabIndex = 0;
-            this.listGroups.UseCompatibleStateImageBehavior = false;
-            this.listGroups.View = System.Windows.Forms.View.Details;
+            this.listUserGroups.FullRowSelect = true;
+            this.listUserGroups.HideSelection = false;
+            this.listUserGroups.Location = new System.Drawing.Point(35, 48);
+            this.listUserGroups.MultiSelect = false;
+            this.listUserGroups.Name = "listUserGroups";
+            this.listUserGroups.Size = new System.Drawing.Size(493, 243);
+            this.listUserGroups.TabIndex = 0;
+            this.listUserGroups.UseCompatibleStateImageBehavior = false;
+            this.listUserGroups.View = System.Windows.Forms.View.Details;
             // 
             // MainForm
             // 
@@ -401,7 +401,7 @@
         private System.Windows.Forms.ListView listUpcomingEvents;
         private System.Windows.Forms.Label lblGreeting;
         private System.Windows.Forms.Button btnUserAreaLogOut;
-        private System.Windows.Forms.ListView listGroups;
+        private System.Windows.Forms.ListView listUserGroups;
         private System.Windows.Forms.Label lblGroups;
         private System.Windows.Forms.Button btnSignUpGroup;
         private System.Windows.Forms.Button btnCreateNewGroup;
@@ -411,7 +411,7 @@
         private System.Windows.Forms.ListView listPastEvents;
         private System.Windows.Forms.Button btnUploadEventResults;
         private System.Windows.Forms.Button btnCheckInAtEvent;
-        private System.Windows.Forms.Button btnEventResults;
+        private System.Windows.Forms.Button btnSeeEventResults;
         private System.Windows.Forms.Button btnEventDetails;
         private System.Windows.Forms.Button btnChooseLocation;
         private System.Windows.Forms.Button btnCreateNewEvent;

@@ -23,9 +23,5 @@ namespace JoggingPal.Models.ParticipantStates
         {
             return "Signed up";
         }
-
-
-
-
     }
 }

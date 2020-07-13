@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -72,7 +73,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtUsername
             // 
@@ -89,11 +90,22 @@
             this.txtPassword.Size = new System.Drawing.Size(107, 22);
             this.txtPassword.TabIndex = 5;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(434, -1);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(75, 23);
+            this.btnHelp.TabIndex = 6;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // LogInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 290);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.button2);
@@ -116,6 +128,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnHelp;
     }
 
 }

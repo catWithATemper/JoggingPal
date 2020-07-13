@@ -15,12 +15,6 @@ namespace JoggingPal
             InitializeComponent();
         }
             
-        private void button2_Click(object sender, EventArgs e)
-        {
-            txtUsername.Clear();
-            txtPassword.Clear();
-        }
-
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
@@ -38,6 +32,17 @@ namespace JoggingPal
                     txtUsername.Clear();
                     txtPassword.Clear();
                 }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtUsername.Clear();
+            txtPassword.Clear();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Username: Tom \n Password: password");
         }
     }
 }

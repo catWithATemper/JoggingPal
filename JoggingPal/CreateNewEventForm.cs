@@ -14,6 +14,14 @@ namespace JoggingPal
             InitializeComponent();
         }
 
+        //
+        // Tab 1: Create in-person-event
+        //
+        private void CreateNewEventForm_Load(object sender, EventArgs e)
+        {
+            listLocationsLoad();
+        }
+
         private void btnCreateNewInPersonEventOK_Click(object sender, EventArgs e)
         {
             Location selectedLocation = null;
@@ -67,7 +75,52 @@ namespace JoggingPal
             Close();
         }
 
+        private void btnCreateNewLocation_Click(object sender, EventArgs e)
+        {
+            CreateNewLocationForm createNewLocation = new CreateNewLocationForm();
+            createNewLocation.ShowDialog();
+            listLocations.Items.Clear();
+            ListLocationsRefresh();
+        }
 
+        private void btnCancelTab1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void listLocationsLoad()
+        {
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            ColumnHeader columnHeader2 = new ColumnHeader();
+            ColumnHeader columnHeader3 = new ColumnHeader();
+            columnHeader1.Text = "Route name";
+            columnHeader2.Text = "Length in km";
+            columnHeader3.Text = "Starting point";
+            this.listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1,
+                                                                    columnHeader2,
+                                                                    columnHeader3});
+            ListLocationsRefresh();
+        }
+
+        private void ListLocationsRefresh()
+        {
+            listLocations.Items.Clear();
+            string[] elements = new string[4];
+            foreach (Location item in db.RunningLocations.Values)
+            {
+                elements[0] = item.RouteName;
+                elements[1] = item.RouteLength.ToString();
+                elements[2] = item.StartingPoint.ToString();
+                ListViewItem row = new ListViewItem(elements);
+                listLocations.Items.Add(row);
+            }
+            listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        //
+        // Tab 2: Create virtual event
+        //
         private void btnCreateNewVirtualEventoOk_Click(object sender, EventArgs e)
         {
             DateTime dateTime = dateTimePicker2.Value;
@@ -111,54 +164,6 @@ namespace JoggingPal
             Event newEvent = new VirtualEvent(dateTime, avgSpeed, eventTitle, routeLength);
             db.Events.Add(newEvent.EventTitle, newEvent);
 
-            Close();
-        }
-
-        private void CreateNewEventForm_Load(object sender, EventArgs e)
-        {
-            listLocationsLoad();
-        }
-
-        private void btnCreateNewLocation_Click(object sender, EventArgs e)
-        {
-            CreateNewLocationForm createNewLocation = new CreateNewLocationForm();
-            createNewLocation.ShowDialog();
-            listLocations.Items.Clear();
-            ListLocationsRefresh();
-        }
-
-       private void listLocationsLoad()
-       {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            columnHeader1.Text = "Route name";
-            columnHeader2.Text = "Length in km";
-            columnHeader3.Text = "Starting point";
-            this.listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                    columnHeader2,
-                                                                    columnHeader3});
-            ListLocationsRefresh();
-        }
-        
-        private void ListLocationsRefresh()
-        {
-            listLocations.Items.Clear();
-            string[] elements = new string[4];
-            foreach (Location item in db.RunningLocations.Values)
-            {
-                elements[0] = item.RouteName;
-                elements[1] = item.RouteLength.ToString();
-                elements[2] = item.StartingPoint.ToString();
-                ListViewItem row = new ListViewItem(elements);
-                listLocations.Items.Add(row);
-            }
-            listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listLocations.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
-        private void btnCancelTab1_Click(object sender, EventArgs e)
-        {
             Close();
         }
 

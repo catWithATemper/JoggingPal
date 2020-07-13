@@ -1,6 +1,5 @@
 ﻿using JoggingPal.Models.Events;
 using JoggingPal.Models.Participants;
-using JoggingPal.Db;
 using System;
 using System.Windows.Forms;
 

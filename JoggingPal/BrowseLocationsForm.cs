@@ -41,16 +41,16 @@ namespace JoggingPal
             Close();
         }
 
-        private void btnChooseLocationCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnCreateNewLocation_Click(object sender, EventArgs e)
         {
             CreateNewLocationForm createNewLocation = new CreateNewLocationForm();
             createNewLocation.ShowDialog();
             listLocationsRefresh();
+        }
+
+        private void btnChooseLocationCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void listLocationsLoad()

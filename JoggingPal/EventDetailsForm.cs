@@ -27,14 +27,7 @@ namespace JoggingPal
 
             listEventDetails.Columns.AddRange(new ColumnHeader[] { columnHeader1,
                                                                     columnHeader2 });
-            
             listEventDetailsRefresh();
-        }
-
-        private void AddRow(string label, string value)
-        {
-            string[] eventRow = new string[] {label, value };
-            listEventDetails.Items.Add(new ListViewItem(eventRow));
         }
 
         private void listEventDetailsRefresh()
@@ -81,6 +74,12 @@ namespace JoggingPal
 
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void AddRow(string label, string value)
+        {
+            string[] eventRow = new string[] { label, value };
+            listEventDetails.Items.Add(new ListViewItem(eventRow));
         }
     }
 }

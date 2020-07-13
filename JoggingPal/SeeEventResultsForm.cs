@@ -20,7 +20,7 @@ namespace JoggingPal
         public Event SelectedEvent { get; set; }
 
         private void SeeEventResultsForm_Load(object sender, EventArgs e)
-        {;
+        {
             listAveragePaceLoad();
             listMaxSpeedLoad();
             listAvgHeartRateLoad();
@@ -40,6 +40,7 @@ namespace JoggingPal
                                                                 columnHeader3});
             listAveragePaceRefresh();
         }
+
         private void listMaxSpeedLoad() 
         {
             ColumnHeader columnHeader1 = new ColumnHeader();
@@ -51,6 +52,7 @@ namespace JoggingPal
                                                                 columnHeader2 });
             listMaxSpeedRefresh();
         }
+
         private void listAvgHeartRateLoad() 
         {
             ColumnHeader columnHeader1 = new ColumnHeader();
@@ -91,12 +93,6 @@ namespace JoggingPal
             listAveragePace.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private TimeSpan CalculateAvgPace(double routeLengthInKm, TimeSpan totalTime )
-        {
-            int distanceInMeters = (int)(routeLengthInKm * 1000);
-            TimeSpan avgPace = new TimeSpan(totalTime.Ticks / distanceInMeters * 1000);
-            return avgPace;
-        }
 
         private void listMaxSpeedRefresh() 
         {
@@ -144,6 +140,13 @@ namespace JoggingPal
                     listAvgHeartRate.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
             }
+        }
+
+        private TimeSpan CalculateAvgPace(double routeLengthInKm, TimeSpan totalTime)
+        {
+            int distanceInMeters = (int)(routeLengthInKm * 1000);
+            TimeSpan avgPace = new TimeSpan(totalTime.Ticks / distanceInMeters * 1000);
+            return avgPace;
         }
     }
 }
