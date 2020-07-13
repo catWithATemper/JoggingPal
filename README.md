@@ -16,3 +16,7 @@ This project consists in the development of a Windows application aimed at runne
  a whole by the group administrator. Users can join or leave a group at any time. As a future 
  development, the application will allow the creation of multi-level user groups, so that user groups 
  can join other groups.
+
+Log in:
+Username: "Tom"
+Password: °Password°
