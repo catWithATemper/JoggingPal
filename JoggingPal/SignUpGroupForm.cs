@@ -1,5 +1,4 @@
 ﻿using JoggingPal.Models.Events;
-using JoggingPal.Models.Participants;
 using JoggingPal.Models.Users;
 using JoggingPal.Db;
 using System;

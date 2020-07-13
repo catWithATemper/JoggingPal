@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Windows.Forms;
 using JoggingPal.Models.Events;
 using JoggingPal.Models.Participants;
-using JoggingPal.Db;
 using JoggingPal.Models.Results;
 
 namespace JoggingPal

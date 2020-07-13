@@ -2,7 +2,6 @@
 using JoggingPal.Models.Participants;
 using JoggingPal.Models.ParticipantStates;
 using System;
-using System.CodeDom;
 using System.Windows.Forms;
 
 namespace JoggingPal
