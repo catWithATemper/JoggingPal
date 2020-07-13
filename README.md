@@ -19,4 +19,4 @@ This project consists in the development of a Windows application aimed at runne
 
 Log in:
 Username: "Tom"
-Password: °Password°
+Password: "Password"
