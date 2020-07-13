@@ -11,7 +11,7 @@ namespace JoggingPal.Models.Results
             resultParts.Add(resultKey, resultValue);
         }
 
-        public string ListParts()
+        public string ToString()
         {
             string str = string.Join(", ", resultParts);
             return "Event results: " + str + "\n";

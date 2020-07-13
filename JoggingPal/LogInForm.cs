@@ -9,7 +9,7 @@ namespace JoggingPal
     {
         public static User CurrentUser { get; set; }
 
-        Database db = Database.Instance();
+        private Database db = Database.Instance();
         public LogInForm()
         {
             InitializeComponent();

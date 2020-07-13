@@ -15,9 +15,9 @@ namespace JoggingPal.Models.ParticipantStates
             ctx.CurrentState = LocationSet.Instance;
         }
 
-        public void CheckInAtEvent(ParticipationContext ctx) => throw new InvalidCastException();
+        public void CheckInAtEvent(ParticipationContext ctx) => throw new InvalidOperationException();
 
-        public void UploadEventResults(ParticipationContext ctx) => throw new InvalidCastException();
+        public void UploadEventResults(ParticipationContext ctx) => throw new InvalidOperationException();
 
         public override string ToString()
         {

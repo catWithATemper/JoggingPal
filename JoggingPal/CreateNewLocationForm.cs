@@ -7,7 +7,7 @@ namespace JoggingPal
 {
     public partial class CreateNewLocationForm : Form
     {
-        Database db = Database.Instance();
+        private Database db = Database.Instance();
         public CreateNewLocationForm()
         {
             InitializeComponent();

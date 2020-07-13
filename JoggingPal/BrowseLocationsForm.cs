@@ -9,7 +9,7 @@ namespace JoggingPal
 {
     public partial class BrowseLocationsForm : Form
     {
-        Database db = Database.Instance();
+        private Database db = Database.Instance();
 
         public BrowseLocationsForm()
         {

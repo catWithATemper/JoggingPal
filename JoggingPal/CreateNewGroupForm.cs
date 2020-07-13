@@ -7,7 +7,7 @@ namespace JoggingPal
 {
     public partial class CreateNewGroupForm : Form
     {
-        Database db = Database.Instance();
+        private Database db = Database.Instance();
         public CreateNewGroupForm()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace JoggingPal
                 MessageBox.Show("Please specify a name for the group.");
                 return;
             }
-            if (db.UserGroups.ContainsKey(txtUserGroupName.Text))
+            if (db.UserGroups.ContainsKey(groupName))
             {
                 MessageBox.Show("A group with this name already exists. Please provide a different title.");
                 return;

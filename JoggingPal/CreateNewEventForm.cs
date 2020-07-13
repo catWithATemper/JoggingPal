@@ -8,7 +8,7 @@ namespace JoggingPal
 {
     public partial class CreateNewEventForm : Form
     {
-        Database db = Database.Instance();
+        private Database db = Database.Instance();
         public CreateNewEventForm()
         {
             InitializeComponent();
@@ -105,7 +105,7 @@ namespace JoggingPal
         private void ListLocationsRefresh()
         {
             listLocations.Items.Clear();
-            string[] elements = new string[4];
+            string[] elements = new string[3];
             foreach (Location item in db.RunningLocations.Values)
             {
                 elements[0] = item.RouteName;

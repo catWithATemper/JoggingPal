@@ -10,8 +10,6 @@ namespace JoggingPal
 {
     public partial class SeeEventResultsForm : Form
     {
-        Database db = Database.Instance();
-
         public SeeEventResultsForm()
         {
             InitializeComponent();

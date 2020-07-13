@@ -12,7 +12,7 @@ namespace JoggingPal
 {
     public partial class MainForm : Form
     {
-        Database db = Database.Instance();
+        private Database db = Database.Instance();
 
         public MainForm()
         {

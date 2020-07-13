@@ -34,8 +34,5 @@ namespace JoggingPal.Models.Results
             builder.BuildMaxSpeed(maxSpeed);
             builder.BuildAvgHeartRate(avgHeartRate);
         }
-
-
-
     }
 }

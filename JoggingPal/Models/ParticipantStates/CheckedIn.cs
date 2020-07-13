@@ -20,7 +20,7 @@ namespace JoggingPal.Models.ParticipantStates
             ctx.CurrentState = Instance;
         }
 
-        public void SetLocation(ParticipationContext ctx) => throw new InvalidCastException();
+        public void SetLocation(ParticipationContext ctx) => throw new InvalidOperationException();
 
         public override string ToString()
         {

@@ -142,7 +142,7 @@
             // 
             this.txtEventTitleTab1.Location = new System.Drawing.Point(35, 205);
             this.txtEventTitleTab1.Name = "txtEventTitleTab1";
-            this.txtEventTitleTab1.Size = new System.Drawing.Size(100, 22);
+            this.txtEventTitleTab1.Size = new System.Drawing.Size(150, 22);
             this.txtEventTitleTab1.TabIndex = 15;
             // 
             // lblEventTitleTab1
@@ -243,9 +243,9 @@
             // 
             // txtEventTitleTab2
             // 
-            this.txtEventTitleTab2.Location = new System.Drawing.Point(32, 231);
+            this.txtEventTitleTab2.Location = new System.Drawing.Point(23, 231);
             this.txtEventTitleTab2.Name = "txtEventTitleTab2";
-            this.txtEventTitleTab2.Size = new System.Drawing.Size(100, 22);
+            this.txtEventTitleTab2.Size = new System.Drawing.Size(150, 22);
             this.txtEventTitleTab2.TabIndex = 23;
             // 
             // lblEventTitleTab2

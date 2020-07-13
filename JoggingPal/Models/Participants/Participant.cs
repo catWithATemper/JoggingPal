@@ -44,8 +44,8 @@ namespace JoggingPal.Models.Participants
 
         public EventResults UploadEventResults(TimeSpan totalTime, double? maxSpeed, int? avgHeartRate)
         {
-            var director = new EventResultsDirector();
-            var builder = new EventResultsConcreteBuilder();
+            EventResultsDirector director = new EventResultsDirector();
+            EventResultsConcreteBuilder builder = new EventResultsConcreteBuilder();
             director.Builder = builder;
 
             if (maxSpeed != null && avgHeartRate != null)
