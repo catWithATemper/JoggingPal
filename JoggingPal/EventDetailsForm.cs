@@ -22,11 +22,8 @@ namespace JoggingPal
 
         private void listEventDetailsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-
-            listEventDetails.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                    columnHeader2 });
+            listEventDetails.Columns.AddRange(new ColumnHeader[] { new ColumnHeader(),
+                                                                    new ColumnHeader() });
             listEventDetailsRefresh();
         }
 

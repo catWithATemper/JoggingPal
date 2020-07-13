@@ -171,39 +171,21 @@ namespace JoggingPal
 
         private void listUpcomingEventsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            ColumnHeader columnHeader4 = new ColumnHeader();
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Title", "Date and time", "Event Type", "State"});
 
-            columnHeader1.Text = "Title";
-            columnHeader2.Text = "Date and time";
-            columnHeader3.Text = "Event Type";
-            columnHeader4.Text = "State";
+            listUpcomingEvents.Columns.AddRange(columnHeaders);
 
-            listUpcomingEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                    columnHeader2,
-                                                                    columnHeader3,
-                                                                    columnHeader4});
             listUpcomingEventsRefresh();
         }
 
         private void listPastEventsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            ColumnHeader columnHeader4 = new ColumnHeader();
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Title", "Date and time", "Event Type", "State" });
 
-            columnHeader1.Text = "Title";
-            columnHeader2.Text = "Date and time";
-            columnHeader3.Text = "Event type";
-            columnHeader4.Text = "State";
+            listPastEvents.Columns.AddRange(columnHeaders);
 
-            listPastEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                             columnHeader2,
-                                                             columnHeader3,
-                                                             columnHeader4});
             listPastEventsRefresh();
         }
 
@@ -345,39 +327,19 @@ namespace JoggingPal
 
         private void listInPersonEventsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            ColumnHeader columnHeader4 = new ColumnHeader();
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Title", "Date and time", "Average speed", "Location" });
 
-            columnHeader1.Text = "Title";
-            columnHeader2.Text = "Date and time";
-            columnHeader3.Text = "Average speed";
-            columnHeader4.Text = "Location";
-
-            listInPersonEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                    columnHeader2,
-                                                                    columnHeader3,
-                                                                    columnHeader4});
+            listInPersonEvents.Columns.AddRange(columnHeaders);
             listInPersonEventsRefresh();
         }
 
         private void listVirtualEventsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            ColumnHeader columnHeader4 = new ColumnHeader();
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Title", "Date and time", "Average speed", "Route length" });
 
-            columnHeader1.Text = "Title";
-            columnHeader2.Text = "Date and time";
-            columnHeader3.Text = "Average speed";
-            columnHeader4.Text = "Route length";
-
-            listVirtualEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                    columnHeader2,
-                                                                    columnHeader3,
-                                                                    columnHeader4});
+            listVirtualEvents.Columns.AddRange(columnHeaders);
             listVirtualEventsRefresh();
         }
 
@@ -493,20 +455,10 @@ namespace JoggingPal
 
         private void listUserGroupsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            ColumnHeader columnHeader4 = new ColumnHeader();
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Group name", "Administrator", "No. of members", "Joined" });
 
-            columnHeader1.Text = "Group name";
-            columnHeader2.Text = "Administrator";
-            columnHeader3.Text = "No. of members";
-            columnHeader4.Text = "Joined";
-
-            listUserGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                            columnHeader2,
-                                                            columnHeader3,
-                                                            columnHeader4});
+            listUserGroups.Columns.AddRange(columnHeaders);
             listUserGroupsRefresh();
         }
 

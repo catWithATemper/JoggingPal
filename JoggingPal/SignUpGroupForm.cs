@@ -42,17 +42,11 @@ namespace JoggingPal
 
         private void SignUpGroupForm_Load(object sender, EventArgs e)
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Group name", "Administrator", "No. of members" });
 
-            columnHeader1.Text = "Group name";
-            columnHeader2.Text = "Administrator";
-            columnHeader3.Text = "No. of members";
+            listGroups.Columns.AddRange(columnHeaders);
 
-            listGroups.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                             columnHeader2,
-                                                             columnHeader3});
             string[] groupElements = new string[3];
 
             foreach (UserGroup group in db.UserGroups.Values)

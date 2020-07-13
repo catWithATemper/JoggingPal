@@ -90,15 +90,10 @@ namespace JoggingPal
 
         private void listLocationsLoad()
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            columnHeader1.Text = "Route name";
-            columnHeader2.Text = "Length in km";
-            columnHeader3.Text = "Starting point";
-            this.listLocations.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                    columnHeader2,
-                                                                    columnHeader3});
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Route name", "Length in km", "Starting point" });
+
+            listLocations.Columns.AddRange(columnHeaders);
             ListLocationsRefresh();
         }
 

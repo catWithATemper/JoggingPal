@@ -1,6 +1,9 @@
 Student: Giulia Bondi Mazzoni
+
 Matr. Nr.: 260585
+
 Title of the project: Joggingpal
+
 
 Software specifications:
 This project consists in the development of a Windows application aimed at runners and jogging

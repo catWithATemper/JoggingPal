@@ -11,7 +11,7 @@ namespace JoggingPal.Db
 {
     class Database
     {
-        private static Database instance = new Database();
+        private static Database instance = null;
 
         public Dictionary<string, User> Users { get; } = new Dictionary<string, User>();
         public Dictionary<string, Event> Events { get; } = new Dictionary<string, Event>();

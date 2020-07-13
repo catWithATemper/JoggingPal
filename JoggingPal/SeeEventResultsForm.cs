@@ -26,40 +26,28 @@ namespace JoggingPal
 
         private void listAveragePaceLoad() 
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            ColumnHeader columnHeader3 = new ColumnHeader();
-            columnHeader1.Text = "Participant";
-            columnHeader2.Text = "Total time hh:mm:ss";
-            columnHeader3.Text = "Average pace min/km";
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Participant", "Total time hh:mm:ss", "Average pace min/km" });
 
-            listAveragePace.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                columnHeader2,
-                                                                columnHeader3});
+            listAveragePace.Columns.AddRange(columnHeaders);
             listAveragePaceRefresh();
         }
 
         private void listMaxSpeedLoad() 
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            columnHeader1.Text = "Participant";
-            columnHeader2.Text = "Maximum speed km/h";
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Participant", "Maximum speed km/h" });
 
-            listMaxSpeed.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                columnHeader2 });
+            listMaxSpeed.Columns.AddRange(columnHeaders);
             listMaxSpeedRefresh();
         }
 
         private void listAvgHeartRateLoad() 
         {
-            ColumnHeader columnHeader1 = new ColumnHeader();
-            ColumnHeader columnHeader2 = new ColumnHeader();
-            columnHeader1.Text = "Participant";
-            columnHeader2.Text = "Average heart rate";
+            ColumnHeader[] columnHeaders = FormUtils.CreateColumnHeaders(
+                new String[] { "Participant", "Average heart rate" });
 
-            listAvgHeartRate.Columns.AddRange(new ColumnHeader[] { columnHeader1,
-                                                                columnHeader2 });
+            listAvgHeartRate.Columns.AddRange(columnHeaders);
             listAvgHeartRateRefresh();
         }
         private void listAveragePaceRefresh()

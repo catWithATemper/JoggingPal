@@ -61,6 +61,7 @@
     <Compile Include="BrowseLocationsForm.Designer.cs">
       <DependentUpon>BrowseLocationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUtils.cs" />
     <Compile Include="Models\ParticipantStates\CheckedIn.cs" />
     <Compile Include="CreateNewGroupForm.cs">
       <SubType>Form</SubType>
