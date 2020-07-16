@@ -43,9 +43,9 @@ namespace JoggingPal
 
             Participant participant = SelectedEvent.FindParticipant(LogInForm.CurrentUser);
 
-            if (participant.ctx.CurrentState == LocationSet.Instance
-                || participant.ctx.CurrentState == CheckedIn.Instance
-                || participant.ctx.CurrentState == EventResultsUploaded.Instance)
+            if (participant.Ctx.CurrentState == LocationSet.Instance
+                || participant.Ctx.CurrentState == CheckedIn.Instance
+                || participant.Ctx.CurrentState == EventResultsUploaded.Instance)
             {
                 AddRow("Location: ", participant.RunningLocation.RouteName);
                 AddRow("", participant.RunningLocation.StartingPoint.ToString());
@@ -65,7 +65,7 @@ namespace JoggingPal
                 AddRow("Location: ", "Location not yet set by participant");
             }
 
-            AddRow("Participant state: ", participant.ctx.CurrentState.ToString());
+            AddRow("Participant state: ", participant.Ctx.CurrentState.ToString());
             AddRow("No. of participants: ", SelectedEvent.Participants.Count.ToString());
 
             listEventDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);

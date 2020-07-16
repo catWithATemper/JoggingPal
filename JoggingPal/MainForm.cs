@@ -76,13 +76,13 @@ namespace JoggingPal
                 key = item.SubItems[0].Text;
                 p = db.Events[key].FindParticipant(LogInForm.CurrentUser);
             }
-            if (p.ctx.CurrentState == CheckedIn.Instance
-                || p.ctx.CurrentState == EventResultsUploaded.Instance)
+            if (p.Ctx.CurrentState == CheckedIn.Instance
+                || p.Ctx.CurrentState == EventResultsUploaded.Instance)
             {
                 MessageBox.Show("You have already checked in at this event.");
                 return;
             }
-            if (p.ctx.CurrentState == LocationSet.Instance)
+            if (p.Ctx.CurrentState == LocationSet.Instance)
             {
                 p.CheckInAtEvent();
                 listUpcomingEventsRefresh();
@@ -112,7 +112,7 @@ namespace JoggingPal
                 MessageBox.Show("You have already uploaded your results for this event.");
                 return;
             }
-            if (p.ctx.CurrentState != CheckedIn.Instance)
+            if (p.Ctx.CurrentState != CheckedIn.Instance)
                 MessageBox.Show("Please check in at the event before uploading your results.");
             else
             {
@@ -205,7 +205,7 @@ namespace JoggingPal
                     upcomingEventElements[0] = userEvent.EventTitle;
                     upcomingEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
                     upcomingEventElements[2] = eventType;
-                    upcomingEventElements[3] = p.ctx.CurrentState.ToString();
+                    upcomingEventElements[3] = p.Ctx.CurrentState.ToString();
 
                     ListViewItem row = new ListViewItem(upcomingEventElements);
 
@@ -232,7 +232,7 @@ namespace JoggingPal
                     pastEventElements[0] = userEvent.EventTitle;
                     pastEventElements[1] = userEvent.DateTime.ToString("dd/MM/yyyy HH:mm");
                     pastEventElements[2] = eventType;
-                    pastEventElements[3] = p.ctx.CurrentState.ToString();
+                    pastEventElements[3] = p.Ctx.CurrentState.ToString();
 
                     ListViewItem row = new ListViewItem(pastEventElements);
 

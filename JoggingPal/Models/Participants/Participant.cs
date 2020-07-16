@@ -12,7 +12,7 @@ namespace JoggingPal.Models.Participants
         public Event RunningEvent { get; }
         public Location RunningLocation { get; set; }
 
-        public ParticipationContext ctx;
+        public ParticipationContext Ctx { get; }
         public EventResults EventResults { get; set; }
 
         public Participant(User user, Event selectedEvent)
@@ -22,24 +22,24 @@ namespace JoggingPal.Models.Participants
 
             RunningEvent.Participants.Add(this);
 
-            ctx = new ParticipationContext(this);
+            Ctx = new ParticipationContext(this);
 
             if (typeof(InPersonEvent).IsInstanceOfType(RunningEvent))
             {
                 RunningLocation = ((InPersonEvent)RunningEvent).RunningLocation;
-                ctx.SetLocation();
+                Ctx.SetLocation();
             }
         }
 
         public void SetRunningLocation(Location location)
         {
             RunningLocation = location;
-            ctx.SetLocation();
+            Ctx.SetLocation();
         }
 
         public void CheckInAtEvent()
         {
-            ctx.CheckInAtEvent();
+            Ctx.CheckInAtEvent();
         }
 
         public EventResults UploadEventResults(TimeSpan totalTime, double? maxSpeed, int? avgHeartRate)
@@ -61,7 +61,7 @@ namespace JoggingPal.Models.Participants
 
             EventResults = builder.GetResults();
 
-            ctx.UploadEventResults();
+            Ctx.UploadEventResults();
 
             return EventResults;
         }
