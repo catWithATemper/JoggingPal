@@ -103,19 +103,19 @@ namespace JoggingPal.Db
             RunningLocations.Add(route5.RouteName, route5);
 
             Event jogging1 = new InPersonEvent(new DateTime(2020, 08, 01, 08, 30, 00),
-                                                7.0, "Jogging in the park", route3);
+                                                11.0, "Jogging in the park", route3);
             Event jogging2 = new InPersonEvent(new DateTime(2020, 08, 09, 19, 00, 00),
-                                                6.5, "After work jogging", route5);
+                                                11.5, "After work jogging", route5);
             Event jogging3 = new VirtualEvent(new DateTime(2020, 8, 21, 09, 00, 00),
-                                                8.0, "Jogging as a virtual group", 7.0);
+                                                10.0, "Jogging as a virtual group", 7.0);
             Event jogging4 = new InPersonEvent(new DateTime(2020, 06, 01, 10, 00, 00), 
-                                                7.0, "Morning jogging on 1st June", route1);
+                                                12.0, "Morning jogging on 1st June", route1);
             Event jogging5 = new VirtualEvent(new DateTime(2020, 7, 28, 19, 00, 00),
-                                                8.5, "Jogging in different locations", 5.0);
+                                                11.5, "Jogging in different locations", 5.0);
             Event jogging6 = new InPersonEvent(new DateTime(2020, 5, 15, 11, 00, 00),
-                                                9.0, "Speed challenge", route5);
+                                                10.0, "Speed challenge", route5);
             Event jogging7 = new VirtualEvent(new DateTime(2020, 7, 31, 18, 30, 00),
-                                    7.0, "Evening jogging", 5.0);
+                                                13.0, "Evening jogging", 5.0);
 
 
             Events.Add(jogging1.EventTitle, jogging1);

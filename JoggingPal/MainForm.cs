@@ -355,7 +355,7 @@ namespace JoggingPal
                     InPersonEventElements[0] = item.EventTitle;
                     InPersonEventElements[1] = item.DateTime.ToString("dd/MM/yyyy HH:mm");
                     InPersonEventElements[2] = item.AverageSpeed.ToString() + " km/h";
-                    InPersonEventElements[3] = item.RunningLocation.ToString() + " km";
+                    InPersonEventElements[3] = item.RunningLocation.ToString();
 
                     ListViewItem row = new ListViewItem(InPersonEventElements);
 
